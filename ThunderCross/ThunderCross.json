@@ -1,7 +1,7 @@
 {
   "name": "ThunderCross",
   "description": "Thunder invoker binary",
-  "path": "U:/Projects/FireFox/NewThunderCross/ThunderCross/ThunderCross/bin/Debug/ThunderCross.exe",
+  "path": "U:/Projects/FireFox/NewThunderCross/ThunderCross/ThunderCross/bin/x64/Debug/ThunderCross.exe",
   "type": "stdio",
   "allowed_extensions": [ "cai.sky.china@gmail.com" ]
 }
