@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ThunderCross
 {
@@ -19,6 +20,10 @@ namespace ThunderCross
 		{
 			dataLength = dat.Length;
 			data = dat;
+		}
+		public DLRequest Dispatch()
+		{
+			return JsonConvert.DeserializeObject<DLRequest>(data);
 		}
 	}
 }

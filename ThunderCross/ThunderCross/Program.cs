@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using ThunderAgentLib;
 
 namespace ThunderCross
@@ -14,13 +16,18 @@ namespace ThunderCross
 		{
 			if (args[0] != "Breaked")
 			{
+				System.Threading.Thread.Sleep(100);
 				Web_ext_Message msg = GetMsg();
-				BinaryWriter stdos = new BinaryWriter(Console.OpenStandardOutput());
-				stdos.Write(10);
-				stdos.Write(@"""success""");
+				DLRequest req = msg.Dispatch();
+//				MessageBox.Show("");
+				req.Ask();
+				//BinaryWriter stdos = new BinaryWriter(Console.OpenStandardOutput());
+				//stdos.Write(10);
+				//stdos.Write(@"""success""");
 			}
 			else
 			{
+				MessageBox.Show("2333");
 				//AgentClass agent = new AgentClass();
 				//agent.AddTask3(bstrUrl: "https://www.baidu.com/index.html");
 				//agent.CommitTasks4(1, 0);
@@ -29,13 +36,11 @@ namespace ThunderCross
 
 		static Web_ext_Message GetMsg()
 		{
-			int datalen = Console.Read();
-			if (datalen == -1)//EOF in console
-				return null;
-			byte[] buf = new byte[datalen];
 			var stdis = Console.OpenStandardInput();
-			stdis.Read(buf, 0, datalen);
-			string dat = Encoding.UTF8.GetString(buf);
+			byte[] datas = new byte[1 * 1024 * 1024];
+			stdis.Read(datas, 0, datas.Length);
+			int datalen = BitConverter.ToInt32(datas, 0);
+			string dat = Encoding.UTF8.GetString(datas,4,datalen);
 			return new Web_ext_Message(datalen,dat);
 		}
 	}

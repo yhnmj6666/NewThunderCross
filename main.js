@@ -4,6 +4,8 @@ browser.webRequest.onHeadersReceived.addListener(
   downloadCatcher.extraInfoSpec
 );
 
+console.log(getFileName("http://baidu.com/a/b/c"));
+
 
 // /*
 // On startup, connect to the "ping_pong" app.

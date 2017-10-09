@@ -1,19 +1,23 @@
 var downloadCatcher={
     listener : function(rhDetails){
-        console.log(rhDetails.url);
-        //console.log(rhDetails.responseHeaders.length)
-        var cdIndex=rhDetails.responseHeaders.findIndex( (element) => {
-            if(element.name === "Content-Disposition")
-                return true;
-            else
-                return false;
-        });
-        if(cdIndex !== -1  && 
-            rhDetails.responseHeaders[cdIndex].value.startsWith("attachment"))
+        if(isDownloadable(rhDetails))
         {
-            console.log("act download");
+            //ask native program
+            console.log("call Native");
+            var dlInfo={
+                Url : rhDetails.url
+            }
+            console.log(dlInfo);
+            console.log(dlInfo.Url);
+            browser.runtime.sendNativeMessage("ThunderCross",
+                dlInfo
+            );
+            //if external
+            //redirect to http://downloadhandled
+            //else
+            //let it go
         }
-
+        //not downloaded items, let it go
     },
     
     fliter : {

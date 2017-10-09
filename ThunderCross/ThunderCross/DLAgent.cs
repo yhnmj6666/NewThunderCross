@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThunderAgentLib;
-
 
 namespace ThunderCross
 {
-	class XThunder
+	public enum DLAgent
 	{
-		bool Dispatch()
-		{
-			return true;
-		}
+		Default,
+		Thunder
 	}
 }
