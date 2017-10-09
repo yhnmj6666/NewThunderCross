@@ -109,6 +109,7 @@
       <DependentUpon>AskDL.cs</DependentUpon>
     </Compile>
     <Compile Include="DLAgent.cs" />
+    <Compile Include="DLReply.cs" />
     <Compile Include="DLRequest.cs" />
     <Compile Include="DLTask.cs" />
     <Compile Include="DMThunder.cs" />

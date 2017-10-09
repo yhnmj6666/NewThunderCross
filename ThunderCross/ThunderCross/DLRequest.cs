@@ -21,7 +21,7 @@ namespace ThunderCross
 				switch(askDL.RetAgent)
 				{
 					case DLAgent.Default:
-
+						break;
 					case DLAgent.Thunder:
 						{
 							DLTask task = new DLTask { Url = Url, Agent = askDL.RetAgent };
