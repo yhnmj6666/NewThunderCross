@@ -1,39 +1,42 @@
-var downloadCatcher={
-    listener : function(rhDetails){
-        if(isDownloadable(rhDetails))
-        {
+var urlDlHandled = "http://downloadhandled/";
+var downloadCatcher = {
+    listener: function (rhDetails) {
+        var promises = [];
+        var msgFromnative;
+        if (isDownloadable(rhDetails)) {
             //ask native program
             console.log("call Native");
-            var dlInfo={
-                Url : rhDetails.url
-            }
+            var dlInfo = {
+                Url: rhDetails.url
+            };
             console.log(dlInfo);
             console.log(dlInfo.Url);
-            var asking=browser.runtime.sendNativeMessage("ThunderCross",
+            promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
-            );
-            asking.then(onResponse,onError);
-            //if external
-            //redirect to http://downloadhandled
-            //else
-            //let it go
+            ).then((reply) => {
+                msgFromnative = reply;
+            }));
         }
-        //not downloaded items, let it go
+        //if external
+        //redirect to http://downloadhandled
+        //else
+        //let it go
+        return Promise.all(promises).then(function () {
+            if (msgFromnative === "External") {
+                var blockingResponse = {
+                    redirectUrl: urlDlHandled
+                }
+                console.log("redirected");
+                return blockingResponse;
+            }
+            else {
+                console.log("not redirected");
+                return {};
+            }
+        });
     },
 
-    onResponse : function(response)
-    {
-        
-    },
-
-    onError : function(error)
-    {
-        console.log(`Error: ${error}`);
-    },
-    
-    fliter : {
-        urls : ["<all_urls>"]
-    },
-
-    extraInfoSpec : ["blocking","responseHeaders"]
+    fliter: {
+        urls: ["<all_urls>"]
+    }
 }

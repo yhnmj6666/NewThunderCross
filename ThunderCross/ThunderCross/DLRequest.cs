@@ -12,7 +12,7 @@ namespace ThunderCross
 	class DLRequest
 	{
 		public string Url { get; set; }
-		public void Ask()
+		public DLReply Ask()
 		{
 			AskDL askDL = new AskDL();
 			askDL.ShowDialog();
@@ -27,13 +27,14 @@ namespace ThunderCross
 							DLTask task = new DLTask { Url = Url, Agent = askDL.RetAgent };
 							string sTask = JsonConvert.SerializeObject(task);
 							string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "Breaked" + sTask;
-							ProcessUtility.CreateProcessBreakFromJob(command);
+							//ProcessUtility.CreateProcessBreakFromJob(command);
 						}
 						break;
 					default:
 						break;
 				}
 			}
+			return new DLReply(askDL.RetAgent);
 		}
 	}
 }

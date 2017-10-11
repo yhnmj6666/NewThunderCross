@@ -1,1 +1,1 @@
-var fileExtCatch=/.(zip)$/i
+var fileExtCatch = /.(zip)$/i

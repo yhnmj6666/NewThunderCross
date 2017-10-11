@@ -1,11 +1,25 @@
-browser.webRequest.onHeadersReceived.addListener(
-  downloadCatcher.listener,
-  downloadCatcher.fliter,
-  downloadCatcher.extraInfoSpec
+browser.webRequest.onBeforeRequest.addListener(
+    (details) => {
+        if (details.url === urlDlHandled) {
+            var blockingResponse = {
+                cancel: true
+            }
+            console.log("canceled");
+            return blockingResponse;
+        }
+        else {
+            console.log("not calceled: " + details.url);
+            return {};
+        }
+    },
+    downloadCatcher.fliter,
+    ["blocking"]
 );
-
-console.log(getFileName("http://baidu.com/a/b/c"));
-
+browser.webRequest.onHeadersReceived.addListener(
+    downloadCatcher.listener,
+    downloadCatcher.fliter,
+    ["blocking", "responseHeaders"]
+);
 
 // /*
 // On startup, connect to the "ping_pong" app.
@@ -17,7 +31,7 @@ console.log(getFileName("http://baidu.com/a/b/c"));
 // Listen for messages from the app.
 // */
 // port.onMessage.addListener((response) => {
-//   console.log("Sending Raw: " + response);
+//   console.log("Received " + response);
 // });
 
 // /*
