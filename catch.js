@@ -5,12 +5,12 @@ var downloadCatcher = {
         var msgFromnative;
         if (isDownloadable(rhDetails)) {
             //ask native program
-            console.log("call Native");
+            //console.log("call Native");
             var dlInfo = {
                 Url: rhDetails.url
             };
-            console.log(dlInfo);
-            console.log(dlInfo.Url);
+            //console.log(dlInfo);
+            //console.log(dlInfo.Url);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
@@ -26,11 +26,11 @@ var downloadCatcher = {
                 var blockingResponse = {
                     redirectUrl: urlDlHandled
                 }
-                console.log("redirected");
+                //console.log("redirected");
                 return blockingResponse;
             }
             else {
-                console.log("not redirected");
+                //console.log("not redirected");
                 return {};
             }
         });

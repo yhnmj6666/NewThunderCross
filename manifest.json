@@ -2,10 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.1",
-    "icons": {
-        "48": "icons/message.svg"
-    },
+    "version": "0.1.1",
     "applications": {
         "gecko": {
             "id": "cai.sky.china@gmail.com",
@@ -21,12 +18,8 @@
             "main.js"
         ]
     },
-    "browser_action": {
-        "default_icon": "icons/message.svg"
-    },
     "permissions": [
         "nativeMessaging",
-        "downloads",
         "webRequest",
         "webRequestBlocking",
         "<all_urls>"

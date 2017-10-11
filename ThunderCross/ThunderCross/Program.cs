@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using ThunderAgentLib;
+using System.IO.Pipes;
+using Newtonsoft.Json;
 
 namespace ThunderCross
 {
@@ -16,6 +17,7 @@ namespace ThunderCross
 		{
 			if (args[0] != "Breaked")
 			{
+				Application.EnableVisualStyles();
 				Web_ext_Message msg = GetMsg();
 				DLRequest req = msg.Dispatch();
 				DLReply reply=req.Ask();
@@ -23,22 +25,22 @@ namespace ThunderCross
 			}
 			else
 			{
-				MessageBox.Show("2333");
+				NamedPipeClientStream aPipeClient = new NamedPipeClientStream(args[1]);
+				BinaryReader br = new BinaryReader(aPipeClient);
+				aPipeClient.Connect(5000);
+				string sTask=br.ReadString();
+				aPipeClient.Close();
+				DLTask dt = JsonConvert.DeserializeObject<DLTask>(sTask);
+				dt.Perform();
 			}
 		}
 
 		static Web_ext_Message GetMsg()
-		{//maybe can change to binary reader?
+		{
 			BinaryReader br = new BinaryReader(Console.OpenStandardInput(),Encoding.UTF8);
 			int datalen = br.ReadInt32();
 			string dat = Encoding.UTF8.GetString(br.ReadBytes(datalen));
 			return new Web_ext_Message(datalen, dat);
-			//var stdis = Console.OpenStandardInput();
-			//byte[] datas = new byte[1 * 1024 * 1024];
-			//int readC=await stdis.ReadAsync(datas, 0, datas.Length);
-			//int datalen = BitConverter.ToInt32(datas, 0);
-			//string dat = Encoding.UTF8.GetString(datas,4,datalen);
-			//return new Web_ext_Message(datalen,dat);
 		}
 
 		static void SendMsg(DLReply r)

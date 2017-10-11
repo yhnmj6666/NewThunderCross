@@ -10,5 +10,17 @@ namespace ThunderCross
 	{
 		public string Url { get; set; }
 		public DLAgent Agent { get; set; }
+		public void Perform()
+		{
+			switch(Agent)
+			{
+				case DLAgent.Thunder:
+					{
+						DMThunder dm = new DMThunder(Url);
+						dm.Fire();
+					}
+					break;
+			}
+		}
 	}
 }
