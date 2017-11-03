@@ -2,19 +2,22 @@ var urlDlHandled = "http://downloadhandled/";
 var downloadCatcher = {
     listener: function (rhDetails) {
         var promises = [];
-        var msgFromnative;
+        var msgFromNative;
         if (isDownloadable(rhDetails)) {
             //ask native program
             //console.log("call Native");
             var dlInfo = {
-                Url: rhDetails.url
+                Url: rhDetails.url,
+                Filename: lastFileName,
+                Filetype: fileType
             };
             //console.log(dlInfo);
             //console.log(dlInfo.Url);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                msgFromnative = reply;
+                console.log("reply: "+reply);
+                msgFromNative = reply;
             }));
         }
         //if external
@@ -22,11 +25,12 @@ var downloadCatcher = {
         //else
         //let it go
         return Promise.all(promises).then(function () {
-            if (msgFromnative === "External") {
+            if (msgFromNative === "External" ||
+                msgFromNative === "Canceled") {
                 var blockingResponse = {
                     redirectUrl: urlDlHandled
                 }
-                //console.log("redirected");
+                console.log("redirected");
                 return blockingResponse;
             }
             else {

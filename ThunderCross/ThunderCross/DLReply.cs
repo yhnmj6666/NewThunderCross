@@ -14,6 +14,9 @@ namespace ThunderCross
 		{
 			switch(a)
 			{
+				case DLAgent.Cancel:
+					choice = @"""Canceled""";
+					break;
 				case DLAgent.Default:
 					choice = @"""Default""";
 					break;
@@ -21,7 +24,7 @@ namespace ThunderCross
 					choice = @"""External""";
 					break;
 				default:
-					choice = @"""error""";
+					choice = @"""error!!!""";
 					break;
 			}
 		}

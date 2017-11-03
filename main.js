@@ -4,7 +4,7 @@ browser.webRequest.onBeforeRequest.addListener(
             var blockingResponse = {
                 cancel: true
             }
-            //console.log("canceled");
+            console.log("canceled");
             return blockingResponse;
         }
         else {
@@ -21,3 +21,10 @@ browser.webRequest.onHeadersReceived.addListener(
     ["blocking", "responseHeaders"]
 );
 
+//TODO:
+//never catch js files!
+//settings page
+//eagelget support
+//improve isDownloadable function.
+//instant download after c# returns
+//public releases

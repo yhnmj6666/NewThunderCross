@@ -2,12 +2,16 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "applications": {
         "gecko": {
-            "id": "cai.sky.china@gmail.com",
+            "id": "Thunder@Cross",
             "strict_min_version": "52.0"
         }
+    },
+    "options_ui": {
+        "page": "options.html",
+        "browser_style": true
     },
     "background": {
         "scripts": [
@@ -19,6 +23,7 @@
         ]
     },
     "permissions": [
+        "storage",
         "nativeMessaging",
         "webRequest",
         "webRequestBlocking",

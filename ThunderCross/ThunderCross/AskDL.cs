@@ -10,12 +10,15 @@ using System.Windows.Forms;
 
 namespace ThunderCross
 {
-	public partial class AskDL : Form
+	partial class AskDL : Form
 	{
 		public DLAgent RetAgent;
-		public AskDL()
+		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
+			textBox_Url.Text = "    "+r.Url;
+			textBox_Name.Text = r.Filename;
+			textBox_Type.Text = r.Filetype;
 		}
 
 		private void button_Default_Click(object sender, EventArgs e)
@@ -35,6 +38,7 @@ namespace ThunderCross
 		private void button_Cancel_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
+			this.RetAgent = DLAgent.Cancel;
 			this.Close();
 		}
 	}

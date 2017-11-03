@@ -8,6 +8,7 @@ namespace ThunderCross
 {
 	public enum DLAgent
 	{
+		Cancel=-1,
 		Default,
 		Thunder
 	}

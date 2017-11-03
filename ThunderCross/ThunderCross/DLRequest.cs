@@ -15,10 +15,13 @@ namespace ThunderCross
 	class DLRequest
 	{
 		public string Url { get; set; }
+		public string Filename { get; set; }
+		public string Filetype { get; set; }
 		NamedPipeServerStream aPipeServer;
 		public DLReply Ask()
 		{
-			AskDL askDL = new AskDL();
+			Filename = System.Net.WebUtility.UrlDecode(Filename);
+			AskDL askDL = new AskDL(this);
 			askDL.ShowDialog();
 			if(askDL.DialogResult==DialogResult.OK)
 			{
