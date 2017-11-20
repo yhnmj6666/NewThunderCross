@@ -2,7 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "applications": {
         "gecko": {
             "id": "Thunder@Cross",
@@ -15,7 +15,7 @@
     },
     "background": {
         "scripts": [
-            "fileExt.js",
+            "storage.js",
             "getFileName.js",
             "isDownloadable.js",
             "catch.js",

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ThunderCross
 {
-	public enum DLAgent
+	interface IDownloadManager
 	{
-		Cancel=-1,
-		Default,
-		Thunder,
-		EagleGet
+		string Url { get; set; }
+		void Fire();
 	}
 }

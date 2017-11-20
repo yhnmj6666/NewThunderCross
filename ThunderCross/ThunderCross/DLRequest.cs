@@ -16,7 +16,9 @@ namespace ThunderCross
 	{
 		public string Url { get; set; }
 		public string Filename { get; set; }
-		public string Filetype { get; set; }
+		public string ContentType { get; set; }
+		public string ContentLength { get; set; }
+		public string DefaultDM { get; set; }
 		NamedPipeServerStream aPipeServer;
 		public DLReply Ask()
 		{
@@ -30,6 +32,7 @@ namespace ThunderCross
 					case DLAgent.Default:
 						break;
 					case DLAgent.Thunder:
+					case DLAgent.EagleGet:
 						{
 							string pipeName = Guid.NewGuid().ToString().Replace("-", string.Empty);
 
@@ -39,7 +42,7 @@ namespace ThunderCross
 									PipeTransmissionMode.Message, PipeOptions.WriteThrough, 1024, 1024, ps);
 							string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "Breaked" + ' ' + pipeName;
 							ProcessUtility.CreateProcessBreakFromJob(command);
-							DLTask task = new DLTask { Url = Url, Agent = askDL.RetAgent };
+							DLTask task = new DLTask { Request = this, Agent = askDL.RetAgent };
 							string sTask = JsonConvert.SerializeObject(task);
 							aPipeServer.WaitForConnection();
 							BinaryWriter bw = new BinaryWriter(aPipeServer);

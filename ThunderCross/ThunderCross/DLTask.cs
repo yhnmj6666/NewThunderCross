@@ -8,7 +8,7 @@ namespace ThunderCross
 {
 	class DLTask
 	{
-		public string Url { get; set; }
+		public DLRequest Request { get; set; }
 		public DLAgent Agent { get; set; }
 		public void Perform()
 		{
@@ -16,7 +16,13 @@ namespace ThunderCross
 			{
 				case DLAgent.Thunder:
 					{
-						DMThunder dm = new DMThunder(Url);
+						DMThunder dm = new DMThunder(Request.Url);
+						dm.Fire();
+					}
+					break;
+				case DLAgent.EagleGet:
+					{
+						DMEagleGet dm = new DMEagleGet(Request.Url);
 						dm.Fire();
 					}
 					break;

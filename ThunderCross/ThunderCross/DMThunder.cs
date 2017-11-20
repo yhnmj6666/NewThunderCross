@@ -7,7 +7,7 @@ using ThunderAgentLib;
 
 namespace ThunderCross
 {
-	class DMThunder
+	class DMThunder : IDownloadManager
 	{
 		public string Url { get; set; }
 		public DMThunder(string url)

@@ -5,18 +5,30 @@ var downloadCatcher = {
         var msgFromNative;
         if (isDownloadable(rhDetails)) {
             //ask native program
-            //console.log("call Native");
             var dlInfo = {
                 Url: rhDetails.url,
                 Filename: lastFileName,
-                Filetype: fileType
+                DefaultDM: defaultDM,
+                ContentLength: 0,
+                ContentType: ""
             };
-            //console.log(dlInfo);
-            //console.log(dlInfo.Url);
+            for(i=0;i<rhDetails.responseHeaders.length;i++)
+            {
+                switch(rhDetails.responseHeaders[i].name.toLowerCase())
+                {
+                    case "content-length":
+                        dlInfo.ContentLength=rhDetails.responseHeaders[i].value;
+                        break;
+                    case "content-type":
+                        dlInfo.ContentType=rhDetails.responseHeaders[i].value;
+                        break;
+                    default:
+                        ;
+                }
+            }
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                console.log("reply: "+reply);
                 msgFromNative = reply;
             }));
         }
@@ -30,11 +42,9 @@ var downloadCatcher = {
                 var blockingResponse = {
                     redirectUrl: urlDlHandled
                 }
-                console.log("redirected");
                 return blockingResponse;
             }
             else {
-                //console.log("not redirected");
                 return {};
             }
         });
