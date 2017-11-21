@@ -71,7 +71,7 @@ function isDownloadable(rhDetails) {
         isFileTooSmall = true;
     }
     else {
-        isFileTooSmall = parseInt(rhDetails.responseHeaders[clIndex]) < minAskSize;
+        isFileTooSmall = (parseInt(rhDetails.responseHeaders[clIndex].value) < minAskSize);
     }
     return !isUnwantedFileType && !isFileTooSmall && (isAttachment || isTypeApplication || isWantedFileType);
 }
