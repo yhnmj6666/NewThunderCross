@@ -6,11 +6,14 @@ var downloadCatcher = {
         if (isDownloadable(rhDetails)) {
             //ask native program
             var dlInfo = {
-                Url: rhDetails.url,
-                Filename: lastFileName,
                 DefaultDM: defaultDM,
+
+                Url: rhDetails.url,
+                Filename: lastFileName,                
                 ContentLength: 0,
-                ContentType: ""
+                ContentType: "",
+                Cookie: ""
+
             };
             for(i=0;i<rhDetails.responseHeaders.length;i++)
             {
@@ -22,6 +25,8 @@ var downloadCatcher = {
                     case "content-type":
                         dlInfo.ContentType=rhDetails.responseHeaders[i].value;
                         break;
+                    case "set-cookie":
+                        dlInfo.Cookie=rhDetails.responseHeaders[i].value;
                     default:
                         ;
                 }

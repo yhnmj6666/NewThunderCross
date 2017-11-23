@@ -31,6 +31,13 @@ namespace ThunderCross
 					button_DM.ButtonClick += button_EagleGet_Click;
 					break;
 			}
+			foreach (var dm in DownloadManager.DMList)
+			{
+				if (((IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM"+dm),true)).Valid())
+				{
+					button_DM.AddDropDownItemAndHandle(dm,(EventHandler)Delegate.CreateDelegate(typeof(EventHandler), this,"button_"+dm+"_Click"));
+				}
+			}
 		}
 
 		private void button_Default_Click(object sender, EventArgs e)

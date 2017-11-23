@@ -20,6 +20,7 @@ namespace ThunderCross
 				case DLAgent.Default:
 					choice = @"""Default""";
 					break;
+				case DLAgent.EagleGet:
 				case DLAgent.Thunder:
 					choice = @"""External""";
 					break;

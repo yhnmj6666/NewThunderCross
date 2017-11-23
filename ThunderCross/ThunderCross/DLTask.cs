@@ -16,13 +16,23 @@ namespace ThunderCross
 			{
 				case DLAgent.Thunder:
 					{
-						DMThunder dm = new DMThunder(Request.Url);
+						DMThunder dm = new DMThunder
+						{
+							Url = Request.Url,
+							FileName = Request.Filename,
+							Cookie = Request.Cookie
+						};
 						dm.Fire();
 					}
 					break;
 				case DLAgent.EagleGet:
 					{
-						DMEagleGet dm = new DMEagleGet(Request.Url);
+						DMEagleGet dm = new DMEagleGet
+						{
+							Url = Request.Url,
+							FileName = Request.Filename,
+							Cookie = Request.Cookie
+						};
 						dm.Fire();
 					}
 					break;

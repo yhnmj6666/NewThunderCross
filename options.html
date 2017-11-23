@@ -16,9 +16,14 @@
     <br>
     <textarea rows="4" cols="50" id="ue"></textarea>
     <br>
-    <label>The minimum file size you want: </label><input type="number" id="minsize" step=any min=0></input>
+    <label>Only download the file larger than (MB): </label><input type="number" id="minsize" step=any min=1></input>
     <br>
-    <button type="submit">Save</button>
+    Default Download Manager:<select id="dm">
+      <option value="Thunder">Thunder</option>
+      <option value="EagleGet">EagleGet</option>
+    </select>
+    <br>
+    <button type="submit">Save</button>    
   </form>
   <script src="options.js"></script>
 </body>

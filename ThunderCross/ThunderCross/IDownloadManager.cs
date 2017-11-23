@@ -10,5 +10,12 @@ namespace ThunderCross
 	{
 		string Url { get; set; }
 		void Fire();
+		bool Valid();
 	}
+	
+	static class DownloadManager
+	{
+		public static string[] DMList => new string[] { "Thunder", "EagleGet" };
+	}
+
 }

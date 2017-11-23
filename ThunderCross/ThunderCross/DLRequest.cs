@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO.Pipes;
 using System.IO;
-using System.Security.Principal;
 
 namespace ThunderCross
 {
 	class DLRequest
 	{
+		public string DefaultDM { get; set; }
+
 		public string Url { get; set; }
 		public string Filename { get; set; }
 		public string ContentType { get; set; }
 		public string ContentLength { get; set; }
-		public string DefaultDM { get; set; }
+		public string Cookie { get; set; }
 		NamedPipeServerStream aPipeServer;
 		public DLReply Ask()
 		{
@@ -40,7 +36,7 @@ namespace ThunderCross
 							ps.AddAccessRule(new PipeAccessRule("Users", PipeAccessRights.FullControl, System.Security.AccessControl.AccessControlType.Allow));
 							aPipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 10,
 									PipeTransmissionMode.Message, PipeOptions.WriteThrough, 1024, 1024, ps);
-							string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "Breaked" + ' ' + pipeName;
+							string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "breaked" + ' ' + pipeName;
 							ProcessUtility.CreateProcessBreakFromJob(command);
 							DLTask task = new DLTask { Request = this, Agent = askDL.RetAgent };
 							string sTask = JsonConvert.SerializeObject(task);

@@ -62,6 +62,7 @@
 			this.button_DM.Text = "SampleDM";
 			this.button_DM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button_DM.UseVisualStyleBackColor = true;
+			this.button_DM.ContextMenu = new System.Windows.Forms.ContextMenu();
 			// 
 			// button_Default
 			// 
