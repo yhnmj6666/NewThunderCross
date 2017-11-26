@@ -21,8 +21,9 @@ namespace ThunderCross
 		public string Header { get; set; }
 		public string PostData { get; set; }
 		public string UserAgent { get; set; }
-		public string ExecutablePath { get { return Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("Wow6432Node").
-					OpenSubKey("EagleGet").GetValue("Path")+ "\\EagleGet.exe"; } }
+		public string ExecutablePath { get { return Environment.Is64BitProcess?
+					(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("Wow6432Node").OpenSubKey("EagleGet").GetValue("Path")+ "\\EagleGet.exe"):
+					(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("EagleGet").GetValue("Path") + "\\EagleGet.exe"); } }
 		public DMEagleGet() { }
 		public void Fire()
 		{
@@ -33,6 +34,7 @@ namespace ThunderCross
 		}
 		public bool Valid()
 		{
+			try { string s=ExecutablePath; } catch(Exception) { return false; }
 			return true;
 		}
 	}

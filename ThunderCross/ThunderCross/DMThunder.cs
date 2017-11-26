@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using ThunderAgentLib;
 
 namespace ThunderCross
@@ -16,13 +13,58 @@ namespace ThunderCross
 		public DMThunder()	{ }
 		public void Fire()
 		{
-			AgentClass agent = new AgentClass();
-			agent.AddTask3(bstrUrl: Url,
-				bstrFileName: FileName);
-			agent.CommitTasks4(1, 0);
+			AgentClass agent;
+			try
+			{
+				agent = new AgentClass();
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
+				return;
+			}
+			try
+			{
+				agent.AddTask3(bstrUrl: Url,
+					bstrFileName: FileName);
+			}
+			catch (Exception)
+			{
+				try
+				{
+					agent.AddTask(bstrUrl: Url,
+				  bstrFileName: FileName);
+				}
+				catch (Exception e)
+				{
+					MessageBox.Show(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
+					return;
+				}
+			}
+			try
+			{
+				agent.CommitTasks4(1, 0);
+			}
+			catch (Exception)
+			{
+				try { agent.CommitTasks(); }
+				catch (Exception e)
+				{
+					MessageBox.Show(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
+					return;
+				}
+			}
 		}
 		public bool Valid()
 		{
+			try
+			{
+				AgentClass agent = new AgentClass();
+			}
+			catch (Exception)
+			{
+				return false;
+			}
 			return true;
 		}
 	}

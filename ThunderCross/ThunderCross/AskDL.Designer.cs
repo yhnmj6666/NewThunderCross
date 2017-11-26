@@ -70,7 +70,7 @@
 			this.button_Default.Name = "button_Default";
 			this.button_Default.Size = new System.Drawing.Size(75, 33);
 			this.button_Default.TabIndex = 3;
-			this.button_Default.Text = "Default";
+			this.button_Default.Text = Strings.Default;
 			this.button_Default.UseVisualStyleBackColor = true;
 			this.button_Default.Click += new System.EventHandler(this.button_Default_Click);
 			// 
@@ -80,7 +80,7 @@
 			this.button_Cancel.Name = "button_Cancel";
 			this.button_Cancel.Size = new System.Drawing.Size(75, 33);
 			this.button_Cancel.TabIndex = 4;
-			this.button_Cancel.Text = "Cancel";
+			this.button_Cancel.Text = Strings.Cancel;
 			this.button_Cancel.UseVisualStyleBackColor = true;
 			this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
 			// 

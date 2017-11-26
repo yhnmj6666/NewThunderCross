@@ -6,6 +6,10 @@ function isDownloadable(rhDetails) {
     var isUnwantedFileType = false;
     var isWantedFileType = false;
     var isFileTooSmall = false;
+    var isPartialContent=false;
+
+    if(rhDetails.statusCode==206)
+        isPartialContent=true;
 
     var ctIndex = rhDetails.responseHeaders.findIndex((element) => {
         return element.name.toLowerCase() == "content-type";
@@ -23,14 +27,10 @@ function isDownloadable(rhDetails) {
             mimeType[1].includes("javascript")
         )
             isUnwantedFileType = true;
-        console.log("Content-Type: " + rhDetails.responseHeaders[ctIndex].value);
     }
 
     var filename = getFileName(rhDetails.url);
     lastFileName = filename;
-    // if (filename.includes(".")===false) {
-    //    isUnwantedFileType = true;
-    // }
     if (filename.match(fileExtDiscard) !== null) {
         isUnwantedFileType = true;
     }
@@ -48,8 +48,6 @@ function isDownloadable(rhDetails) {
     else {
         if (rhDetails.responseHeaders[cdIndex].value.startsWith("attachment")) {
             var matchInfo = rhDetails.responseHeaders[cdIndex].value.match(/filename=(.*)$/i);
-            console.log("matchinfo=" + matchInfo);
-            console.log("lastFN=" + lastFileName);
             if (matchInfo !== null) {
                 lastFileName = matchInfo[1].replace(/"/g, '').replace(';', '');
             }
@@ -58,11 +56,7 @@ function isDownloadable(rhDetails) {
         else {
             isAttachment = false;
         }
-        console.log("Content-Disposition: " + rhDetails.responseHeaders[cdIndex].value);
     }
-
-    console.log("url: " + rhDetails.url);
-    console.log("filename: " + filename);
 
     var clIndex = rhDetails.responseHeaders.findIndex((element) => {
         return element.name.toLowerCase() == "content-length";
@@ -73,5 +67,14 @@ function isDownloadable(rhDetails) {
     else {
         isFileTooSmall = (parseInt(rhDetails.responseHeaders[clIndex].value) < minAskSize);
     }
-    return !isUnwantedFileType && !isFileTooSmall && (isAttachment || isTypeApplication || isWantedFileType);
+
+    //Debug
+    console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
+        "\nfilename: " + filename + 
+        ((clIndex===-1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
+        ((cdIndex===-1) ? "" : ("\nContent-Disposition: " + rhDetails.responseHeaders[cdIndex].value)));
+    //Debug
+
+    return !isUnwantedFileType && !isFileTooSmall && !isPartialContent
+        && (isAttachment || isTypeApplication || isWantedFileType);
 }
