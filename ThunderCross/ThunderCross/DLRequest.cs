@@ -9,13 +9,28 @@ namespace ThunderCross
 	class DLRequest
 	{
 		public string DefaultDM { get; set; }
-
 		public string Url { get; set; }
 		public string Filename { get; set; }
 		public string ContentType { get; set; }
 		public string ContentLength { get; set; }
 		public string Cookie { get; set; }
+		public string RequestType { get; set; }
 		NamedPipeServerStream aPipeServer;
+		public DLReply Process()
+		{
+			switch (RequestType)
+			{
+				case "Version":
+					return new DLReply(DLAgent.Version);
+				case "CheckDM":
+					return new DLReply(DLAgent.CheckDM);
+				case "Download":
+					Application.EnableVisualStyles();
+					return Ask();
+				default:
+					return new DLReply(DLAgent.Default);
+			}
+		}
 		public DLReply Ask()
 		{
 			Filename = System.Net.WebUtility.UrlDecode(Filename);

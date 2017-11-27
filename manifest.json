@@ -2,7 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "applications": {
         "gecko": {
             "id": "Thunder@Cross",

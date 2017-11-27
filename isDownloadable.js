@@ -71,7 +71,7 @@ function isDownloadable(rhDetails) {
     //Debug
     console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
         "\nfilename: " + filename + 
-        ((clIndex===-1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
+        ((ctIndex===-1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
         ((cdIndex===-1) ? "" : ("\nContent-Disposition: " + rhDetails.responseHeaders[cdIndex].value)));
     //Debug
 

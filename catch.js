@@ -6,6 +6,7 @@ var downloadCatcher = {
         if (isDownloadable(rhDetails)) {
             //ask native program
             var dlInfo = {
+                RequestType:"Download",                
                 DefaultDM: defaultDM,
 
                 Url: rhDetails.url,
@@ -34,7 +35,7 @@ var downloadCatcher = {
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                msgFromNative = reply;
+                msgFromNative = reply.Choice;
             }));
         }
         //if external

@@ -32,10 +32,9 @@ namespace ThunderCross
 						}
 					default:
 						{
-							Application.EnableVisualStyles();
 							Web_ext_Message msg = GetMsg();
 							DLRequest req = msg.Dispatch();
-							DLReply reply = req.Ask();
+							DLReply reply = req.Process();
 							SendMsg(reply);
 							break;
 						}
@@ -57,9 +56,11 @@ namespace ThunderCross
 
 		private static void SendMsg(DLReply r)
 		{
-			BinaryWriter stdos = new BinaryWriter(Console.OpenStandardOutput(),Encoding.UTF8);
-			stdos.Write(r.choice.Length+1);
-			stdos.Write(r.choice);
+			BinaryWriter stdos = new BinaryWriter(Console.OpenStandardOutput(), Encoding.UTF8);
+			string msg = JsonConvert.SerializeObject(r);
+			stdos.Write(msg.Length);
+			stdos.Write(msg.ToCharArray());
+			stdos.Flush();
 		}
 
 		private static bool Installation()
