@@ -17,6 +17,7 @@ namespace ThunderCross
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
+            pictureBox1.BackgroundImage = Strings.Image1;
 			textBox_Url.Text = "    "+r.Url;
 			textBox_Name.Text = r.Filename;
 			textBox_Type.Text = r.ContentType;
@@ -67,5 +68,10 @@ namespace ThunderCross
 			this.RetAgent = DLAgent.Cancel;
 			this.Close();
 		}
-	}
+
+        private void textBox_Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

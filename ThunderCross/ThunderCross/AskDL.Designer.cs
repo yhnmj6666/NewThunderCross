@@ -28,165 +28,187 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.label1 = new System.Windows.Forms.Label();
-			this.button_DM = new ExoticControls.SplitButton();
-			this.button_Default = new System.Windows.Forms.Button();
-			this.button_Cancel = new System.Windows.Forms.Button();
-			this.textBox_Url = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.textBox_Name = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.textBox_Type = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.textBox_Size = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(139, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "You have choosen to open:";
-			// 
-			// button_DM
-			// 
-			this.button_DM.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button_DM.ImageKey = "Normal";
-			this.button_DM.Location = new System.Drawing.Point(254, 189);
-			this.button_DM.Name = "button_DM";
-			this.button_DM.Size = new System.Drawing.Size(85, 33);
-			this.button_DM.TabIndex = 2;
-			this.button_DM.Text = "SampleDM";
-			this.button_DM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button_DM.UseVisualStyleBackColor = true;
-			this.button_DM.ContextMenu = new System.Windows.Forms.ContextMenu();
-			// 
-			// button_Default
-			// 
-			this.button_Default.Location = new System.Drawing.Point(173, 189);
-			this.button_Default.Name = "button_Default";
-			this.button_Default.Size = new System.Drawing.Size(75, 33);
-			this.button_Default.TabIndex = 3;
-			this.button_Default.Text = Strings.Default;
-			this.button_Default.UseVisualStyleBackColor = true;
-			this.button_Default.Click += new System.EventHandler(this.button_Default_Click);
-			// 
-			// button_Cancel
-			// 
-			this.button_Cancel.Location = new System.Drawing.Point(345, 189);
-			this.button_Cancel.Name = "button_Cancel";
-			this.button_Cancel.Size = new System.Drawing.Size(75, 33);
-			this.button_Cancel.TabIndex = 4;
-			this.button_Cancel.Text = Strings.Cancel;
-			this.button_Cancel.UseVisualStyleBackColor = true;
-			this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
-			// 
-			// textBox_Url
-			// 
-			this.textBox_Url.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Url.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Url.Location = new System.Drawing.Point(15, 33);
-			this.textBox_Url.Multiline = true;
-			this.textBox_Url.Name = "textBox_Url";
-			this.textBox_Url.ReadOnly = true;
-			this.textBox_Url.Size = new System.Drawing.Size(405, 53);
-			this.textBox_Url.TabIndex = 5;
-			this.textBox_Url.TabStop = false;
-			this.textBox_Url.Text = "SampleUrl";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 93);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "File name:";
-			// 
-			// textBox_Name
-			// 
-			this.textBox_Name.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Name.Location = new System.Drawing.Point(76, 93);
-			this.textBox_Name.Multiline = true;
-			this.textBox_Name.Name = "textBox_Name";
-			this.textBox_Name.ReadOnly = true;
-			this.textBox_Name.Size = new System.Drawing.Size(344, 14);
-			this.textBox_Name.TabIndex = 7;
-			this.textBox_Name.TabStop = false;
-			this.textBox_Name.Text = "SampleName";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 113);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(61, 13);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "MIME type:";
-			// 
-			// textBox_Type
-			// 
-			this.textBox_Type.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Type.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Type.Location = new System.Drawing.Point(76, 113);
-			this.textBox_Type.Multiline = true;
-			this.textBox_Type.Name = "textBox_Type";
-			this.textBox_Type.ReadOnly = true;
-			this.textBox_Type.Size = new System.Drawing.Size(335, 14);
-			this.textBox_Type.TabIndex = 7;
-			this.textBox_Type.TabStop = false;
-			this.textBox_Type.Text = "SampleType";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 133);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(47, 13);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "File size:";
-			// 
-			// textBox_Size
-			// 
-			this.textBox_Size.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Size.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Size.Location = new System.Drawing.Point(76, 133);
-			this.textBox_Size.Multiline = true;
-			this.textBox_Size.Name = "textBox_Size";
-			this.textBox_Size.ReadOnly = true;
-			this.textBox_Size.Size = new System.Drawing.Size(335, 14);
-			this.textBox_Size.TabIndex = 7;
-			this.textBox_Size.TabStop = false;
-			this.textBox_Size.Text = "SampleSize";
-			// 
-			// AskDL
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(432, 234);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.textBox_Size);
-			this.Controls.Add(this.textBox_Type);
-			this.Controls.Add(this.textBox_Name);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.textBox_Url);
-			this.Controls.Add(this.button_Cancel);
-			this.Controls.Add(this.button_Default);
-			this.Controls.Add(this.button_DM);
-			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "AskDL";
-			this.Text = "AskDL";
-			this.TopMost = true;
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_DM = new ExoticControls.SplitButton();
+            this.button_Default = new System.Windows.Forms.Button();
+            this.button_Cancel = new System.Windows.Forms.Button();
+            this.textBox_Url = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox_Name = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_Type = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_Size = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "You have choosen to open:";
+            // 
+            // button_DM
+            // 
+            this.button_DM.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_DM.ImageKey = "Normal";
+            this.button_DM.Location = new System.Drawing.Point(254, 189);
+            this.button_DM.Name = "button_DM";
+            this.button_DM.Size = new System.Drawing.Size(85, 33);
+            this.button_DM.TabIndex = 2;
+            this.button_DM.Text = "SampleDM";
+            this.button_DM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_DM.UseVisualStyleBackColor = true;
+            // 
+            // button_Default
+            // 
+            this.button_Default.Location = new System.Drawing.Point(173, 189);
+            this.button_Default.Name = "button_Default";
+            this.button_Default.Size = new System.Drawing.Size(75, 33);
+            this.button_Default.TabIndex = 3;
+            this.button_Default.Text = global::ThunderCross.Strings.Default;
+            this.button_Default.UseVisualStyleBackColor = true;
+            this.button_Default.Click += new System.EventHandler(this.button_Default_Click);
+            // 
+            // button_Cancel
+            // 
+            this.button_Cancel.Location = new System.Drawing.Point(345, 189);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(75, 33);
+            this.button_Cancel.TabIndex = 4;
+            this.button_Cancel.Text = global::ThunderCross.Strings.Cancel;
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            // 
+            // textBox_Url
+            // 
+            this.textBox_Url.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox_Url.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Url.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Url.Location = new System.Drawing.Point(12, 34);
+            this.textBox_Url.Multiline = true;
+            this.textBox_Url.Name = "textBox_Url";
+            this.textBox_Url.ReadOnly = true;
+            this.textBox_Url.Size = new System.Drawing.Size(405, 53);
+            this.textBox_Url.TabIndex = 5;
+            this.textBox_Url.TabStop = false;
+            this.textBox_Url.Text = "SampleUrl";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(12, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "File name:";
+            // 
+            // textBox_Name
+            // 
+            this.textBox_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Name.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Name.Location = new System.Drawing.Point(85, 93);
+            this.textBox_Name.Multiline = true;
+            this.textBox_Name.Name = "textBox_Name";
+            this.textBox_Name.ReadOnly = true;
+            this.textBox_Name.Size = new System.Drawing.Size(344, 19);
+            this.textBox_Name.TabIndex = 7;
+            this.textBox_Name.TabStop = false;
+            this.textBox_Name.Text = "SampleName";
+            this.textBox_Name.TextChanged += new System.EventHandler(this.textBox_Name_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(12, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "MIME type:";
+            // 
+            // textBox_Type
+            // 
+            this.textBox_Type.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox_Type.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Type.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Type.Location = new System.Drawing.Point(85, 110);
+            this.textBox_Type.Multiline = true;
+            this.textBox_Type.Name = "textBox_Type";
+            this.textBox_Type.ReadOnly = true;
+            this.textBox_Type.Size = new System.Drawing.Size(335, 19);
+            this.textBox_Type.TabIndex = 7;
+            this.textBox_Type.TabStop = false;
+            this.textBox_Type.Text = "SampleType";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(12, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "File size:";
+            // 
+            // textBox_Size
+            // 
+            this.textBox_Size.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox_Size.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Size.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Size.Location = new System.Drawing.Point(85, 129);
+            this.textBox_Size.Multiline = true;
+            this.textBox_Size.Name = "textBox_Size";
+            this.textBox_Size.ReadOnly = true;
+            this.textBox_Size.Size = new System.Drawing.Size(335, 19);
+            this.textBox_Size.TabIndex = 7;
+            this.textBox_Size.TabStop = false;
+            this.textBox_Size.Text = "SampleSize";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(432, 234);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // AskDL
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(432, 234);
+            this.Controls.Add(this.textBox_Url);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_Size);
+            this.Controls.Add(this.textBox_Type);
+            this.Controls.Add(this.textBox_Name);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button_Cancel);
+            this.Controls.Add(this.button_Default);
+            this.Controls.Add(this.button_DM);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AskDL";
+            this.Text = "AskDL";
+            this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
@@ -203,5 +225,6 @@
 		private System.Windows.Forms.TextBox textBox_Type;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox textBox_Size;
-	}
+        private System.Windows.Forms.PictureBox pictureBox1;
+    }
 }
