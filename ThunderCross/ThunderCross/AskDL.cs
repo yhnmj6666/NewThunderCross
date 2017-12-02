@@ -17,6 +17,8 @@ namespace ThunderCross
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
+			pictureBox1.Image=
+			System.Drawing.Icon.ExtractAssociatedIcon(@"U:\Download\[SUBPIG][Close-Knit.2017][720p].mp4").ToBitmap();
 			textBox_Url.Text = "    "+r.Url;
 			textBox_Name.Text = r.Filename;
 			textBox_Type.Text = r.ContentType;

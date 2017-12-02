@@ -25,7 +25,7 @@ function isDownloadable(rhDetails) {
             case "content-disposition":
                 {
                     if (rhDetails.responseHeaders[i].value.startsWith("attachment")) {
-                        var matchInfo = rhDetails.responseHeaders[i].value.match(/filename=(.*)\b/i);
+                        var matchInfo = rhDetails.responseHeaders[i].value.match(/filename=(.*)(\b|;)/i);
                         if (matchInfo !== null) {
                             lastFileName = matchInfo[1].replace(/"/g, '').replace(';', '');
                         }

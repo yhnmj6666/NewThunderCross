@@ -40,6 +40,8 @@
 			this.textBox_Type = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBox_Size = new System.Windows.Forms.TextBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -62,7 +64,6 @@
 			this.button_DM.Text = "SampleDM";
 			this.button_DM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button_DM.UseVisualStyleBackColor = true;
-			this.button_DM.ContextMenu = new System.Windows.Forms.ContextMenu();
 			// 
 			// button_Default
 			// 
@@ -70,7 +71,7 @@
 			this.button_Default.Name = "button_Default";
 			this.button_Default.Size = new System.Drawing.Size(75, 33);
 			this.button_Default.TabIndex = 3;
-			this.button_Default.Text = Strings.Default;
+			this.button_Default.Text = global::ThunderCross.Strings.Default;
 			this.button_Default.UseVisualStyleBackColor = true;
 			this.button_Default.Click += new System.EventHandler(this.button_Default_Click);
 			// 
@@ -80,7 +81,7 @@
 			this.button_Cancel.Name = "button_Cancel";
 			this.button_Cancel.Size = new System.Drawing.Size(75, 33);
 			this.button_Cancel.TabIndex = 4;
-			this.button_Cancel.Text = Strings.Cancel;
+			this.button_Cancel.Text = global::ThunderCross.Strings.Cancel;
 			this.button_Cancel.UseVisualStyleBackColor = true;
 			this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
 			// 
@@ -163,11 +164,20 @@
 			this.textBox_Size.TabStop = false;
 			this.textBox_Size.Text = "SampleSize";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Location = new System.Drawing.Point(15, 174);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+			this.pictureBox1.TabIndex = 9;
+			this.pictureBox1.TabStop = false;
+			// 
 			// AskDL
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(432, 234);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.textBox_Size);
@@ -185,6 +195,7 @@
 			this.Name = "AskDL";
 			this.Text = "AskDL";
 			this.TopMost = true;
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -203,5 +214,6 @@
 		private System.Windows.Forms.TextBox textBox_Type;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox textBox_Size;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }
