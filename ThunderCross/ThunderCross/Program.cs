@@ -42,6 +42,12 @@ namespace ThunderCross
 			}
 			else
 			{
+                Application.EnableVisualStyles();
+                DBG dbg = new DBG();
+                DLRequest r = new DLRequest();
+                r.RequestType = "Download";
+                r.ContentLength = "1G";
+                dbg.ShowDialog();
 				CheckInstallation();
 			}
 		}
