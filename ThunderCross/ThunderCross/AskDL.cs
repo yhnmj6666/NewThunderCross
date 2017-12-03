@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ByteSizeLib;
+using System.IO;
+using System.Globalization;
 
 namespace ThunderCross
 {
@@ -17,56 +12,44 @@ namespace ThunderCross
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
-			pictureBox1.Image=
-			System.Drawing.Icon.ExtractAssociatedIcon(@"U:\Download\[SUBPIG][Close-Knit.2017][720p].mp4").ToBitmap();
-			textBox_Url.Text = "    "+r.Url;
-			textBox_Name.Text = r.Filename;
-			textBox_Type.Text = r.ContentType;
-			textBox_Size.Text = ByteSize.Parse(r.ContentLength+"B").ToString();
-			button_DM.Text = r.DefaultDM;
-			switch (r.DefaultDM)
-			{
-				case "Thunder":
-					button_DM.ButtonClick += button_Thunder_Click;
-					break;
-				case "EagleGet":
-					button_DM.ButtonClick += button_EagleGet_Click;
-					break;
-			}
+			if (CultureInfo.CurrentCulture.Equals(CultureInfo.GetCultureInfo("zh-cn")))
+				this.Font = new System.Drawing.Font("微软雅黑", 10);
+			label_fileurl.Text = label_fileurl.Text + new Uri(r.Url).Host;
+			textBox1_filename.Text = r.Filename;
+			label_filetypesize.Text = label_filetypesize.Text + string.Format("{0} ({1})",r.ContentType,ByteSize.Parse(r.ContentLength + "B").ToString());
+			picture_icon.Image = Etier.IconHelper.IconReader.GetFileIcon(Path.GetExtension(r.Filename), Etier.IconHelper.IconReader.IconSize.Large, false).ToBitmap();
+			comboBox_dm.Items.Add(Enum.Parse(typeof(DLAgent),r.DefaultDM));
+			comboBox_dm.SelectedIndex = 0;
+			radioButton_external.Checked = true;
 			foreach (var dm in DownloadManager.DMList)
 			{
-				if (((IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM"+dm),true)).Valid())
+				if (dm!=r.DefaultDM && ((IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM"+dm),true)).Valid())
 				{
-					button_DM.AddDropDownItemAndHandle(dm,(EventHandler)Delegate.CreateDelegate(typeof(EventHandler), this,"button_"+dm+"_Click"));
+					comboBox_dm.Items.Add(Enum.Parse(typeof(DLAgent), dm));
 				}
 			}
-		}
-
-		private void button_Default_Click(object sender, EventArgs e)
-		{
-			RetAgent = DLAgent.Default;
-			this.DialogResult = DialogResult.OK;
-			this.Close();
-		}
-
-		private void button_Thunder_Click(object sender, EventArgs e)
-		{
-			RetAgent = DLAgent.Thunder;
-			this.DialogResult = DialogResult.OK;
-			this.Close();
-		}
-
-		private void button_EagleGet_Click(object sender, EventArgs e)
-		{
-			RetAgent = DLAgent.EagleGet;
-			this.DialogResult = DialogResult.OK;
-			this.Close();
 		}
 
 		private void button_Cancel_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
 			this.RetAgent = DLAgent.Cancel;
+			this.Close();
+		}
+
+		private void button_OK_Click(object sender, EventArgs e)
+		{
+			if (radioButton_external.Checked)
+			{
+				RetAgent = (DLAgent)comboBox_dm.SelectedItem;
+			}
+			else if (radioButton_default.Checked)
+				RetAgent = DLAgent.Default;
+			if(checkBox_saveOption.Checked)
+			{
+				;//TODO:Save option.
+			}
+			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
 	}

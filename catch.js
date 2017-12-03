@@ -1,4 +1,4 @@
-var urlDlHandled = "http://downloadhandled/";
+const urlDlHandled = browser.extension.getURL("blank.html");
 var downloadCatcher = {
     listener: function (rhDetails) {
         var promises = [];
@@ -53,6 +53,8 @@ var downloadCatcher = {
             else {
                 return {};
             }
+        }, (reason)=>{
+            console.log(reason);
         });
     },
 

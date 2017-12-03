@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,9 +112,54 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Call_Thunder_Error_Agent" xml:space="preserve">
+    <value>迅雷调用失败！请确保ThunderAgent已经正确注册。</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Download_in_Firefox" xml:space="preserve">
+    <value>在浏览器中打开</value>
+  </data>
+  <data name="Download_using_" xml:space="preserve">
+    <value>使用下载器</value>
+  </data>
+  <data name="Do_this_automatically_for_files_like_this_from_now_on" xml:space="preserve">
+    <value>以后自动采用相同的动作处理此类文件。</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>来源：</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>是否安装？</value>
+  </data>
+  <data name="Install_fail" xml:space="preserve">
+    <value>安装失败！请确保火狐浏览器已经正确安装。</value>
+  </data>
+  <data name="Install_successful" xml:space="preserve">
+    <value>安装成功</value>
+  </data>
+  <data name="Permission_Error" xml:space="preserve">
+    <value>权限错误</value>
+  </data>
+  <data name="Uninstall" xml:space="preserve">
+    <value>是否卸载？</value>
+  </data>
+  <data name="Uninstall_success" xml:space="preserve">
+    <value>卸载完成。</value>
+  </data>
+  <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
+    <value>你想要ThunderCross如何处理此文件？</value>
+  </data>
+  <data name="Which_is" xml:space="preserve">
+    <value>文件类型：</value>
+  </data>
+  <data name="You_have_choosen_to_open" xml:space="preserve">
+    <value>您选择了打开：</value>
+  </data>
 </root>

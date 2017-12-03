@@ -28,20 +28,20 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			this.label1 = new System.Windows.Forms.Label();
-			this.button_DM = new ExoticControls.SplitButton();
-			this.button_Default = new System.Windows.Forms.Button();
+			this.button_OK = new System.Windows.Forms.Button();
 			this.button_Cancel = new System.Windows.Forms.Button();
-			this.textBox_Url = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.textBox_Name = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.textBox_Type = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.textBox_Size = new System.Windows.Forms.TextBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.label_filetypesize = new System.Windows.Forms.Label();
+			this.label_fileurl = new System.Windows.Forms.Label();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.comboBox_dm = new System.Windows.Forms.ComboBox();
+			this.checkBox_saveOption = new System.Windows.Forms.CheckBox();
+			this.radioButton_external = new System.Windows.Forms.RadioButton();
+			this.radioButton_default = new System.Windows.Forms.RadioButton();
+			this.picture_icon = new System.Windows.Forms.PictureBox();
+			this.textBox1_filename = new System.Windows.Forms.TextBox();
+			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picture_icon)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -49,35 +49,23 @@
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(12, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(139, 13);
+			this.label1.Size = new System.Drawing.Size(163, 16);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "You have choosen to open:";
+			this.label1.Text = Strings.You_have_choosen_to_open;
 			// 
-			// button_DM
+			// button_OK
 			// 
-			this.button_DM.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button_DM.ImageKey = "Normal";
-			this.button_DM.Location = new System.Drawing.Point(254, 189);
-			this.button_DM.Name = "button_DM";
-			this.button_DM.Size = new System.Drawing.Size(85, 33);
-			this.button_DM.TabIndex = 2;
-			this.button_DM.Text = "SampleDM";
-			this.button_DM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button_DM.UseVisualStyleBackColor = true;
-			// 
-			// button_Default
-			// 
-			this.button_Default.Location = new System.Drawing.Point(173, 189);
-			this.button_Default.Name = "button_Default";
-			this.button_Default.Size = new System.Drawing.Size(75, 33);
-			this.button_Default.TabIndex = 3;
-			this.button_Default.Text = global::ThunderCross.Strings.Default;
-			this.button_Default.UseVisualStyleBackColor = true;
-			this.button_Default.Click += new System.EventHandler(this.button_Default_Click);
+			this.button_OK.Location = new System.Drawing.Point(259, 269);
+			this.button_OK.Name = "button_OK";
+			this.button_OK.Size = new System.Drawing.Size(75, 33);
+			this.button_OK.TabIndex = 3;
+			this.button_OK.Text = "OK";
+			this.button_OK.UseVisualStyleBackColor = true;
+			this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
 			// 
 			// button_Cancel
 			// 
-			this.button_Cancel.Location = new System.Drawing.Point(345, 189);
+			this.button_Cancel.Location = new System.Drawing.Point(345, 269);
 			this.button_Cancel.Name = "button_Cancel";
 			this.button_Cancel.Size = new System.Drawing.Size(75, 33);
 			this.button_Cancel.TabIndex = 4;
@@ -85,117 +73,125 @@
 			this.button_Cancel.UseVisualStyleBackColor = true;
 			this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
 			// 
-			// textBox_Url
+			// label_filetypesize
 			// 
-			this.textBox_Url.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Url.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Url.Location = new System.Drawing.Point(15, 33);
-			this.textBox_Url.Multiline = true;
-			this.textBox_Url.Name = "textBox_Url";
-			this.textBox_Url.ReadOnly = true;
-			this.textBox_Url.Size = new System.Drawing.Size(405, 53);
-			this.textBox_Url.TabIndex = 5;
-			this.textBox_Url.TabStop = false;
-			this.textBox_Url.Text = "SampleUrl";
+			this.label_filetypesize.AutoSize = true;
+			this.label_filetypesize.Location = new System.Drawing.Point(61, 72);
+			this.label_filetypesize.Name = "label_filetypesize";
+			this.label_filetypesize.Size = new System.Drawing.Size(65, 16);
+			this.label_filetypesize.TabIndex = 6;
+			this.label_filetypesize.Text = Strings.Which_is;
 			// 
-			// label2
+			// label_fileurl
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 93);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "File name:";
+			this.label_fileurl.AutoSize = true;
+			this.label_fileurl.Location = new System.Drawing.Point(61, 91);
+			this.label_fileurl.Name = "label_fileurl";
+			this.label_fileurl.Size = new System.Drawing.Size(47, 16);
+			this.label_fileurl.TabIndex = 7;
+			this.label_fileurl.Text = Strings.From;
 			// 
-			// textBox_Name
+			// groupBox1
 			// 
-			this.textBox_Name.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Name.Location = new System.Drawing.Point(76, 93);
-			this.textBox_Name.Multiline = true;
-			this.textBox_Name.Name = "textBox_Name";
-			this.textBox_Name.ReadOnly = true;
-			this.textBox_Name.Size = new System.Drawing.Size(344, 14);
-			this.textBox_Name.TabIndex = 7;
-			this.textBox_Name.TabStop = false;
-			this.textBox_Name.Text = "SampleName";
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.comboBox_dm);
+			this.groupBox1.Controls.Add(this.checkBox_saveOption);
+			this.groupBox1.Controls.Add(this.radioButton_external);
+			this.groupBox1.Controls.Add(this.radioButton_default);
+			this.groupBox1.Location = new System.Drawing.Point(15, 114);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(405, 143);
+			this.groupBox1.TabIndex = 8;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = Strings.What_should_ThunderCross_do_with_this_file;
 			// 
-			// label3
+			// comboBox_dm
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 113);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(61, 13);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "MIME type:";
+			this.comboBox_dm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.comboBox_dm.FormattingEnabled = true;
+			this.comboBox_dm.Location = new System.Drawing.Point(157, 62);
+			this.comboBox_dm.Name = "comboBox_dm";
+			this.comboBox_dm.Size = new System.Drawing.Size(242, 24);
+			this.comboBox_dm.TabIndex = 3;
 			// 
-			// textBox_Type
+			// checkBox_saveOption
 			// 
-			this.textBox_Type.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Type.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Type.Location = new System.Drawing.Point(76, 113);
-			this.textBox_Type.Multiline = true;
-			this.textBox_Type.Name = "textBox_Type";
-			this.textBox_Type.ReadOnly = true;
-			this.textBox_Type.Size = new System.Drawing.Size(335, 14);
-			this.textBox_Type.TabIndex = 7;
-			this.textBox_Type.TabStop = false;
-			this.textBox_Type.Text = "SampleType";
+			this.checkBox_saveOption.AutoSize = true;
+			this.checkBox_saveOption.Location = new System.Drawing.Point(31, 110);
+			this.checkBox_saveOption.Name = "checkBox_saveOption";
+			this.checkBox_saveOption.Size = new System.Drawing.Size(320, 20);
+			this.checkBox_saveOption.TabIndex = 2;
+			this.checkBox_saveOption.Text = Strings.Do_this_automatically_for_files_like_this_from_now_on;
+			this.checkBox_saveOption.UseVisualStyleBackColor = true;
 			// 
-			// label4
+			// radioButton_external
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 133);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(47, 13);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "File size:";
+			this.radioButton_external.AutoSize = true;
+			this.radioButton_external.Location = new System.Drawing.Point(31, 63);
+			this.radioButton_external.Name = "radioButton_external";
+			this.radioButton_external.Size = new System.Drawing.Size(120, 20);
+			this.radioButton_external.TabIndex = 1;
+			this.radioButton_external.Text = Strings.Download_using_;
+			this.radioButton_external.UseVisualStyleBackColor = true;
 			// 
-			// textBox_Size
+			// radioButton_default
 			// 
-			this.textBox_Size.BackColor = System.Drawing.SystemColors.Control;
-			this.textBox_Size.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_Size.Location = new System.Drawing.Point(76, 133);
-			this.textBox_Size.Multiline = true;
-			this.textBox_Size.Name = "textBox_Size";
-			this.textBox_Size.ReadOnly = true;
-			this.textBox_Size.Size = new System.Drawing.Size(335, 14);
-			this.textBox_Size.TabIndex = 7;
-			this.textBox_Size.TabStop = false;
-			this.textBox_Size.Text = "SampleSize";
+			this.radioButton_default.AutoSize = true;
+			this.radioButton_default.Location = new System.Drawing.Point(31, 29);
+			this.radioButton_default.Name = "radioButton_default";
+			this.radioButton_default.Size = new System.Drawing.Size(139, 20);
+			this.radioButton_default.TabIndex = 0;
+			this.radioButton_default.Text = Strings.Download_in_Firefox;
+			this.radioButton_default.UseVisualStyleBackColor = true;
 			// 
-			// pictureBox1
+			// picture_icon
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(15, 174);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-			this.pictureBox1.TabIndex = 9;
-			this.pictureBox1.TabStop = false;
+			this.picture_icon.Location = new System.Drawing.Point(15, 36);
+			this.picture_icon.Name = "picture_icon";
+			this.picture_icon.Size = new System.Drawing.Size(32, 32);
+			this.picture_icon.TabIndex = 10;
+			this.picture_icon.TabStop = false;
+			// 
+			// textBox1_filename
+			// 
+			this.textBox1_filename.BackColor = System.Drawing.SystemColors.Control;
+			this.textBox1_filename.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBox1_filename.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.textBox1_filename.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1_filename.Location = new System.Drawing.Point(64, 36);
+			this.textBox1_filename.Name = "textBox1_filename";
+			this.textBox1_filename.ReadOnly = true;
+			this.textBox1_filename.Size = new System.Drawing.Size(255, 16);
+			this.textBox1_filename.TabIndex = 11;
+			this.textBox1_filename.TabStop = false;
+			this.textBox1_filename.Text = "Sample File Name";
+			this.textBox1_filename.WordWrap = false;
 			// 
 			// AskDL
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(432, 234);
-			this.Controls.Add(this.pictureBox1);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.textBox_Size);
-			this.Controls.Add(this.textBox_Type);
-			this.Controls.Add(this.textBox_Name);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.textBox_Url);
+			this.ClientSize = new System.Drawing.Size(432, 315);
+			this.Controls.Add(this.textBox1_filename);
+			this.Controls.Add(this.picture_icon);
+			this.Controls.Add(this.groupBox1);
+			this.Controls.Add(this.label_fileurl);
+			this.Controls.Add(this.label_filetypesize);
 			this.Controls.Add(this.button_Cancel);
-			this.Controls.Add(this.button_Default);
-			this.Controls.Add(this.button_DM);
+			this.Controls.Add(this.button_OK);
 			this.Controls.Add(this.label1);
+			this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "AskDL";
 			this.Text = "AskDL";
 			this.TopMost = true;
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picture_icon)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -204,16 +200,16 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private ExoticControls.SplitButton button_DM;
-		private System.Windows.Forms.Button button_Default;
+		private System.Windows.Forms.Button button_OK;
 		private System.Windows.Forms.Button button_Cancel;
-		private System.Windows.Forms.TextBox textBox_Url;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox textBox_Name;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox_Type;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox_Size;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label label_filetypesize;
+		private System.Windows.Forms.Label label_fileurl;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.CheckBox checkBox_saveOption;
+		private System.Windows.Forms.RadioButton radioButton_external;
+		private System.Windows.Forms.RadioButton radioButton_default;
+		private System.Windows.Forms.PictureBox picture_icon;
+		private System.Windows.Forms.ComboBox comboBox_dm;
+		private System.Windows.Forms.TextBox textBox1_filename;
 	}
 }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Call_Thunder_Error_Agent" xml:space="preserve">
-    <value>Call Thunder Error!\nPlease verify 64-bit ThunderAgent.dll is registed correctly!</value>
+    <value>Call Thunder Error!\nPlease verify ThunderAgent.dll is registed correctly!</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -127,12 +127,17 @@
     <value>ThunderCross.json</value>
     <comment>represent config file</comment>
   </data>
-  <data name="Default" xml:space="preserve">
-    <value>Default</value>
+  <data name="Download_in_Firefox" xml:space="preserve">
+    <value>Download in Firefox</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Image1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download_using_" xml:space="preserve">
+    <value>Download using </value>
+  </data>
+  <data name="Do_this_automatically_for_files_like_this_from_now_on" xml:space="preserve">
+    <value>Do this automatically for files like this from now on.</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From: </value>
   </data>
   <data name="Install" xml:space="preserve">
     <value>Install?</value>
@@ -151,5 +156,14 @@
   </data>
   <data name="Uninstall_success" xml:space="preserve">
     <value>Uninstall success.</value>
+  </data>
+  <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
+    <value>What should ThunderCross do with this file?</value>
+  </data>
+  <data name="Which_is" xml:space="preserve">
+    <value>Which is: </value>
+  </data>
+  <data name="You_have_choosen_to_open" xml:space="preserve">
+    <value>You have choosen to open:</value>
   </data>
 </root>

@@ -70,7 +70,8 @@ function isDownloadable(rhDetails) {
         return element.name.toLowerCase() == "content-length";
     });
 
-    if (cdIndex !== -1 && rhDetails.responseHeaders[cdIndex].value.startsWith("attachment")) {
+    //if (cdIndex !== -1 && rhDetails.responseHeaders[cdIndex].value.startsWith("attachment")) 
+    {
         console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
             "\nfilename: " + filename +
             ((ctIndex === -1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +

@@ -6,8 +6,7 @@ using System.IO.Pipes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.Win32;
-using System.Threading;
-using System.Globalization;
+
 
 namespace ThunderCross
 {
@@ -42,12 +41,6 @@ namespace ThunderCross
 			}
 			else
 			{
-                Application.EnableVisualStyles();
-                DBG dbg = new DBG();
-                DLRequest r = new DLRequest();
-                r.RequestType = "Download";
-                r.ContentLength = "1G";
-                dbg.ShowDialog();
 				CheckInstallation();
 			}
 		}
@@ -96,22 +89,26 @@ namespace ThunderCross
 				if (key != null)
 				{
 					key = key.OpenSubKey("Mozilla");
-					if (key != null)
+					if (key == null)
 					{
-						key = key.OpenSubKey("NativeMessagingHosts");
-						if (key == null)
-						{
-							key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla", writable: true);
-							key.CreateSubKey("NativeMessagingHosts");
-							key.Close();
-						}
-						key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla").OpenSubKey("NativeMessagingHosts", writable: true);
-						RegistryKey tckey = key.CreateSubKey("ThunderCross");
-						tckey.SetValue(null, configPath);
+						key = Registry.CurrentUser.OpenSubKey("Software", writable: true);
+						key.CreateSubKey("Mozilla");
 						key.Close();
-						tckey.Close();
-						return true;
+						key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla");
 					}
+					key = key.OpenSubKey("NativeMessagingHosts");
+					if (key == null)
+					{
+						key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla", writable: true);
+						key.CreateSubKey("NativeMessagingHosts");
+						key.Close();
+					}
+					key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla").OpenSubKey("NativeMessagingHosts", writable: true);
+					RegistryKey tckey = key.CreateSubKey("ThunderCross");
+					tckey.SetValue(null, configPath);
+					key.Close();
+					tckey.Close();
+					return true;
 				}
 			}
 			catch (System.Security.SecurityException e)

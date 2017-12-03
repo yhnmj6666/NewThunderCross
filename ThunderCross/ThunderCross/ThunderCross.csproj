@@ -117,18 +117,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>EBC23B77B2FA4523FAE2B0520C65B4B2EDCEC48A</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>ThunderCross_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ByteSize, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ByteSize.1.3.0\lib\net45\ByteSize.dll</HintPath>
@@ -158,23 +146,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlphaText.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AlphaText.Designer.cs">
-      <DependentUpon>AlphaText.cs</DependentUpon>
-    </Compile>
     <Compile Include="AskDL.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AskDL.Designer.cs">
       <DependentUpon>AskDL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBG.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DBG.Designer.cs">
-      <DependentUpon>DBG.cs</DependentUpon>
     </Compile>
     <Compile Include="DLAgent.cs" />
     <Compile Include="DLReply.cs" />
@@ -182,10 +158,12 @@
     <Compile Include="DLTask.cs" />
     <Compile Include="DMEagleGet.cs" />
     <Compile Include="DMThunder.cs" />
+    <Compile Include="IconHelper.cs" />
     <Compile Include="IDownloadManager.cs" />
     <Compile Include="ProcessUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleAssemblyComponentResourceManager.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,7 +176,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="ThunderCross_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -216,38 +193,21 @@
     <EmbeddedResource Include="AskDL.resx">
       <DependentUpon>AskDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DBG.resx">
-      <DependentUpon>DBG.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings.zh-CN.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlphaButton\AlphaButton.csproj">
-      <Project>{D2DD640C-CC0C-4F90-B17A-90FD0A18B335}</Project>
-      <Name>AlphaButton</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AlphaGroupBox\AlphaGroupBox.csproj">
-      <Project>{B801FC6D-1A64-498C-A0E5-B90691392021}</Project>
-      <Name>AlphaGroupBox</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AlphaTextBox\AlphaTextBox.csproj">
-      <Project>{51B6375C-F441-4D13-9879-458539F220B4}</Project>
-      <Name>AlphaTextBox</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SplitButton\SplitButton.csproj">
-      <Project>{6a0a48a2-f356-4e76-bb59-998987567dd1}</Project>
-      <Name>SplitButton</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Image1.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(TargetDir)SplitButton.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(TargetDir)zh-CN\ThunderCross.resources.dll</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>del $(SolutionDir)ThunderCross_$(PlatformName).exe</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -47,7 +47,7 @@ namespace AlphaGroupBox
         /// <param name="e">E.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            DrawText();
+            //DrawText();
             DrawLines();
         }
 
@@ -71,7 +71,7 @@ namespace AlphaGroupBox
             base.WndProc(ref m);
             if (m.Msg == 0x000F)
             {
-                //DrawText();
+                DrawText();
                 DrawLines();
             }
         }

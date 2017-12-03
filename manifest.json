@@ -22,9 +22,13 @@
             "main.js"
         ]
     },
+    "web_accessible_resources": [
+        "blank.html"
+    ],
     "permissions": [
         "storage",
         "nativeMessaging",
+        "tabs",
         "webRequest",
         "webRequestBlocking",
         "<all_urls>"
