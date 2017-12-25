@@ -39,8 +39,13 @@ function isDownloadable(rhDetails) {
             case "content-type":
                 {
                     var mimeType = rhDetails.responseHeaders[i].value.split(';').shift().split('/');
-                    if (mimeType[0] == "application" && (mimeType[1] == "octet-stream" == filename.includes(".")))
-                        isTypeApplication = true;
+                    if (mimeType[0] == "application")
+                    {
+                        if(mimeType[1] == "octet-stream" && filename.includes("."))
+                            isTypeApplication = true;
+                        else if(mimeType[1] != "octet-stream")
+                            isTypeApplication = true;
+                    }
                     if (mimeType[1].includes("html") ||
                         mimeType[1].includes("json") ||
                         mimeType[1].includes("xml") ||
@@ -75,7 +80,8 @@ function isDownloadable(rhDetails) {
         console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
             "\nfilename: " + filename +
             ((ctIndex === -1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
-            ((cdIndex === -1) ? "" : ("\nContent-Disposition: " + rhDetails.responseHeaders[cdIndex].value)));
+            "\nContent-Disposition: " +
+            ((cdIndex === -1) ? "none" : (rhDetails.responseHeaders[cdIndex].value)));
     }
     //Debug
 

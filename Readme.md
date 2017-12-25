@@ -8,5 +8,5 @@ Current Version: `0.1.9`
 Please make sure the tiny Native Client is configured properly
 
 You can Download it here:
-* x64: [link]()
-* x86: [link]()
+* x64: [https://github.com/yhnmj6666/NewThunderCross/releases/download/v0.1.9/ThunderCross_x64.exe](https://github.com/yhnmj6666/NewThunderCross/releases/download/v0.1.9/ThunderCross_x64.exe)
+* x86: [https://github.com/yhnmj6666/NewThunderCross/releases/download/v0.1.9/ThunderCross_x86.exe](https://github.com/yhnmj6666/NewThunderCross/releases/download/v0.1.9/ThunderCross_x86.exe)

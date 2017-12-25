@@ -119,12 +119,14 @@
 			// checkBox_saveOption
 			// 
 			this.checkBox_saveOption.AutoSize = true;
+			this.checkBox_saveOption.Enabled = false;
 			this.checkBox_saveOption.Location = new System.Drawing.Point(31, 110);
 			this.checkBox_saveOption.Name = "checkBox_saveOption";
 			this.checkBox_saveOption.Size = new System.Drawing.Size(320, 20);
 			this.checkBox_saveOption.TabIndex = 2;
-			this.checkBox_saveOption.Text = Strings.Do_this_automatically_for_files_like_this_from_now_on;
+			this.checkBox_saveOption.Text = global::ThunderCross.Strings.Do_this_automatically_for_files_like_this_from_now_on;
 			this.checkBox_saveOption.UseVisualStyleBackColor = true;
+			this.checkBox_saveOption.Visible = false;
 			// 
 			// radioButton_external
 			// 
@@ -133,7 +135,7 @@
 			this.radioButton_external.Name = "radioButton_external";
 			this.radioButton_external.Size = new System.Drawing.Size(120, 20);
 			this.radioButton_external.TabIndex = 1;
-			this.radioButton_external.Text = Strings.Download_using_;
+			this.radioButton_external.Text = global::ThunderCross.Strings.Download_using_;
 			this.radioButton_external.UseVisualStyleBackColor = true;
 			// 
 			// radioButton_default
@@ -143,7 +145,7 @@
 			this.radioButton_default.Name = "radioButton_default";
 			this.radioButton_default.Size = new System.Drawing.Size(139, 20);
 			this.radioButton_default.TabIndex = 0;
-			this.radioButton_default.Text = Strings.Download_in_Firefox;
+			this.radioButton_default.Text = global::ThunderCross.Strings.Download_in_Firefox;
 			this.radioButton_default.UseVisualStyleBackColor = true;
 			// 
 			// picture_icon
