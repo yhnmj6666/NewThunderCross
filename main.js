@@ -4,10 +4,10 @@ browser.webRequest.onHeadersReceived.addListener(
     ["blocking", "responseHeaders"]
 );
 browser.runtime.onMessage.addListener((message, sender) => {
-    if(autoCloseTab)
+    if((message=="Downloaded" && autoDownCloseTab) || 
+        (message=="Canceled" && autoCancelCloseTab))
         browser.tabs.remove(sender.tab.id).then(() => { }, (reason) => { console.log(reason); });
 });
 browser.runtime.onInstalled.addListener(()=>{
-    if(autoCloseTab)
-        browser.tabs.create({url:browser.extension.getURL("Readme.html")});
+    browser.tabs.create({url:browser.extension.getURL("Readme.html")});
 });

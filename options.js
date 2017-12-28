@@ -3,7 +3,9 @@ function saveOptions(e) {
         wantedExtension: document.querySelector("#we").value,
         unwantedExtensio: document.querySelector("#ue").value,
         minAskSize: document.querySelector("#minsize").value,
-        defaultDM: document.querySelector("#dm").value
+        defaultDM: document.querySelector("#dm").value,
+        autoDownCloseTab: document.getElementById("autoDownClose").checked,
+        autoCancelCloseTab: document.getElementById("autoCancelClose").checked
     });
     e.preventDefault();
 }
@@ -18,6 +20,9 @@ function restoreOptions() {
         else
             document.querySelector("#minsize").value = res.minAskSize;
         document.querySelector("#dm").value = res.defaultDM || "Thunder";
+
+        document.getElementById("autoDownClose").checked=res.autoDownCloseTab;
+        document.getElementById("autoCancelClose").checked=res.autoCancelCloseTab;
 
         var promises = [];
         var msgFromNative;

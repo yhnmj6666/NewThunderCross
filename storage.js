@@ -2,7 +2,8 @@ var fileExtCatch = /\.(zip|rar|exe)$/i;
 var fileExtDiscard = /\.(js|woff2?|ttf|swf|cur|aspx|css|html)$/i;
 var defaultDM = "Thunder";
 var minAskSize = 1 * 1024 * 1024;
-var autoCloseTab = false;
+var autoDownCloseTab = false;
+var autoCancelCloseTab = false;
 browser.storage.sync.get().then((res) => {
     fileExtCatch = new RegExp("\\.(" + (res.wantedExtension || "zip|rar|exe") + ")$", "i");
     fileExtDiscard = new RegExp("\\.(" + (res.unwantedExtension || "js|woff2?|ttf|swf|cur|aspx|css|html") + ")$", "i");
@@ -11,7 +12,8 @@ browser.storage.sync.get().then((res) => {
         minAskSize = 1 * 1024 * 1024;
     else
         minAskSize = res.minAskSize * 1024 * 1024;
-    autoCloseTab = false;
+    autoDownCloseTab = res.autoDownCloseTab;
+    autoCancelCloseTab = res.autoCancelCloseTab;
 });
 browser.storage.onChanged.addListener((changes, areaName) => {
     browser.storage.sync.get().then((res) => {
@@ -22,6 +24,8 @@ browser.storage.onChanged.addListener((changes, areaName) => {
             minAskSize = 1 * 1024 * 1024;
         else
             minAskSize = res.minAskSize * 1024 * 1024;
-        autoCloseTab = false;
+        autoDownCloseTab = res.autoDownCloseTab;
+        autoCancelCloseTab = res.autoCancelCloseTab;
+        console.log(res);
     });
 });

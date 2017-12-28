@@ -17,13 +17,15 @@
         "scripts": [
             "storage.js",
             "getFileName.js",
-            "isDownloadable.js",
+            "BaiduyunDownload.js",
+            "Downloadable.js",
             "catch.js",
             "main.js"
         ]
     },
     "web_accessible_resources": [
-        "blank.html",
+        "blank_cancel.html",
+        "blank_down.html",
         "Readme.html"
     ],
     "permissions": [
