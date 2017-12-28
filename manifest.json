@@ -2,7 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.2.0b",
+    "version": "0.2.0f",
     "applications": {
         "gecko": {
             "id": "Thunder@Cross",
@@ -19,6 +19,7 @@
             "getFileName.js",
             "BaiduyunDownload.js",
             "Downloadable.js",
+            "ActionRule.js",            
             "catch.js",
             "main.js"
         ]

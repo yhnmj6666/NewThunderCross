@@ -8,9 +8,11 @@ var downloadCatcher = {
             var dlInfo = {
                 RequestType: "Download",
                 DefaultDM: defaultDM,
+                Action: null,
 
                 Url: rhDetails.url,
                 Filename: d.lastFileName,
+                FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)[0],
                 ContentLength: 0,
                 ContentType: "",
                 Cookie: ""
@@ -33,10 +35,44 @@ var downloadCatcher = {
                         ;
                 }
             }
+            switch (ActionRule.match(new URL(dlInfo.Url).hostname,
+                dlInfo.FileExtension,
+                dlInfo.ContentType)) {
+                case true:
+                    dlInfo.Action = "External";
+                    break;
+                case false:
+                    dlInfo.Action = "Default";
+                    break;
+                case null:
+                    dlInfo.Action = null;
+                    break;
+                default:
+                    break;
+            }
+            console.log(dlInfo);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
+                console.log(reply);
                 msgFromNative = reply.Choice;
+                if (reply.Save === true) {
+                    var action = null;
+                    if (reply.Choice === "External")
+                        action = true;
+                    else if (reply.Choice === "Default")
+                        action = false;
+
+                    if (reply.SaveForSite === true)
+                        ActionRule.addRule(new URL(dlInfo.Url).hostname,
+                            dlInfo.FileExtension,
+                            dlInfo.ContentType, action);
+                    else {
+                        ActionRule.addRule(null, 
+                            dlInfo.FileExtension,
+                            dlInfo.ContentType, action);
+                    }
+                }
             }));
         }
         //if external

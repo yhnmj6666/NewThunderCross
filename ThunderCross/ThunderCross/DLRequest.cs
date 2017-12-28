@@ -9,8 +9,10 @@ namespace ThunderCross
 	class DLRequest
 	{
 		public string DefaultDM { get; set; }
+		public string Action { get; set; }
 		public string Url { get; set; }
 		public string Filename { get; set; }
+		public string FileExtension { get; set; } //current unused
 		public string ContentType { get; set; }
 		public string ContentLength { get; set; }
 		public string Cookie { get; set; }
@@ -25,8 +27,17 @@ namespace ThunderCross
 				case "CheckDM":
 					return new DLReply(DLAgent.CheckDM);
 				case "Download":
-					Application.EnableVisualStyles();
-					return Ask();
+					{
+						if (Action == "External")
+							return new DLReply((DLAgent)Enum.Parse(typeof(DLAgent), DefaultDM));
+						else if (Action == "Default")
+							return new DLReply(DLAgent.Default);
+						else
+						{
+							Application.EnableVisualStyles();
+							return Ask();
+						}
+					}
 				default:
 					return new DLReply(DLAgent.Default);
 			}
@@ -66,7 +77,10 @@ namespace ThunderCross
 			}
 			if (aPipeServer != null)
 				aPipeServer.WaitForPipeDrain();
-			return new DLReply(askDL.RetAgent);
+			DLReply reply= new DLReply(askDL.RetAgent);
+			if (askDL.saveDownloadType)
+				reply.SaveDownload(askDL.saveForSiteOnly);
+			return reply;
 		}
 	}
 }

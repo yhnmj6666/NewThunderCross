@@ -35,6 +35,7 @@
 			this.label_fileurl = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.comboBox_dm = new System.Windows.Forms.ComboBox();
+			this.checkBox_saveForSite = new System.Windows.Forms.CheckBox();
 			this.checkBox_saveOption = new System.Windows.Forms.CheckBox();
 			this.radioButton_external = new System.Windows.Forms.RadioButton();
 			this.radioButton_default = new System.Windows.Forms.RadioButton();
@@ -51,11 +52,12 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(163, 16);
 			this.label1.TabIndex = 0;
-			this.label1.Text = Strings.You_have_choosen_to_open;
+			this.label1.Text = "You have choosen to open:";
 			// 
 			// button_OK
 			// 
-			this.button_OK.Location = new System.Drawing.Point(259, 269);
+			this.button_OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.button_OK.Location = new System.Drawing.Point(259, 299);
 			this.button_OK.Name = "button_OK";
 			this.button_OK.Size = new System.Drawing.Size(75, 33);
 			this.button_OK.TabIndex = 3;
@@ -65,7 +67,8 @@
 			// 
 			// button_Cancel
 			// 
-			this.button_Cancel.Location = new System.Drawing.Point(345, 269);
+			this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.button_Cancel.Location = new System.Drawing.Point(345, 299);
 			this.button_Cancel.Name = "button_Cancel";
 			this.button_Cancel.Size = new System.Drawing.Size(75, 33);
 			this.button_Cancel.TabIndex = 4;
@@ -80,7 +83,7 @@
 			this.label_filetypesize.Name = "label_filetypesize";
 			this.label_filetypesize.Size = new System.Drawing.Size(65, 16);
 			this.label_filetypesize.TabIndex = 6;
-			this.label_filetypesize.Text = Strings.Which_is;
+			this.label_filetypesize.Text = "Which is: ";
 			// 
 			// label_fileurl
 			// 
@@ -89,22 +92,24 @@
 			this.label_fileurl.Name = "label_fileurl";
 			this.label_fileurl.Size = new System.Drawing.Size(47, 16);
 			this.label_fileurl.TabIndex = 7;
-			this.label_fileurl.Text = Strings.From;
+			this.label_fileurl.Text = "From: ";
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.comboBox_dm);
+			this.groupBox1.Controls.Add(this.checkBox_saveForSite);
 			this.groupBox1.Controls.Add(this.checkBox_saveOption);
 			this.groupBox1.Controls.Add(this.radioButton_external);
 			this.groupBox1.Controls.Add(this.radioButton_default);
 			this.groupBox1.Location = new System.Drawing.Point(15, 114);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(405, 143);
+			this.groupBox1.Size = new System.Drawing.Size(405, 179);
 			this.groupBox1.TabIndex = 8;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = Strings.What_should_ThunderCross_do_with_this_file;
+			this.groupBox1.Text = "What should ThunderCross do with this file?";
 			// 
 			// comboBox_dm
 			// 
@@ -116,17 +121,25 @@
 			this.comboBox_dm.Size = new System.Drawing.Size(242, 24);
 			this.comboBox_dm.TabIndex = 3;
 			// 
+			// checkBox_saveForSite
+			// 
+			this.checkBox_saveForSite.AutoSize = true;
+			this.checkBox_saveForSite.Location = new System.Drawing.Point(51, 132);
+			this.checkBox_saveForSite.Name = "checkBox_saveForSite";
+			this.checkBox_saveForSite.Size = new System.Drawing.Size(124, 20);
+			this.checkBox_saveForSite.TabIndex = 2;
+			this.checkBox_saveForSite.Text = "Only for this site.";
+			this.checkBox_saveForSite.UseVisualStyleBackColor = true;
+			// 
 			// checkBox_saveOption
 			// 
 			this.checkBox_saveOption.AutoSize = true;
-			this.checkBox_saveOption.Enabled = false;
-			this.checkBox_saveOption.Location = new System.Drawing.Point(31, 110);
+			this.checkBox_saveOption.Location = new System.Drawing.Point(31, 104);
 			this.checkBox_saveOption.Name = "checkBox_saveOption";
 			this.checkBox_saveOption.Size = new System.Drawing.Size(320, 20);
 			this.checkBox_saveOption.TabIndex = 2;
 			this.checkBox_saveOption.Text = global::ThunderCross.Strings.Do_this_automatically_for_files_like_this_from_now_on;
 			this.checkBox_saveOption.UseVisualStyleBackColor = true;
-			this.checkBox_saveOption.Visible = false;
 			// 
 			// radioButton_external
 			// 
@@ -158,6 +171,8 @@
 			// 
 			// textBox1_filename
 			// 
+			this.textBox1_filename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1_filename.BackColor = System.Drawing.SystemColors.Control;
 			this.textBox1_filename.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox1_filename.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -175,7 +190,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(432, 315);
+			this.ClientSize = new System.Drawing.Size(432, 344);
 			this.Controls.Add(this.textBox1_filename);
 			this.Controls.Add(this.picture_icon);
 			this.Controls.Add(this.groupBox1);
@@ -213,5 +228,6 @@
 		private System.Windows.Forms.PictureBox picture_icon;
 		private System.Windows.Forms.ComboBox comboBox_dm;
 		private System.Windows.Forms.TextBox textBox1_filename;
+		private System.Windows.Forms.CheckBox checkBox_saveForSite;
 	}
 }

@@ -11,6 +11,8 @@ namespace ThunderCross
 	{
 		public readonly string Choice;
 		public string AddtionInfo;
+		public bool Save = false;
+		public bool SaveForSite = false;
 
 		public DLReply(DLAgent a)
 		{
@@ -49,6 +51,12 @@ namespace ThunderCross
 					Choice = @"error!!";
 					break;
 			}
+		}
+
+		internal void SaveDownload(bool saveForSiteOnly)
+		{
+			Save = true;
+			SaveForSite = saveForSiteOnly;
 		}
 	}
 }

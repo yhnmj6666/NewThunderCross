@@ -8,10 +8,10 @@ namespace ThunderCross
 {
 	public enum DLAgent
 	{
+		Default,
 		CheckDM,
 		Version,
-		Cancel,
-		Default,
+		Cancel,		
 		Thunder,
 		EagleGet
 	}

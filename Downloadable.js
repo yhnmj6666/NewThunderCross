@@ -12,7 +12,7 @@ class Downloadable {
         var isUnwantedFileType = false;
         var isWantedFileType = false;
         var isFileTooSmall = false;
-        var is200Code = true;
+        var is200Code = false;
         var bdyDown=new BaiduyunDownload();
 
         if (bdyDown.judge(rhDetails))
@@ -21,13 +21,16 @@ class Downloadable {
             this.baiduDownloadLink=BaiduyunDownload.reqBaiduUrl;
         }
 
-        if (rhDetails.statusCode != 200)
-            is200Code = false;
+        if (rhDetails.statusCode == 200)
+            is200Code = true;
 
         var filename = getFileName(rhDetails.url);
         this.lastFileName = filename;
         if (filename.match(fileExtDiscard) !== null) {
             isUnwantedFileType = true;
+        }
+        if(unWantedDocumentType.includes(rhDetails.type)){ //if not sub_frame or main_frame or object or other
+            isUnwantedFileType=true;
         }
         if (filename.match(fileExtCatch) !== null) {
             isWantedFileType = true;
@@ -38,7 +41,7 @@ class Downloadable {
                 case "content-disposition":
                     {
                         if (rhDetails.responseHeaders[i].value.startsWith("attachment")) {
-                            var matchInfo = rhDetails.responseHeaders[i].value.match(/filename=(.*)(\b|;)/i);
+                            var matchInfo = rhDetails.responseHeaders[i].value.match(/filename=(.*?)($|;)/i);
                             if (matchInfo !== null) {
                                 this.lastFileName = matchInfo[1].replace(/"/g, '').replace(';', '');
                             }
@@ -90,6 +93,8 @@ class Downloadable {
         //if (cdIndex !== -1 && rhDetails.responseHeaders[cdIndex].value.startsWith("attachment")) 
         {
             console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
+                "\nMethod: " + rhDetails.method +
+                "\nResource Type: " + rhDetails.type +
                 "\nfilename: " + filename +
                 ((ctIndex === -1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
                 "\nContent-Disposition: " +
@@ -97,7 +102,7 @@ class Downloadable {
         }
         //Debug
 
-        return !isUnwantedFileType && (isWantedFileType || (!isFileTooSmall && is200Code &&
+        return is200Code && !isUnwantedFileType && (isWantedFileType || (!isFileTooSmall &&
             (isTypeApplication || isAttachment)));
     }
 };

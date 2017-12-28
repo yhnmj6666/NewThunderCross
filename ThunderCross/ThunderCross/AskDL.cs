@@ -9,6 +9,8 @@ namespace ThunderCross
 	partial class AskDL : Form
 	{
 		public DLAgent RetAgent;
+		public bool saveDownloadType = false;
+		public bool saveForSiteOnly = false;
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
@@ -47,7 +49,9 @@ namespace ThunderCross
 				RetAgent = DLAgent.Default;
 			if(checkBox_saveOption.Checked)
 			{
-				;//TODO:Save option.
+				if (checkBox_saveForSite.Checked)
+					saveForSiteOnly = true;
+				saveDownloadType = true;
 			}
 			this.DialogResult = DialogResult.OK;
 			this.Close();
