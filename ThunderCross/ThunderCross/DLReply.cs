@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ThunderCross
 {
@@ -19,7 +15,7 @@ namespace ThunderCross
 			switch(a)
 			{
 				case DLAgent.CheckDM:
-					Choice = "CkeckDM";
+					Choice = a.ToString();
 					AddtionInfo = "";
 					foreach (var dm in DownloadManager.DMList)
 					{
@@ -33,18 +29,31 @@ namespace ThunderCross
 						}
 					}
 					break;
+				case DLAgent.SelectDM:
+					Choice = a.ToString();
+					{
+						Application.EnableVisualStyles();
+						OpenFileDialog openFile = new OpenFileDialog();
+						openFile.CheckFileExists = true;
+						openFile.CheckPathExists = true;
+						openFile.DefaultExt = "exe";
+						openFile.Filter = "Executable files(*.exe) | *.exe";
+						if (openFile.ShowDialog() == DialogResult.OK)
+							AddtionInfo = openFile.FileName;
+					}
+					break;
 				case DLAgent.Version:
-					Choice = @"Version";
+					Choice = a.ToString();
 					AddtionInfo = typeof(Program).Assembly.GetName().Version.ToString();
 					break;
 				case DLAgent.Cancel:
-					Choice = @"Canceled";
-					break;
 				case DLAgent.Default:
-					Choice = @"Default";
+					Choice = a.ToString();
 					break;
 				case DLAgent.EagleGet:
 				case DLAgent.Thunder:
+				case DLAgent.Idm:
+				case DLAgent.Customized:
 					Choice = @"External";
 					break;
 				default:

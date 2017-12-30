@@ -1,1 +1,0 @@
-var defaultDM="Thunder";

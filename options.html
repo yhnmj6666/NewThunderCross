@@ -8,34 +8,45 @@
 
 <body>
     <form>
-        <label id="version"></label>
-        <br>
-        <label>Wanted Extension</label>
+        <p><label id="version"></label></p>
+        <p>
+        <label i18n-text="Wanted_Extension"></label>
         <br>
         <textarea rows="4" cols="50" id="we"></textarea>
         <br>
-        <label>Unwanted Extension</label>
+        <label i18n-text="Unwanted_Extension"></label>
         <br>
         <textarea rows="4" cols="50" id="ue"></textarea>
-        <br>
-        <label>Only download files larger than (MB): </label>
+        </p>
+        <p>
+        <label i18n-text="Size_Limit"></label>
         <input type="number" id="minsize" step=any min=0></input>
-        <br> Default Download Manager:
+        </p>
+        <label i18n-text="Default_DM"></label>
         <select id="dm">
             <option value="Thunder">Thunder</option>
             <option value="EagleGet">EagleGet</option>
+            <option value="Idm">Idm</option>
+            <option value="Customized" i18n-text="Customized"></option>
         </select>
         <br>
-        <input type="checkbox" id="autoDownClose"> Auto Close Tab after Download<br>
-        <input type="checkbox" id="autoCancelClose"> Auto Close Tab after Cancel<br>
-        <button type="submit">Save</button>
+        <br>
+        <abbr i18n-title="Executable_file_tooltip" i18n-text="Executable_file"></abbr><input type="text" id="exeFile" disabled>
+        <br>
+        <abbr i18n-title="Arguments_tooltip" i18n-text="Arguments"></abbr><input type="text" id="exeArgs" disabled>
+        <br>
+        <br>
+        <input type="checkbox" id="autoClose"><label i18n-text="Auto_close"></label>
+        <br>
+        <button type="submit" i18n-text="Save"></button>
     </form>
     <form>
-        <button type="button" id="button_check">Check Downloaders</button>
+        <button type="button" id="button_check" i18n-text="Check_DM"></button>
         <br>
-        <label id="check_result"></label>
+        <label><pre id="check_result"></pre></label>
     </form>
     <script src="options.js"></script>
+    <script src="localization.js"></script>
 </body>
 
 </html>

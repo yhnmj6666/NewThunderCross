@@ -18,9 +18,9 @@ namespace ThunderCross
 		public string FileName { get; set; }
 		public string Refer { get; set; }
 		public string Cookie { get; set; }
-		public string Header { get; set; }
-		public string PostData { get; set; }
-		public string UserAgent { get; set; }
+		//public string Header { get; set; }
+		//public string PostData { get; set; }
+		//public string UserAgent { get; set; }
 		public string ExecutablePath { get { return Environment.Is64BitProcess?
 					(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("Wow6432Node").OpenSubKey("EagleGet").GetValue("Path")+ "\\EagleGet.exe"):
 					(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("EagleGet").GetValue("Path") + "\\EagleGet.exe"); } }
@@ -29,7 +29,7 @@ namespace ThunderCross
 		{
 			Process eg = new Process();
 			eg.StartInfo.FileName = ExecutablePath;
-			eg.StartInfo.Arguments = @"\S\U" + Url + @"U\";
+			eg.StartInfo.Arguments = @"\S\U" + Url +"&EGet_fname=" + FileName + @"U\";
 			eg.Start();
 		}
 		public bool Valid()

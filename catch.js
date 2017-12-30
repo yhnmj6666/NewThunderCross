@@ -9,6 +9,7 @@ var downloadCatcher = {
                 RequestType: "Download",
                 DefaultDM: defaultDM,
                 Action: null,
+                CustomizedDM: CustomizedDMs,
 
                 Url: rhDetails.url,
                 Filename: d.lastFileName,
@@ -50,11 +51,14 @@ var downloadCatcher = {
                 default:
                     break;
             }
-            console.log(dlInfo);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
                 console.log(reply);
+                browser.tabs.query({ active: true }).then((tabs) => {
+                    if (autoClose && tabs[0].url == "about:blank")
+                        browser.tabs.remove(tabs[0].id);
+                });
                 msgFromNative = reply.Choice;
                 if (reply.Save === true) {
                     var action = null;
@@ -68,7 +72,7 @@ var downloadCatcher = {
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
                     else {
-                        ActionRule.addRule(null, 
+                        ActionRule.addRule(null,
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
                     }
@@ -80,15 +84,9 @@ var downloadCatcher = {
         //else
         //let it go
         return Promise.all(promises).then(function () {
-            if (msgFromNative === "External") {
+            if (msgFromNative == "External" || msgFromNative == "Cancel") {
                 var blockingResponse = {
-                    redirectUrl: browser.extension.getURL("blank_down.html")
-                }
-                return blockingResponse;
-            }
-            else if (msgFromNative === "Canceled") {
-                var blockingResponse = {
-                    redirectUrl: browser.extension.getURL("blank_cancel.html")
+                    redirectUrl: browser.extension.getURL("blank.html")
                 }
                 return blockingResponse;
             }

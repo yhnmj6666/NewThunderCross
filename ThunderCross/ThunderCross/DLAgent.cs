@@ -10,9 +10,12 @@ namespace ThunderCross
 	{
 		Default,
 		CheckDM,
+		SelectDM,
 		Version,
 		Cancel,		
 		Thunder,
-		EagleGet
+		EagleGet,
+		Idm,
+		Customized
 	}
 }

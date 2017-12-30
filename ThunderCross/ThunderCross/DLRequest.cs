@@ -8,15 +8,17 @@ namespace ThunderCross
 {
 	class DLRequest
 	{
+		public string RequestType { get; set; }	
 		public string DefaultDM { get; set; }
 		public string Action { get; set; }
+		public DMCustomized[] CustomizedDM { get; set; }
+
 		public string Url { get; set; }
 		public string Filename { get; set; }
 		public string FileExtension { get; set; } //current unused
-		public string ContentType { get; set; }
 		public string ContentLength { get; set; }
+		public string ContentType { get; set; }
 		public string Cookie { get; set; }
-		public string RequestType { get; set; }
 		NamedPipeServerStream aPipeServer;
 		public DLReply Process()
 		{
@@ -26,6 +28,8 @@ namespace ThunderCross
 					return new DLReply(DLAgent.Version);
 				case "CheckDM":
 					return new DLReply(DLAgent.CheckDM);
+				case "SelectDM":
+					return new DLReply(DLAgent.SelectDM);
 				case "Download":
 					{
 						if (Action == "External")
@@ -55,6 +59,8 @@ namespace ThunderCross
 						break;
 					case DLAgent.Thunder:
 					case DLAgent.EagleGet:
+					case DLAgent.Idm:
+					case DLAgent.Customized:
 						{
 							string pipeName = Guid.NewGuid().ToString().Replace("-", string.Empty);
 

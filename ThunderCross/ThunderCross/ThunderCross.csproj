@@ -121,6 +121,11 @@
     <Reference Include="ByteSize, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ByteSize.1.3.0\lib\net45\ByteSize.dll</HintPath>
     </Reference>
+    <Reference Include="IDManLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\libType\IDManLib.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -156,7 +161,9 @@
     <Compile Include="DLReply.cs" />
     <Compile Include="DLRequest.cs" />
     <Compile Include="DLTask.cs" />
+    <Compile Include="DMCustomized.cs" />
     <Compile Include="DMEagleGet.cs" />
+    <Compile Include="DMIdm.cs" />
     <Compile Include="DMThunder.cs" />
     <Compile Include="IconHelper.cs" />
     <Compile Include="IDownloadManager.cs" />
@@ -204,10 +211,10 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
     <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(TargetDir)zh-CN\ThunderCross.resources.dll</PostBuildEvent>
   </PropertyGroup>
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
     <PreBuildEvent>del $(SolutionDir)ThunderCross_$(PlatformName).exe</PreBuildEvent>
   </PropertyGroup>
 </Project>

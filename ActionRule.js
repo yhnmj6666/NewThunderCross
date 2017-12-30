@@ -34,12 +34,35 @@ class ActionRule {
                 this.hosts.deny_mime.add(mime);
             }
         }
-
-        console.log(this.hosts);
-
-        browser.storage.local.set({
-            actionRules: this.hosts
-        });
+        var _save={
+            actionRule: {
+                acc_mime: Array.from(this.hosts.acc_mime),
+                acc_ext: Array.from(this.hosts.acc_ext),
+                deny_mime: Array.from(this.hosts.deny_mime),
+                deny_ext: Array.from(this.hosts.deny_ext),
+                defaultAction: this.hosts.defaultAction
+            }
+        };
+        var _properties=Object.keys(this.hosts);
+        for(var i=_properties.length-1;i>=0;i--)
+        {
+            var i_value=_properties[i];
+            if(! new Set(["acc_mime","acc_ext","deny_mime","deny_ext","defaultAction"]).has(i_value))
+            {
+                Object.defineProperty(_save,i_value,{
+                    configurable: true,
+                    enumerable: true,
+                    writable: true,
+                    value: {
+                        acc_mime: Array.from(this.hosts[i_value].acc_mime),
+                        acc_ext: Array.from(this.hosts[i_value].acc_ext),
+                        deny_mime: Array.from(this.hosts[i_value].deny_mime),
+                        deny_ext: Array.from(this.hosts[i_value].deny_ext)
+                    }
+                });
+            }
+        }
+        browser.storage.local.set(_save);
     }
 
     static match(host, extension, mime) {
@@ -75,7 +98,26 @@ ActionRule.hosts = {
 };
 
 browser.storage.local.get().then((res) => {
-    ActionRule.hosts = res.actionRules || ActionRule.hosts;
-    console.log(res.actionRules);
-    console.log(ActionRule.hosts);
+    if(res.actionRule != null)
+    {
+        ActionRule.hosts.acc_ext= new Set(res.actionRule.acc_ext);
+        ActionRule.hosts.acc_mime=new Set(res.actionRule.acc_mime);
+        ActionRule.hosts.deny_ext=new Set(res.actionRule.deny_ext);
+        ActionRule.hosts.deny_mime=new Set(res.actionRule.deny_mime);
+        ActionRule.hosts.defaultAction=res.actionRule.defaultAction;
+    }
+    var _properties=Object.keys(res);
+    for(var i=_properties.length-1;i>=0;i--)
+    {
+        var i_value=_properties[i];
+        if(i_value != "actionRule")
+        {
+            ActionRule.hosts[i_value]={
+                acc_mime: new Set(res[i_value].acc_mime),
+                deny_mime: new Set(res[i_value].deny_mime),
+                acc_ext: new Set(res[i_value].acc_ext),
+                deny_ext: new Set(res[i_value].deny_ext)
+            };
+        }
+    }
 });

@@ -1,0 +1,43 @@
+{
+    //manifest.json
+    "extensionDescription": {
+        "message": "New generation Thunder invoker"
+    },
+    //options.html
+    "Wanted_Extension": {
+        "message": "Wanted Extension"
+    },
+    "Unwanted_Extension": {
+        "message": "Unwanted Extension"
+    },
+    "Size_Limit": {
+        "message": "Only download files larger than (MB): "
+    },
+    "Default_DM": {
+        "message": "Default Download Manager: "
+    },
+    "Customized": {
+        "message": "Customized"
+    },
+    "Executable_file": {
+        "message": "Executable file: "
+    },
+    "Executable_file_tooltip": {
+        "message": "Double click to select customized download managers"
+    },
+    "Arguments": {
+        "message": "Arguments: "
+    },
+    "Arguments_tooltip": {
+        "message": "Use [URL] for url, [FILENAME] for filename"
+    },
+    "Auto_close": {
+        "message": " Auto close blank tab"
+    },
+    "Save": {
+        "message": "Save"
+    },
+    "Check_DM": {
+        "message": "Check Downloaders"
+    }
+}

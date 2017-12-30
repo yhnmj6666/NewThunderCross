@@ -2,7 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.2.0f",
+    "version": "0.2.0j",
     "applications": {
         "gecko": {
             "id": "Thunder@Cross",
@@ -11,7 +11,8 @@
     },
     "options_ui": {
         "page": "options.html",
-        "browser_style": true
+        "browser_style": true,
+        "open_in_tab": true
     },
     "background": {
         "scripts": [
@@ -25,8 +26,7 @@
         ]
     },
     "web_accessible_resources": [
-        "blank_cancel.html",
-        "blank_down.html",
+        "blank.html",
         "Readme.html"
     ],
     "permissions": [
@@ -36,5 +36,6 @@
         "webRequest",
         "webRequestBlocking",
         "<all_urls>"
-    ]
+    ],
+    "default_locale": "en"
 }

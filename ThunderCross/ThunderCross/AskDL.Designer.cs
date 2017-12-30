@@ -115,6 +115,7 @@
 			// 
 			this.comboBox_dm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.comboBox_dm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_dm.FormattingEnabled = true;
 			this.comboBox_dm.Location = new System.Drawing.Point(157, 62);
 			this.comboBox_dm.Name = "comboBox_dm";
