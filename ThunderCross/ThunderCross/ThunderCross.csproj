@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ILRepack.2.0.15\build\ILRepack.props" Condition="Exists('..\packages\ILRepack.2.0.15\build\ILRepack.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +28,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -212,9 +215,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
-    <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(TargetDir)zh-CN\ThunderCross.resources.dll</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(SolutionDir)libType\IDManLib.dll  $(TargetDir)zh-CN\ThunderCross.resources.dll</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
     <PreBuildEvent>del $(SolutionDir)ThunderCross_$(PlatformName).exe</PreBuildEvent>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ILRepack.2.0.15\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.2.0.15\build\ILRepack.props'))" />
+  </Target>
 </Project>

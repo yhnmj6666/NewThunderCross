@@ -162,4 +162,7 @@
   <data name="You_have_choosen_to_open" xml:space="preserve">
     <value>您选择了打开：</value>
   </data>
+  <data name="Only_for_this_site" xml:space="preserve">
+    <value>仅针对此网站</value>
+  </data>
 </root>
