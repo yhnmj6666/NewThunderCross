@@ -24,7 +24,7 @@ namespace ThunderCross {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
         
-        private static global::System.Resources.ResourceManager resourceMan;
+        private static SingleAssemblyComponentResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
@@ -32,19 +32,19 @@ namespace ThunderCross {
         internal Strings() {
         }
         
-        /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
-        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        public static SingleAssemblyComponentResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ThunderCross.Strings", typeof(Strings).Assembly);
+                    SingleAssemblyComponentResourceManager temp = new SingleAssemblyComponentResourceManager(typeof(Strings));
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
+
+
+
         
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all

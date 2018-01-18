@@ -24,8 +24,6 @@ namespace ThunderCross {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
         
-        #region members
-        #region members
         private static SingleAssemblyComponentResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -44,9 +42,7 @@ namespace ThunderCross {
                 return resourceMan;
             }
         }
-#endregion
 
-#endregion
 
         
         /// <summary>
@@ -114,6 +110,15 @@ namespace ThunderCross {
         public static string Download_using_ {
             get {
                 return ResourceManager.GetString("Download_using_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string Failed {
+            get {
+                return ResourceManager.GetString("Failed", resourceCulture);
             }
         }
         

@@ -166,9 +166,9 @@
     <value>僅針對此網站</value>
   </data>
   <data name="Failed" xml:space="preserve">
-    <value>Failed</value>
+    <value>失敗</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>就绪</value>
   </data>
 </root>

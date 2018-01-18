@@ -18,7 +18,7 @@ var downloadCatcher = {
                 FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)[0],
                 ContentLength: 0,
                 ContentType: "",
-                Cookie: CookieStore[rhDetails.requestId]
+                Cookie: CookieStore[rhDetails.requestId].substr(0)
             };
             if (d.isBaiduLink) {
                 dlInfo.Url = d.baiduDownloadLink;
@@ -52,7 +52,7 @@ var downloadCatcher = {
                 default:
                     break;
             }
-            //console.log(dlInfo);
+            console.log(dlInfo);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
@@ -81,12 +81,14 @@ var downloadCatcher = {
                 }
             }));
         }
+        if(rhDetails.statusCode!=302)
+        {
+            delete CookieStore[rhDetails.requestId];
+        }
         //if external
         //redirect to two different blank page and decide whether auto close or not.
         //else
         //let it go
-        delete CookieStore[rhDetails.requestId];
-        //console.log(CookieStore);
         return Promise.all(promises).then(function () {
             if (msgFromNative == "External" || msgFromNative == "Cancel") {
                 var blockingResponse = {
@@ -105,7 +107,7 @@ var downloadCatcher = {
     sendListener: function (sDetails) {
         for (var header of sDetails.requestHeaders) {
             if (header.name.toLowerCase() == "cookie") {
-                CookieStore[sDetails.requestId] = header.value;
+                CookieStore[sDetails.requestId] = header.value;                
             }
         }
     },
