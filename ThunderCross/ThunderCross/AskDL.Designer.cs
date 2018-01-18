@@ -52,7 +52,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(163, 16);
 			this.label1.TabIndex = 0;
-			this.label1.Text = global::ThunderCross.Strings.You_have_choosen_to_open;
+			this.label1.Text = "You have choosen to open:";
 			// 
 			// button_OK
 			// 
@@ -83,7 +83,7 @@
 			this.label_filetypesize.Name = "label_filetypesize";
 			this.label_filetypesize.Size = new System.Drawing.Size(65, 16);
 			this.label_filetypesize.TabIndex = 6;
-			this.label_filetypesize.Text = global::ThunderCross.Strings.Which_is;
+			this.label_filetypesize.Text = "Which is: ";
 			// 
 			// label_fileurl
 			// 
@@ -92,7 +92,7 @@
 			this.label_fileurl.Name = "label_fileurl";
 			this.label_fileurl.Size = new System.Drawing.Size(47, 16);
 			this.label_fileurl.TabIndex = 7;
-			this.label_fileurl.Text = global::ThunderCross.Strings.From;
+			this.label_fileurl.Text = "From: ";
 			// 
 			// groupBox1
 			// 
@@ -109,7 +109,7 @@
 			this.groupBox1.Size = new System.Drawing.Size(405, 179);
 			this.groupBox1.TabIndex = 8;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = global::ThunderCross.Strings.What_should_ThunderCross_do_with_this_file;
+			this.groupBox1.Text = "What should ThunderCross do with this file?";
 			// 
 			// comboBox_dm
 			// 
@@ -125,6 +125,7 @@
 			// checkBox_saveForSite
 			// 
 			this.checkBox_saveForSite.AutoSize = true;
+			this.checkBox_saveForSite.Enabled = false;
 			this.checkBox_saveForSite.Location = new System.Drawing.Point(51, 132);
 			this.checkBox_saveForSite.Name = "checkBox_saveForSite";
 			this.checkBox_saveForSite.Size = new System.Drawing.Size(124, 20);
@@ -141,6 +142,7 @@
 			this.checkBox_saveOption.TabIndex = 2;
 			this.checkBox_saveOption.Text = global::ThunderCross.Strings.Do_this_automatically_for_files_like_this_from_now_on;
 			this.checkBox_saveOption.UseVisualStyleBackColor = true;
+			this.checkBox_saveOption.CheckedChanged += new System.EventHandler(this.checkBox_saveOption_CheckedChanged);
 			// 
 			// radioButton_external
 			// 

@@ -1,5 +1,7 @@
+var CookieStore = {};
+
 var downloadCatcher = {
-    listener: function (rhDetails) {
+    receivedListener: function (rhDetails) {
         var promises = [];
         var msgFromNative;
         var d = new Downloadable();
@@ -16,8 +18,7 @@ var downloadCatcher = {
                 FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)[0],
                 ContentLength: 0,
                 ContentType: "",
-                Cookie: ""
-
+                Cookie: CookieStore[rhDetails.requestId]
             };
             if (d.isBaiduLink) {
                 dlInfo.Url = d.baiduDownloadLink;
@@ -31,7 +32,7 @@ var downloadCatcher = {
                         dlInfo.ContentType = rhDetails.responseHeaders[i].value;
                         break;
                     case "set-cookie":
-                        dlInfo.Cookie = rhDetails.responseHeaders[i].value;
+                        dlInfo.Cookie += rhDetails.responseHeaders[i].value;
                     default:
                         ;
                 }
@@ -51,6 +52,7 @@ var downloadCatcher = {
                 default:
                     break;
             }
+            //console.log(dlInfo);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
@@ -83,10 +85,12 @@ var downloadCatcher = {
         //redirect to two different blank page and decide whether auto close or not.
         //else
         //let it go
+        delete CookieStore[rhDetails.requestId];
+        //console.log(CookieStore);
         return Promise.all(promises).then(function () {
             if (msgFromNative == "External" || msgFromNative == "Cancel") {
                 var blockingResponse = {
-                    redirectUrl: browser.extension.getURL("blank.html")
+                    redirectUrl: rhDetails.type == "sub_frame" ? browser.extension.getURL("blank.html") : "http://downloadhandeled/"
                 }
                 return blockingResponse;
             }
@@ -96,6 +100,21 @@ var downloadCatcher = {
         }, (reason) => {
             console.log(reason);
         });
+    },
+
+    sendListener: function (sDetails) {
+        for (var header of sDetails.requestHeaders) {
+            if (header.name.toLowerCase() == "cookie") {
+                CookieStore[sDetails.requestId] = header.value;
+            }
+        }
+    },
+
+    requestListener: function (reqDetails) {
+        if (reqDetails.url == "http://downloadhandeled/")
+            return { cancel: true };
+        else
+            return {};
     },
 
     fliter: {

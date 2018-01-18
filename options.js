@@ -4,7 +4,7 @@ function saveOptions(e) {
         unwantedExtensio: document.querySelector("#ue").value,
         minAskSize: document.querySelector("#minsize").value,
         defaultDM: document.querySelector("#dm").value,
-        CustomizedDMs:[{
+        CustomizedDMs: [{
             ExecutablePath: document.getElementById("exeFile").value,
             Arguments: document.getElementById("exeArgs").value,
             Name: null
@@ -16,8 +16,8 @@ function saveOptions(e) {
 
 function restoreOptions() {
     browser.storage.sync.get().then((res) => {
-        document.querySelector("#we").value = res.wantedExtension || 'zip|rar|exe';
-        document.querySelector("#ue").value = res.unwantedExtensio || 'js|woff2?|ttf|swf|cur|aspx';
+        document.querySelector("#we").value = res.wantedExtension;
+        document.querySelector("#ue").value = res.unwantedExtensio;
         if (typeof res.minAskSize === 'undefined' || res.minAskSize === null)
             document.querySelector("#minsize").value = 1;
         else
@@ -26,7 +26,9 @@ function restoreOptions() {
 
         if (res.defaultDM == "Customized") {
             document.getElementById("exeFile").removeAttribute("disabled");
+            document.getElementById("exeFile").value = res.CustomizedDMs[0].ExecutablePath;
             document.getElementById("exeArgs").removeAttribute("disabled");
+            document.getElementById("exeArgs").value = res.CustomizedDMs[0].Arguments;
         }
 
         document.getElementById("autoClose").checked = res.autoClose;
@@ -40,9 +42,9 @@ function restoreOptions() {
         promises.push(browser.runtime.sendNativeMessage("ThunderCross",
             dlInfo
         ).then((reply) => {
-            msgFromNative = "Native Client Version: " + reply.AddtionInfo;
+            msgFromNative = browser.i18n.getMessage("Native_Client_Version") + reply.AddtionInfo;
         }, (reason) => {
-            msgFromNative = "Native Client not Installed Properly.";
+            msgFromNative = browser.i18n.getMessage("Native_Client_not_Installed_Properly");
             console.log(reason);
         }));
 
@@ -82,9 +84,8 @@ function dmChange() {
     }
 }
 
-function selectDM()
-{
-    var promises=[];
+function selectDM() {
+    var promises = [];
     var dlInfo = {
         RequestType: "SelectDM"
     };
@@ -93,12 +94,12 @@ function selectDM()
     ).then((reply) => {
         document.getElementById("exeFile").value = reply.AddtionInfo;
     }));
-    return promises; 
+    return promises;
 }
 
 document.getElementById("button_check").addEventListener("click", checkDM);
 document.getElementById("dm").addEventListener("change", dmChange);
-document.getElementById("exeFile").addEventListener("dblclick",selectDM);
+document.getElementById("exeFile").addEventListener("dblclick", selectDM);
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.addEventListener('DOMContentLoaded', restoreOptions);
 

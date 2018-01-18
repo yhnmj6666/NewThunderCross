@@ -50,7 +50,7 @@ namespace ThunderCross
 		{
 			if (radioButton_external.Checked)
 			{
-				if (((string)comboBox_dm.SelectedItem).EndsWith("(" + DLAgent.Customized.ToString() + ")"))
+				if (comboBox_dm.SelectedItem.ToString().EndsWith("(" + DLAgent.Customized.ToString() + ")"))
 					RetAgent = DLAgent.Customized;
 				else
 					RetAgent = (DLAgent)comboBox_dm.SelectedItem;
@@ -65,6 +65,14 @@ namespace ThunderCross
 			}
 			this.DialogResult = DialogResult.OK;
 			this.Close();
+		}
+
+		private void checkBox_saveOption_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBox_saveOption.Checked)
+				checkBox_saveForSite.Enabled = true;
+			else
+				checkBox_saveForSite.Enabled = false;
 		}
 	}
 }

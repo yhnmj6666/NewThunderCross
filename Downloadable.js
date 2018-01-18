@@ -1,10 +1,10 @@
 class Downloadable {
     constructor() {
         this.isBaiduLink = false;
-        this.baiduDownloadLink="";
+        this.baiduDownloadLink = "";
         this.lastFileName = "";
     }
-    
+
 
     judge(rhDetails) {
         var isAttachment = false;
@@ -13,12 +13,11 @@ class Downloadable {
         var isWantedFileType = false;
         var isFileTooSmall = false;
         var is200Code = false;
-        var bdyDown=new BaiduyunDownload();
+        var bdyDown = new BaiduyunDownload();
 
-        if (bdyDown.judge(rhDetails))
-        {
+        if (bdyDown.judge(rhDetails)) {
             this.isBaiduLink = true;
-            this.baiduDownloadLink=BaiduyunDownload.reqBaiduUrl;
+            this.baiduDownloadLink = BaiduyunDownload.reqBaiduUrl;
         }
 
         if (rhDetails.statusCode == 200)
@@ -29,8 +28,8 @@ class Downloadable {
         if (filename.match(fileExtDiscard) !== null) {
             isUnwantedFileType = true;
         }
-        if(unWantedDocumentType.includes(rhDetails.type)){ //if not sub_frame or main_frame or object or other
-            isUnwantedFileType=true;
+        if (unWantedDocumentType.includes(rhDetails.type)) { //if not sub_frame or main_frame or object or other
+            isUnwantedFileType = true;
         }
         if (filename.match(fileExtCatch) !== null) {
             isWantedFileType = true;
@@ -77,7 +76,7 @@ class Downloadable {
             }
         }
 
-        //Debug
+        // //Debug
         // var ctIndex = rhDetails.responseHeaders.findIndex((element) => {
         //     return element.name.toLowerCase() == "content-type";
         // });
@@ -100,7 +99,7 @@ class Downloadable {
         //         "\nContent-Disposition: " +
         //         ((cdIndex === -1) ? "none" : (rhDetails.responseHeaders[cdIndex].value)));
         // }
-        //Debug
+        // //Debug
 
         return is200Code && !isUnwantedFileType && (isWantedFileType || (!isFileTooSmall &&
             (isTypeApplication || isAttachment)));

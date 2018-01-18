@@ -29,7 +29,7 @@ namespace ThunderCross
 		{
 			Process eg = new Process();
 			eg.StartInfo.FileName = ExecutablePath;
-			eg.StartInfo.Arguments = @"\S\U" + Url +"&EGet_fname=" + FileName + @"U\";
+			eg.StartInfo.Arguments = string.Format(@"\S\U{0}&EGet_fname={1}U\ \C{2}C\", Url, FileName, Cookie);
 			eg.Start();
 		}
 		public bool Valid()

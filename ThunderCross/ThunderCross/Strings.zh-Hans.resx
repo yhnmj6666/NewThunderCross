@@ -118,61 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Call_Thunder_Error_Agent" xml:space="preserve">
-    <value>Call Thunder Error!\nPlease verify ThunderAgent.dll is registed correctly!</value>
+    <value>迅雷调用失败！请确保ThunderAgent已经正确注册。</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Config_json" xml:space="preserve">
-    <value>ThunderCross.json</value>
-    <comment>represent config file</comment>
+    <value>取消</value>
   </data>
   <data name="Download_in_Firefox" xml:space="preserve">
-    <value>Download in Firefox</value>
+    <value>在浏览器中打开</value>
   </data>
   <data name="Download_using_" xml:space="preserve">
-    <value>Download using </value>
+    <value>使用下载器</value>
   </data>
   <data name="Do_this_automatically_for_files_like_this_from_now_on" xml:space="preserve">
-    <value>Do this automatically for files like this from now on.</value>
+    <value>以后自动采用相同的动作处理此类文件。</value>
   </data>
   <data name="From" xml:space="preserve">
-    <value>From: </value>
+    <value>来源：</value>
   </data>
   <data name="Install" xml:space="preserve">
-    <value>Install?</value>
+    <value>是否安装？</value>
   </data>
   <data name="Install_fail" xml:space="preserve">
-    <value>Install fail. Please check whether Firefox is installed properly.</value>
+    <value>安装失败！请确保火狐浏览器已经正确安装。</value>
   </data>
   <data name="Install_successful" xml:space="preserve">
-    <value>Install successful!</value>
+    <value>安装成功</value>
   </data>
   <data name="Permission_Error" xml:space="preserve">
-    <value>Permission Error</value>
+    <value>权限错误</value>
   </data>
   <data name="Uninstall" xml:space="preserve">
-    <value>Uninstall?</value>
+    <value>是否卸载？</value>
   </data>
   <data name="Uninstall_success" xml:space="preserve">
-    <value>Uninstall success.</value>
+    <value>卸载完成。</value>
   </data>
   <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
-    <value>What should ThunderCross do with this file?</value>
+    <value>你想要ThunderCross如何处理此文件？</value>
   </data>
   <data name="Which_is" xml:space="preserve">
-    <value>Which is: </value>
+    <value>文件类型：</value>
   </data>
   <data name="You_have_choosen_to_open" xml:space="preserve">
-    <value>You have choosen to open:</value>
+    <value>您选择了打开：</value>
   </data>
   <data name="Only_for_this_site" xml:space="preserve">
-    <value>Only for this site.</value>
+    <value>仅针对此网站</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>就绪</value>
   </data>
   <data name="Failed" xml:space="preserve">
-    <value>Failed</value>
+    <value>未就绪</value>
   </data>
 </root>

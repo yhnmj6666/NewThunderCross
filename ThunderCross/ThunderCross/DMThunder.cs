@@ -26,7 +26,8 @@ namespace ThunderCross
 			try
 			{
 				agent.AddTask3(bstrUrl: Url,
-					bstrFileName: FileName);
+					bstrFileName: FileName,
+					bstrCookie: Cookie);
 			}
 			catch (Exception)
 			{

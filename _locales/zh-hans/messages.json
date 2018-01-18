@@ -29,7 +29,7 @@
         "message": "参数: "
     },
     "Arguments_tooltip": {
-        "message": "请使用 [URL] 代替下载链接，用 [FILENAME] 代替下载文件的名字"
+        "message": "请使用 [URL] 代替下载链接，用 [FILENAME] 代替下载文件的名字，用 [Cookie] 代替链接的Cookie"
     },
     "Auto_close": {
         "message": " 自动关闭空白标签页"
@@ -39,5 +39,12 @@
     },
     "Check_DM": {
         "message": "检查内置支持下载器工作情况"
+    },
+    //option.js
+    "Native_Client_Version":{
+        "message":"客户端版本号: "
+    },
+    "Native_Client_not_Installed_Properly":{
+        "message":"客户端没有正确安装。"
     }
 }

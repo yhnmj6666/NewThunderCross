@@ -28,7 +28,7 @@ namespace ThunderCross
 			return Arguments.Replace("[URL]", Url)
 				.Replace("[FILENAME]", FileName)
 			//	.Replace("[REFER]", Refer)
-			//	.Replace("[COOKIE]", Cookie)
+				.Replace("[COOKIE]", Cookie)
 				;
 		}
 

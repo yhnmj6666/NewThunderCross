@@ -29,7 +29,7 @@
         "message": "Arguments: "
     },
     "Arguments_tooltip": {
-        "message": "Use [URL] for url, [FILENAME] for filename"
+        "message": "Use [URL] for url, [FILENAME] for filename, [COOKIE] for Cookie"
     },
     "Auto_close": {
         "message": " Auto close blank tab"
@@ -39,5 +39,12 @@
     },
     "Check_DM": {
         "message": "Check Downloaders"
+    },
+    //option.js
+    "Native_Client_Version":{
+        "message":"Native Client Version: "
+    },
+    "Native_Client_not_Installed_Properly":{
+        "message":"Native Client not Installed Properly."
     }
 }
