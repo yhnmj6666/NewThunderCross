@@ -70,11 +70,11 @@ var downloadCatcher = {
                         action = false;
 
                     if (reply.SaveForSite === true)
-                        ActionRule.addRule(new URL(dlInfo.Url).hostname,
+                        ActionRule.add(new URL(dlInfo.Url).hostname,
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
                     else {
-                        ActionRule.addRule(null,
+                        ActionRule.add(null,
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
                     }

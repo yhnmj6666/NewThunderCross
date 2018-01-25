@@ -1,3 +1,9 @@
+function handleButtonClick(clickEvent)
+{
+    console.log(this);
+    console.log(clickEvent);
+}
+
 function loadRuleSet()
 {
     var table=document.getElementById("ruleset");
@@ -60,7 +66,10 @@ function loadRuleSet()
                 cell.appendChild(document.createTextNode("*"));
                 //operation
                 cell=row.insertCell();
-                cell.appendChild(document.createTextNode("No operation"));
+                var but=document.createElement("button");
+                but.appendChild(document.createTextNode("Delete"));
+                but.addEventListener("click",handleButtonClick);
+                cell.appendChild(but);//document.createTextNode("No operation"));
             }
             for(var r of res.actionRule.deny_mime)
             {

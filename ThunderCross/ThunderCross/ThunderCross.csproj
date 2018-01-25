@@ -208,8 +208,8 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings.zh-Hans.resx" />
-    <EmbeddedResource Include="Strings.zh-Hant.resx" />
+    <EmbeddedResource Include="Strings.zh-CN.resx" />
+    <EmbeddedResource Include="Strings.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -217,10 +217,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
     <PreBuildEvent>del $(SolutionDir)ThunderCross_$(PlatformName).exe</PreBuildEvent>
-    <PreBuildEvent>$(SolutionDir)\packages\grep\grep.exe /filemask:"Strings.Designer.cs" /n:yes /k:yes /executereplace /closedialog /searchfor:"private static.*return resourceMan;(\s+})+" /replacewith:"private static SingleAssemblyComponentResourceManager resourceMan;\r\n        \r\n        private static global::System.Globalization.CultureInfo resourceCulture;\r\n        \r\n        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"Microsoft.Performance\", \"CA1811:AvoidUncalledPrivateCode\")]\r\n        internal Strings() {\r\n        }\r\n        \r\n        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]\r\n        public static SingleAssemblyComponentResourceManager ResourceManager {\r\n            get {\r\n                if (object.ReferenceEquals(resourceMan, null)) {\r\n                    SingleAssemblyComponentResourceManager temp = new SingleAssemblyComponentResourceManager(typeof(Strings));\r\n                    resourceMan = temp;\r\n                }\r\n                return resourceMan;\r\n            }\r\n        }\r\n" /searchpath:$(ProjectDir) &amp; exit 0</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)\packages\grep\grep.exe /filemask:"Strings.Designer.cs" /n:yes /k:yes /executereplace /closedialog /searchfor:"private static.*return resourceMan;(\s+})+" /replacewith:"private static SingleAssemblyComponentResourceManager resourceMan;\r\n        \r\n        private static global::System.Globalization.CultureInfo resourceCulture;\r\n        \r\n        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"Microsoft.Performance\", \"CA1811:AvoidUncalledPrivateCode\")]\r\n        internal Strings() {\r\n        }\r\n        \r\n        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]\r\n        public static SingleAssemblyComponentResourceManager ResourceManager {\r\n            get {\r\n                if (object.ReferenceEquals(resourceMan, null)) {\r\n                    SingleAssemblyComponentResourceManager temp = new SingleAssemblyComponentResourceManager(typeof(Strings));\r\n                    resourceMan = temp;\r\n                }\r\n                return resourceMan;\r\n            }\r\n        }" /searchpath:$(ProjectDir) &amp; exit 0</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
-    <PostBuildEvent>$(SolutionDir)\packages\ILMerge.2.14.1208\tools\ILMerge.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(SolutionDir)libType\IDManLib.dll  $(TargetDir)zh-hans\ThunderCross.resources.dll $(TargetDir)zh-hant\ThunderCross.resources.dll</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\packages\ILRepack.2.0.15\tools\ILRepack.exe /ndebug /out:$(SolutionDir)ThunderCross_$(PlatformName).exe $(TargetPath) $(TargetDir)ByteSize.dll  $(TargetDir)Newtonsoft.Json.dll $(SolutionDir)libType\ThunderAgent\$(PlatformName)\ThunderAgentLib.dll $(SolutionDir)libType\IDManLib.dll  $(TargetDir)zh-CN\ThunderCross.resources.dll $(TargetDir)zh-TW\ThunderCross.resources.dll</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

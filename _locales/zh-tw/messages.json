@@ -1,0 +1,44 @@
+{
+    //Special thanks to zhtw2013@github!
+    //manifest.json
+    "extensionDescription": {
+        "message": "新一代迅雷召喚工具"
+    },
+    //options.html
+    "Wanted_Extension": {
+        "message": "需要監視下載的副檔名"
+    },
+    "Unwanted_Extension": {
+        "message": "不需要下載的副檔名"
+    },
+    "Size_Limit": {
+        "message": "僅下載達到此大小(MB)的檔案: "
+    },
+    "Default_DM": {
+        "message": "預設下載工具: "
+    },
+    "Customized": {
+        "message": "自訂"
+    },
+    "Executable_file": {
+        "message": "可執行檔案: "
+    },
+    "Executable_file_tooltip": {
+        "message": "按兩下以選擇下載工具檔案"
+    },
+    "Arguments": {
+        "message": "參數: "
+    },
+    "Arguments_tooltip": {
+        "message": "請使用 [URL] 代替下載連結，用 [FILENAME] 代替下載檔案的名稱，用 [Cookie]代替下載連結的Cookie"
+    },
+    "Auto_close": {
+        "message": " 自動關閉空白分頁"
+    },
+    "Save": {
+        "message": "儲存"
+    },
+    "Check_DM": {
+        "message": "檢查內建支援下載工具的工作情況"
+    }
+}

@@ -2,7 +2,7 @@ class ActionRule {
     constructor() {
     }
 
-    static addRule(host, extension, mime, action) {
+    static add(host, extension, mime, action) {
         if (host != null) {
             if (this.hosts[host] == null)
                 this.hosts[host] = {
@@ -63,6 +63,11 @@ class ActionRule {
             }
         }
         browser.storage.local.set(_save);
+    }
+
+    static delete(host, extension, mime, action)
+    {
+        ;
     }
 
     static match(host, extension, mime) {

@@ -42,9 +42,6 @@ namespace ThunderCross {
                 return resourceMan;
             }
         }
-
-
-
         
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
