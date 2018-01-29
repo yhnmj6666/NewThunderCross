@@ -27,10 +27,10 @@ function loadRuleSet()
                 cell.appendChild(document.createTextNode(value1.action));
                 //extension
                 cell=row.insertCell();
-                cell.appendChild(document.createTextNode(value1.extension));
+                cell.appendChild(document.createTextNode(value1.extension || ""));
                 //mime
                 cell=row.insertCell();
-                cell.appendChild(document.createTextNode(value1.mime));
+                cell.appendChild(document.createTextNode(value1.mime || ""));
                 //host
                 cell=row.insertCell();
                 cell.appendChild(document.createTextNode("*"));
@@ -50,10 +50,10 @@ function loadRuleSet()
                     cell.appendChild(document.createTextNode(value1.action));
                     //extension
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(value1.extension));
+                    cell.appendChild(document.createTextNode(value1.extension || ""));
                     //mime
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(value1.mime));
+                    cell.appendChild(document.createTextNode(value1.mime || ""));
                     //host
                     cell=row.insertCell();
                     cell.appendChild(document.createTextNode(value));

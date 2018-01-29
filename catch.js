@@ -67,9 +67,9 @@ var downloadCatcher = {
                 if (reply.Save === true) {
                     var action = null;
                     if (reply.Choice === "External")
-                        action = true;
+                        action = "accept";
                     else if (reply.Choice === "Default")
-                        action = false;
+                        action = "deny";
 
                     if (reply.SaveForSite === true)
                         ActionRule.add(new URL(dlInfo.Url).hostname,

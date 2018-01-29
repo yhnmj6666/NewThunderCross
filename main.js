@@ -31,7 +31,3 @@ browser.runtime.onInstalled.addListener((details) => {
     if (details.temporary == false)
         browser.tabs.create({ url: browser.extension.getURL("Readme.html") });
 });
-
-console.log(ActionRule.hosts);
-ActionRule.add("osu.com",".osz","application/download","accept");
-console.log(ActionRule.hosts);
