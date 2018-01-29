@@ -34,6 +34,15 @@
     "Auto_close": {
         "message": " 自动关闭空白标签页"
     },
+        "Show_In_Center": {
+        "message": " 居中显示"
+    },
+    "Replace_default_with_direct_download": {
+        "message": " 直接开始下载(火狐浏览器)*"
+    },
+    "Replace_hint": {
+        "message": "如果选中的话，再次使用在火狐浏览器中打开会直接开始下载"
+    },
     "Save": {
         "message": "保存"
     },

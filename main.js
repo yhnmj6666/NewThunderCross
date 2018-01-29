@@ -15,7 +15,6 @@ browser.webRequest.onBeforeRequest.addListener(
 );
 browser.runtime.onMessage.addListener((message, sender) => {
     var msg=JSON.parse(message);
-    console.log(message);
     switch(msg.msg)
     {
         case "delete":
@@ -28,6 +27,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
     }
 });
 browser.runtime.onInstalled.addListener((details) => {
-    if (details.temporary == false)
+    if (details.temporary == false && (details.reason=="update" || details.reason=="install"))
         browser.tabs.create({ url: browser.extension.getURL("Readme.html") });
 });

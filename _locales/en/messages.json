@@ -38,7 +38,7 @@
         "message":" Show form in center."
     },
     "Replace_default_with_direct_download":{
-        "message":" Replace default with direct download."
+        "message":" Replace default with direct download.*"
     },
     "Replace_hint":{
         "message":"If checked, ThunderCross will add download directly other than let Firefox asking you again."

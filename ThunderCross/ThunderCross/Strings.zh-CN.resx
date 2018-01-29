@@ -124,7 +124,7 @@
     <value>取消</value>
   </data>
   <data name="Download_in_Firefox" xml:space="preserve">
-    <value>在浏览器中打开</value>
+    <value>使用浏览器下载</value>
   </data>
   <data name="Download_using_" xml:space="preserve">
     <value>使用下载器</value>

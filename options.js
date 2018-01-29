@@ -36,7 +36,6 @@ function restoreOptions() {
         document.getElementById("autoClose").checked = res.autoClose;
         document.getElementById("showCenter").checked=res.showCenter;
         document.getElementById("replaceAsk").checked=res.replaceAsk;
-        //document.getElementById("advRuleConfig").setAttribute("href",browser.extension.getURL("rules.html"));
 
         var promises = [];
         var msgFromNative;
