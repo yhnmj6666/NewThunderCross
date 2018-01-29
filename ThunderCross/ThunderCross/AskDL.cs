@@ -16,6 +16,10 @@ namespace ThunderCross
 			InitializeComponent();
 			if (CultureInfo.CurrentCulture.Equals(CultureInfo.GetCultureInfo("zh-cn")))
 				this.Font = new System.Drawing.Font("微软雅黑", 10);
+			if(r.ShowCenter)
+			{
+				this.StartPosition = FormStartPosition.CenterScreen;
+			}
 			label_fileurl.Text = label_fileurl.Text + new Uri(r.Url).Host;
 			textBox1_filename.Text = r.Filename;
 			label_filetypesize.Text = label_filetypesize.Text + string.Format("{0} ({1})",r.ContentType,ByteSize.Parse(r.ContentLength + "B").ToString());

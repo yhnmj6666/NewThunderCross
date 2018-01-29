@@ -9,7 +9,8 @@ function saveOptions(e) {
             Arguments: document.getElementById("exeArgs").value,
             Name: null
         }],
-        autoClose: document.getElementById("autoClose").checked
+        autoClose: document.getElementById("autoClose").checked,
+        showCenter: document.getElementById("showCenter").checked
     });
     e.preventDefault();
 }
@@ -32,6 +33,7 @@ function restoreOptions() {
         }
 
         document.getElementById("autoClose").checked = res.autoClose;
+        document.getElementById("showCenter").checked=res.showCenter;
 
         var promises = [];
         var msgFromNative;

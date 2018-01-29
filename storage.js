@@ -4,6 +4,7 @@ var fileExtDiscard = /\.(none)$/i;
 var defaultDM = "Thunder";
 var minAskSize = 1 * 1024 * 1024;
 var autoClose = true;
+var showCenter = false;
 var CustomizedDMs = [1];
 
 function getAllOptions() {
@@ -17,6 +18,7 @@ function getAllOptions() {
         else
             minAskSize = res.minAskSize * 1024 * 1024;
         autoClose = res.autoClose;
+        showCenter = res.showCenter;
         CustomizedDMs = res.CustomizedDMs;
     });
 }

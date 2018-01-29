@@ -1,7 +1,16 @@
-function handleButtonClick(clickEvent)
+function handleDelete(clickEvent)
 {
     console.log(this);
-    console.log(clickEvent);
+    var row=clickEvent.target.parentNode.parentNode;
+    console.log(row.cells[0].firstChild);
+    browser.runtime.sendMessage(JSON.stringify({
+        msg: "delete",
+        action: row.cells[0].firstChild.textContent,
+        extension: row.cells[1].firstChild.textContent,
+        mime: row.cells[2].firstChild.textContent,
+        host: row.cells[3].firstChild.textContent
+    }));
+    row.parentNode.removeChild(row);
 }
 
 function loadRuleSet()
@@ -11,56 +20,17 @@ function loadRuleSet()
         console.log(res);        
         if(res.actionRule != null)
         {
-            for(var r of res.actionRule.acc_ext)
-            {
+            res.actionRule.global.rules.forEach((value1, index, set) => {
                 var row=table.insertRow();
                 //acc or deny
                 var cell=row.insertCell();
-                cell.appendChild(document.createTextNode("Accept"));
+                cell.appendChild(document.createTextNode(value1.action));
                 //extension
                 cell=row.insertCell();
-                cell.appendChild(document.createTextNode(r));
+                cell.appendChild(document.createTextNode(value1.extension));
                 //mime
                 cell=row.insertCell();
-                cell.appendChild(document.createTextNode(""));
-                //host
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("*"));
-                //operation
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("No operation"));
-            }
-            for(var r of res.actionRule.acc_mime)
-            {
-                var row=table.insertRow();
-                //acc or deny
-                var cell=row.insertCell();
-                cell.appendChild(document.createTextNode("Accept"));
-                //extension
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(""));
-                //mime
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(r));
-                //host
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("*"));
-                //operation
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("No operation"));
-            }
-            for(var r of res.actionRule.deny_ext)
-            {
-                var row=table.insertRow();
-                //acc or deny
-                var cell=row.insertCell();
-                cell.appendChild(document.createTextNode("Deny"));
-                //extension
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(r));
-                //mime
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(""));
+                cell.appendChild(document.createTextNode(value1.mime));
                 //host
                 cell=row.insertCell();
                 cell.appendChild(document.createTextNode("*"));
@@ -68,112 +38,33 @@ function loadRuleSet()
                 cell=row.insertCell();
                 var but=document.createElement("button");
                 but.appendChild(document.createTextNode("Delete"));
-                but.addEventListener("click",handleButtonClick);
-                cell.appendChild(but);//document.createTextNode("No operation"));
-            }
-            for(var r of res.actionRule.deny_mime)
-            {
-                var row=table.insertRow();
-                //acc or deny
-                var cell=row.insertCell();
-                cell.appendChild(document.createTextNode("Deny"));
-                //extension
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(""));
-                //mime
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode(r));
-                //host
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("*"));
-                //operation
-                cell=row.insertCell();
-                cell.appendChild(document.createTextNode("No operation"));
-            }
-        }
-        var _properties=Object.keys(res);
-        for(var i=_properties.length-1;i>=0;i--)
-        {
-            var i_value=_properties[i];
-            if(i_value != "actionRule")
-            {
-                for(var r of res[i_value].acc_ext)
-                {
+                but.addEventListener("click",handleDelete);
+                cell.appendChild(but);
+            });
+            var _hosts=Object.keys(res.actionRule.hosts);
+            _hosts.forEach((value,key,map) => {
+                res.actionRule.hosts[value].rules.forEach((value1,index,set) => {
                     var row=table.insertRow();
                     //acc or deny
                     var cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("Accept"));
+                    cell.appendChild(document.createTextNode(value1.action));
                     //extension
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(r));
+                    cell.appendChild(document.createTextNode(value1.extension));
                     //mime
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(""));
+                    cell.appendChild(document.createTextNode(value1.mime));
                     //host
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(i_value));
+                    cell.appendChild(document.createTextNode(value));
                     //operation
                     cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("No operation"));
-                }
-                for(var r of res[i_value].acc_mime)
-                {
-                    var row=table.insertRow();
-                    //acc or deny
-                    var cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("Accept"));
-                    //extension
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(""));
-                    //mime
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(r));
-                    //host
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(i_value));
-                    //operation
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("No operation"));
-                }
-                for(var r of res[i_value].deny_ext)
-                {
-                    var row=table.insertRow();
-                    //acc or deny
-                    var cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("Deny"));
-                    //extension
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(r));
-                    //mime
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(""));
-                    //host
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(i_value));
-                    //operation
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("No operation"));
-                }
-                for(var r of res[i_value].deny_mime)
-                {
-                    var row=table.insertRow();
-                    //acc or deny
-                    var cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("Deny"));
-                    //extension
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(""));
-                    //mime
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(r));
-                    //host
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(i_value));
-                    //operation
-                    cell=row.insertCell();
-                    cell.appendChild(document.createTextNode("No operation"));
-                }
-            }
+                    var but=document.createElement("button");
+                    but.appendChild(document.createTextNode("Delete"));
+                    but.addEventListener("click",handleDelete);
+                    cell.appendChild(but);
+                });
+            });
         }
     });
 }

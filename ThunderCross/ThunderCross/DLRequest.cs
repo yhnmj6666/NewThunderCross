@@ -19,6 +19,8 @@ namespace ThunderCross
 		public string ContentLength { get; set; }
 		public string ContentType { get; set; }
 		public string Cookie { get; set; }
+
+		public bool ShowCenter { get; set; }
 		NamedPipeServerStream aPipeServer;
 		public DLReply Process()
 		{

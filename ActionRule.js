@@ -2,127 +2,171 @@ class ActionRule {
     constructor() {
     }
 
-    static add(host, extension, mime, action) {
-        if (host != null) {
-            if (this.hosts[host] == null)
-                this.hosts[host] = {
-                    acc_mime: new Set(),
-                    deny_mime: new Set(),
-                    acc_ext: new Set(),
-                    deny_ext: new Set()
-                };
-            if (action == true) {
-                if (extension != null)
-                    this.hosts[host].acc_ext.add(extension);
-                this.hosts[host].acc_mime.add(mime);
-            }
-            else {
-                if (extension != null)
-                    this.hosts[host].deny_ext.add(extension);
-                this.hosts[host].deny_mime.add(mime);
-            }
+    static _keyComparer(left, right)
+    {
+        var l=left.split(".");
+        var r=right.split(".");
+        while(l.length>0 && r.length>0)
+        {
+            var ls=l.pop();
+            var rs=r.pop();
+            if(ls<rs)
+                return -1;
+            else if(ls>rs)
+                return 1;
         }
-        else {
-            if (action == true) {
-                if (extension != null)
-                    this.hosts.acc_ext.add(extension);
-                this.hosts.acc_mime.add(mime);
-            }
-            else {
-                if (extension != null)
-                    this.hosts.deny_ext.add(extension);
-                this.hosts.deny_mime.add(mime);
-            }
+        if(l.length>0)
+            return 1;
+        else if (r.length>0)
+            return -1;
+        else
+            return 0;
+    }
+
+    static _hostMatch(source, target)
+    {
+        var shost=source.split(".");
+        var thost=target.split(".");
+        while(shost.length>0 && thost.length>0)
+        {
+            var s=shost.pop();
+            var t=thost.pop();
+            if(s==t || s=="*")
+                continue;
+            else
+                return false;
         }
-        var _save={
+        return true;
+    }
+
+    static save()
+    {
+        var _save = {
             actionRule: {
-                acc_mime: Array.from(this.hosts.acc_mime),
-                acc_ext: Array.from(this.hosts.acc_ext),
-                deny_mime: Array.from(this.hosts.deny_mime),
-                deny_ext: Array.from(this.hosts.deny_ext),
-                defaultAction: this.hosts.defaultAction
+                global: {
+                    rules: Array.from(this.global.rules),
+                    defaultAction: this.global.defaultAction
+                },
+                hosts: {}
             }
         };
-        var _properties=Object.keys(this.hosts);
-        for(var i=_properties.length-1;i>=0;i--)
-        {
-            var i_value=_properties[i];
-            if(! new Set(["acc_mime","acc_ext","deny_mime","deny_ext","defaultAction"]).has(i_value))
-            {
-                Object.defineProperty(_save,i_value,{
-                    configurable: true,
-                    enumerable: true,
-                    writable: true,
-                    value: {
-                        acc_mime: Array.from(this.hosts[i_value].acc_mime),
-                        acc_ext: Array.from(this.hosts[i_value].acc_ext),
-                        deny_mime: Array.from(this.hosts[i_value].deny_mime),
-                        deny_ext: Array.from(this.hosts[i_value].deny_ext)
-                    }
-                });
-            }
+        var _properties = Array.from(this.hosts.keys());
+        for (var i = _properties.length - 1; i >= 0; i--) {
+            var i_value = _properties[i];
+            Object.defineProperty(_save.actionRule.hosts, i_value, {
+                configurable: true,
+                enumerable: true,
+                writable: true,
+                value: {
+                    rules: Array.from(this.hosts.get(i_value).rules),
+                    defaultAction: this.hosts.get(i_value).defaultAction
+                }
+            });
         }
         browser.storage.local.set(_save);
     }
 
-    static delete(host, extension, mime, action)
-    {
-        ;
+    static add(host, extension, mime, action) {
+        if (host == null || host=="*") {
+            this.global.rules.add({
+                extension: extension,
+                mime: mime,
+                action: action
+            });
+        }
+        else {
+            if (this.hosts.has(host)) {
+                this.hosts.get(host).rules.add({
+                    extension: extension,
+                    mime: mime,
+                    action: action
+                });
+            }
+            else {
+                this.hosts.set(host,{
+                        rules: new Set(),
+                        defaultAction: "ask"
+                    });
+                this.hosts.get(host).rules.add({
+                    extension: extension,
+                    mime: mime,
+                    action: action
+                });
+            }
+        }
+        this.save();
+    }
+
+    static delete(host, extension, mime, action) {
+        if(host == null || host == "*")
+        {
+            this.global.rules.forEach((value1,value2,set)=>{
+                if(value1.extension==extension && value1.mime==mime && value1.action==action)
+                {
+                    set.delete(value1);
+                }
+            });
+        }
+        else if(this.hosts.has(host))
+        {
+            this.hosts.get(host).rules.forEach((value1,value2,set)=>{
+                if(value1.extension==extension && value1.mime==mime && value1.action==action)
+                {
+                    set.delete(value1);
+                }
+            });
+            if(this.hosts.get(host).defaultAction == this.global.defaultAction)
+            {
+                this.hosts.delete(host);
+            }
+        }
+        this.save();
     }
 
     static match(host, extension, mime) {
-        if (this.hosts[host] != null) {
-            if (this.hosts[host].deny_mime.has(mime))
-                return false;
-            else if (this.hosts[host].acc_mime.has(mime))
-                return true;
-            else if (this.hosts[host].deny_ext.has(extension))
-                return false;
-            else if (this.hosts[host].acc_ext.has(extension))
-                return true;
+        var hasMatch=this.global.defaultAction;
+        this.global.rules.forEach((value1, value2, set)=>{
+            if((value1.extension==null || value1.extension==extension) &&
+                (value1.mime==null || value1.mime==mime))
+            hasMatch=value1.action;
+        });
+        var _properties = Array.from(this.hosts.keys()).sort(ActionRule._keyComparer);
+        for(var i=0;i<_properties.length;i++)
+        {
+            var i_value=_properties[i];
+            if(this._hostMatch(i_value,host))
+            {
+                this.hosts.get(i_value).rules.forEach((value1, value2, set)=>{
+                    if((value1.extension==null || value1.extension==extension) &&
+                        (value1.mime==null || value1.mime==mime))
+                    hasMatch=value1.action;
+                });
+                break;
+            }
         }
-        if (this.hosts.deny_mime.has(mime))
-            return false;
-        else if (this.hosts.acc_mime.has(mime))
-            return true;
-        else if (this.hosts.deny_ext.has(extension))
-            return false;
-        else if (this.hosts.acc_ext.has(extension))
-            return true;
-        else
-            return this.hosts.defaultAction;
+        return hasMatch;
     }
 };
 
-ActionRule.hosts = {
-    acc_mime: new Set(),
-    deny_mime: new Set(),
-    acc_ext: new Set(),
-    deny_ext: new Set(),
-    defaultAction: null
+ActionRule.global = {
+    rules: new Set(),
+    defaultAction: "ask"
 };
+
+ActionRule.hosts = new Map();
 
 browser.storage.local.get().then((res) => {
-    if(res.actionRule != null)
-    {
-        ActionRule.hosts.acc_ext= new Set(res.actionRule.acc_ext);
-        ActionRule.hosts.acc_mime=new Set(res.actionRule.acc_mime);
-        ActionRule.hosts.deny_ext=new Set(res.actionRule.deny_ext);
-        ActionRule.hosts.deny_mime=new Set(res.actionRule.deny_mime);
-        ActionRule.hosts.defaultAction=res.actionRule.defaultAction;
+    console.log(res);
+    if (res.actionRule.global != null) {
+        ActionRule.global.rules = new Set(res.actionRule.global.rules),
+        ActionRule.global.defaultAction = res.actionRule.global.defaultAction
     }
-    var _properties=Object.keys(res);
-    for(var i=_properties.length-1;i>=0;i--)
-    {
-        var i_value=_properties[i];
-        if(i_value != "actionRule")
-        {
-            ActionRule.hosts[i_value]={
-                acc_mime: new Set(res[i_value].acc_mime),
-                deny_mime: new Set(res[i_value].deny_mime),
-                acc_ext: new Set(res[i_value].acc_ext),
-                deny_ext: new Set(res[i_value].deny_ext)
-            };
-        }
+    var _properties = Object.keys(res.actionRule.hosts);
+    for (var i = _properties.length - 1; i >= 0; i--) {
+        var i_value = _properties[i];
+        ActionRule.hosts.set(i_value,{
+            rules: new Set(res.actionRule.hosts[i_value].rules),
+            defaultAction: res.actionRule.hosts[i_value].defaultAction
+        });
     }
 });

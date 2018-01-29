@@ -18,7 +18,9 @@ var downloadCatcher = {
                 FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)[0],
                 ContentLength: 0,
                 ContentType: "",
-                Cookie: CookieStore[rhDetails.requestId].substr(0)
+                Cookie: CookieStore[rhDetails.requestId].substr(0),
+
+                ShowCenter: showCenter
             };
             if (d.isBaiduLink) {
                 dlInfo.Url = d.baiduDownloadLink;
@@ -40,13 +42,13 @@ var downloadCatcher = {
             switch (ActionRule.match(new URL(dlInfo.Url).hostname,
                 dlInfo.FileExtension,
                 dlInfo.ContentType)) {
-                case true:
+                case "accept":
                     dlInfo.Action = "External";
                     break;
-                case false:
+                case "deny":
                     dlInfo.Action = "Default";
                     break;
-                case null:
+                case "ask":
                     dlInfo.Action = null;
                     break;
                 default:

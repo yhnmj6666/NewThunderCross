@@ -34,6 +34,9 @@
     "Auto_close": {
         "message": " Auto close blank tab"
     },
+    "Show_In_Center":{
+        "message":" Show form in center."
+    },
     "Save": {
         "message": "Save"
     },

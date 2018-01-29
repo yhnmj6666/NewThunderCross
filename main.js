@@ -14,11 +14,24 @@ browser.webRequest.onBeforeRequest.addListener(
     ["blocking"]
 );
 browser.runtime.onMessage.addListener((message, sender) => {
-    if ((message == "Downloaded" && autoDownCloseTab) ||
-        (message == "Cancel" && autoCancelCloseTab))
-        browser.tabs.remove(sender.tab.id).then(() => { }, (reason) => { console.log(reason); });
+    var msg=JSON.parse(message);
+    console.log(message);
+    switch(msg.msg)
+    {
+        case "delete":
+        {
+            ActionRule.delete(msg.host,msg.extension,msg.mime,msg.action);
+            console.log(ActionRule.global);
+            console.log(ActionRule.hosts);
+        }
+        break;
+    }
 });
 browser.runtime.onInstalled.addListener((details) => {
     if (details.temporary == false)
         browser.tabs.create({ url: browser.extension.getURL("Readme.html") });
 });
+
+console.log(ActionRule.hosts);
+ActionRule.add("osu.com",".osz","application/download","accept");
+console.log(ActionRule.hosts);
