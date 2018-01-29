@@ -82,28 +82,49 @@ var downloadCatcher = {
                     }
                 }
             }));
-        }
-        if(rhDetails.statusCode!=302)
-        {
-            delete CookieStore[rhDetails.requestId];
-        }
-        //if external
-        //redirect to two different blank page and decide whether auto close or not.
-        //else
-        //let it go
-        return Promise.all(promises).then(function () {
-            if (msgFromNative == "External" || msgFromNative == "Cancel") {
-                var blockingResponse = {
-                    redirectUrl: rhDetails.type == "sub_frame" ? browser.extension.getURL("blank.html") : "http://downloadhandeled/"
+            if(rhDetails.statusCode!=302)
+            {
+                delete CookieStore[rhDetails.requestId];
+            }
+            //if external
+            //redirect to two different blank page and decide whether auto close or not.
+            //else
+            //let it go
+            return Promise.all(promises).then(function () {
+                if (msgFromNative == "External" || msgFromNative == "Cancel") {
+                    var blockingResponse = {
+                        redirectUrl: rhDetails.type == "sub_frame" ? browser.extension.getURL("blank.html") : "http://downloadhandeled/"
+                    }
+                    return blockingResponse;
                 }
-                return blockingResponse;
+                else if(msgFromNative == "Default" && replaceAsk)
+                {
+                    browser.downloads.download({
+                        url: dlInfo.Url,
+                        filename: dlInfo.Filename,
+                        method: rhDetails.method,
+                        saveAs: false,
+                    })
+                    var blockingResponse = {
+                        redirectUrl: rhDetails.type == "sub_frame" ? browser.extension.getURL("blank.html") : "http://downloadhandeled/"
+                    }
+                    return blockingResponse;
+                }
+                else {
+                    return {};
+                }
+            }, (reason) => {
+                console.log(reason);
+            });
+        }
+        else
+        {
+            if(rhDetails.statusCode!=302)
+            {
+                delete CookieStore[rhDetails.requestId];
             }
-            else {
-                return {};
-            }
-        }, (reason) => {
-            console.log(reason);
-        });
+            return ;
+        }
     },
 
     sendListener: function (sDetails) {

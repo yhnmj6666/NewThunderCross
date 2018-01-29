@@ -5,6 +5,7 @@ var defaultDM = "Thunder";
 var minAskSize = 1 * 1024 * 1024;
 var autoClose = true;
 var showCenter = false;
+var replaceAsk = false;
 var CustomizedDMs = [1];
 
 function getAllOptions() {
@@ -19,6 +20,7 @@ function getAllOptions() {
             minAskSize = res.minAskSize * 1024 * 1024;
         autoClose = res.autoClose;
         showCenter = res.showCenter;
+        replaceAsk = res.replaceAsk;
         CustomizedDMs = res.CustomizedDMs;
     });
 }

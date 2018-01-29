@@ -10,7 +10,8 @@ function saveOptions(e) {
             Name: null
         }],
         autoClose: document.getElementById("autoClose").checked,
-        showCenter: document.getElementById("showCenter").checked
+        showCenter: document.getElementById("showCenter").checked,
+        replaceAsk: document.getElementById("replaceAsk").checked
     });
     e.preventDefault();
 }
@@ -34,6 +35,7 @@ function restoreOptions() {
 
         document.getElementById("autoClose").checked = res.autoClose;
         document.getElementById("showCenter").checked=res.showCenter;
+        document.getElementById("replaceAsk").checked=res.replaceAsk;
 
         var promises = [];
         var msgFromNative;
@@ -51,6 +53,7 @@ function restoreOptions() {
         }));
 
         Promise.all(promises).then(function () {
+            document.getElementById("version").removeChild(document.getElementById("version").firstChild);
             document.getElementById("version").appendChild(document.createTextNode(msgFromNative));
         });
     });
