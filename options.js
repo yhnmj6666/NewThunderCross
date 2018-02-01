@@ -49,7 +49,6 @@ function restoreOptions() {
             msgFromNative = browser.i18n.getMessage("Native_Client_Version") + reply.AddtionInfo;
         }, (reason) => {
             msgFromNative = browser.i18n.getMessage("Native_Client_not_Installed_Properly");
-            console.log(reason);
         }));
 
         Promise.all(promises).then(function () {

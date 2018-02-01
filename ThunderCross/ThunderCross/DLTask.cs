@@ -18,7 +18,10 @@ namespace ThunderCross
 				IDownloadManager dm = (IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM" + Agent.ToString()), true);
 				dm.Url = Request.Url;
 				dm.FileName = Request.Filename;
+				dm.Refer = Request.Refer;
 				dm.Cookie = Request.Cookie;
+				dm.Method = Request.Method;
+				dm.PostData = Request.PostData;
 				if(Agent==DLAgent.Customized)
 				{
 					((DMCustomized)dm).ExecutablePath = Request.CustomizedDM[0].ExecutablePath;

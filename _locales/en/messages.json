@@ -29,7 +29,7 @@
         "message": "Arguments: "
     },
     "Arguments_tooltip": {
-        "message": "Use [URL] for url, [FILENAME] for filename, [COOKIE] for Cookie"
+        "message": "Use [URL] for url, [FILENAME] for filename, [COOKIE] for Cookie, [REFER] for referer and [POSTDATA] for date to post"
     },
     "Auto_close": {
         "message": " Auto close blank tab"

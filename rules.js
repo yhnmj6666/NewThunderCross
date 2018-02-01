@@ -1,8 +1,6 @@
 function handleDelete(clickEvent)
 {
-    console.log(this);
     var row=clickEvent.target.parentNode.parentNode;
-    console.log(row.cells[0].firstChild);
     browser.runtime.sendMessage(JSON.stringify({
         msg: "delete",
         action: row.cells[0].firstChild.textContent,
@@ -17,7 +15,6 @@ function loadRuleSet()
 {
     var table=document.getElementById("ruleset");
     browser.storage.local.get().then((res) => {
-        console.log(res);        
         if(res.actionRule != null)
         {
             res.actionRule.global.rules.forEach((value1, index, set) => {

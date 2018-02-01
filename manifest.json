@@ -19,6 +19,7 @@
             "storage.js",
             "getFileName.js",
             "BaiduyunDownload.js",
+            "StntsDownload.js",
             "Downloadable.js",
             "ActionRule.js",            
             "catch.js",

@@ -19,6 +19,9 @@ namespace ThunderCross
 		public string ContentLength { get; set; }
 		public string ContentType { get; set; }
 		public string Cookie { get; set; }
+		public string Refer { get; set; }
+		public HttpMethod Method { get; set; }
+		public PostInfo PostData { get; set; } 
 
 		public bool ShowCenter { get; set; }
 		NamedPipeServerStream aPipeServer;
@@ -51,6 +54,7 @@ namespace ThunderCross
 		public DLReply Ask()
 		{
 			Filename = System.Net.WebUtility.UrlDecode(Filename);
+			ContentType = ContentType.Split(';')[0];
 			AskDL askDL = new AskDL(this);
 			askDL.ShowDialog();
 			if(askDL.DialogResult==DialogResult.OK)
@@ -90,5 +94,11 @@ namespace ThunderCross
 				reply.SaveDownload(askDL.saveForSiteOnly);
 			return reply;
 		}
+	}
+
+	public enum HttpMethod
+	{
+		GET,
+		POST
 	}
 }

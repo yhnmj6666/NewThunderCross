@@ -14,6 +14,8 @@ namespace ThunderCross
 		public string FileName { get; set; }
 		public string Refer { get; set; }
 		public string Cookie { get; set; }
+		public HttpMethod Method { get; set; }
+		public PostInfo PostData { get; set; }
 
 		public void Fire()
 		{
@@ -21,7 +23,7 @@ namespace ThunderCross
 			try
 			{
 				cIDM = new CIDMLinkTransmitterClass();
-				cIDM.SendLinkToIDM(Url, Refer, Cookie, null, null, null, null, FileName, 0);
+				cIDM.SendLinkToIDM(Url, Refer, Cookie, PostData.ToString(), null, null, null, FileName, 0);
 			} catch (Exception e)
 			{
 				MessageBox.Show(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);

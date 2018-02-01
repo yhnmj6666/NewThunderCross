@@ -52,7 +52,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(163, 16);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "You have choosen to open:";
+			this.label1.Text = global::ThunderCross.Strings.You_have_choosen_to_open;
 			// 
 			// button_OK
 			// 
@@ -83,7 +83,7 @@
 			this.label_filetypesize.Name = "label_filetypesize";
 			this.label_filetypesize.Size = new System.Drawing.Size(65, 16);
 			this.label_filetypesize.TabIndex = 6;
-			this.label_filetypesize.Text = "Which is: ";
+			this.label_filetypesize.Text = global::ThunderCross.Strings.Which_is;
 			// 
 			// label_fileurl
 			// 
@@ -92,7 +92,7 @@
 			this.label_fileurl.Name = "label_fileurl";
 			this.label_fileurl.Size = new System.Drawing.Size(47, 16);
 			this.label_fileurl.TabIndex = 7;
-			this.label_fileurl.Text = "From: ";
+			this.label_fileurl.Text = global::ThunderCross.Strings.From;
 			// 
 			// groupBox1
 			// 
@@ -109,7 +109,7 @@
 			this.groupBox1.Size = new System.Drawing.Size(405, 179);
 			this.groupBox1.TabIndex = 8;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "What should ThunderCross do with this file?";
+			this.groupBox1.Text = global::ThunderCross.Strings.What_should_ThunderCross_do_with_this_file;
 			// 
 			// comboBox_dm
 			// 
@@ -232,5 +232,6 @@
 		private System.Windows.Forms.ComboBox comboBox_dm;
 		private System.Windows.Forms.TextBox textBox1_filename;
 		private System.Windows.Forms.CheckBox checkBox_saveForSite;
+		private System.Windows.Forms.Label label_notCapable;
 	}
 }

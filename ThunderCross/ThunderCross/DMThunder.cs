@@ -10,6 +10,8 @@ namespace ThunderCross
 		public string FileName { get; set; }
 		public string Refer { get; set; }
 		public string Cookie { get; set; }
+		public HttpMethod Method { get; set; }
+		public PostInfo PostData { get; set; }
 		public DMThunder()	{ }
 		public void Fire()
 		{
@@ -27,14 +29,18 @@ namespace ThunderCross
 			{
 				agent.AddTask3(bstrUrl: Url,
 					bstrFileName: FileName,
-					bstrCookie: Cookie);
+					bstrCookie: Cookie,
+					bstrReferUrl: Refer,
+					bstrComments: PostData.ToString());
 			}
 			catch (Exception)
 			{
 				try
 				{
 					agent.AddTask(bstrUrl: Url,
-				  bstrFileName: FileName);
+				  bstrFileName: FileName,
+				  bstrReferUrl: Refer,
+				  bstrComments: PostData.ToString());
 				}
 				catch (Exception e)
 				{

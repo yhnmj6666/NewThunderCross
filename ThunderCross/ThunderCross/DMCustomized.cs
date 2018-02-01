@@ -10,6 +10,8 @@ namespace ThunderCross
 		public string FileName { get; set; }
 		public string Refer { get; set; }
 		public string Cookie { get; set; }
+		public HttpMethod Method { get; set; }
+		public PostInfo PostData { get; set; }
 
 		public string Name { get; set; }
 		public string ExecutablePath { get; set; }
@@ -27,8 +29,9 @@ namespace ThunderCross
 		{
 			return Arguments.Replace("[URL]", Url)
 				.Replace("[FILENAME]", FileName)
-			//	.Replace("[REFER]", Refer)
+				.Replace("[REFER]", Refer)
 				.Replace("[COOKIE]", Cookie)
+				.Replace("[POSTDATA]", PostData.ToString())
 				;
 		}
 

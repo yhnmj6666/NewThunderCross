@@ -170,6 +170,7 @@
     <Compile Include="DMThunder.cs" />
     <Compile Include="IconHelper.cs" />
     <Compile Include="IDownloadManager.cs" />
+    <Compile Include="PostInfo.cs" />
     <Compile Include="ProcessUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

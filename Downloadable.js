@@ -14,6 +14,7 @@ class Downloadable {
         var isFileTooSmall = false;
         var is200Code = false;
         var bdyDown = new BaiduyunDownload();
+        var isStDown=StntsDownload.judge(rhDetails);
 
         if (bdyDown.judge(rhDetails)) {
             this.isBaiduLink = true;
@@ -76,32 +77,7 @@ class Downloadable {
             }
         }
 
-        // //Debug
-        // var ctIndex = rhDetails.responseHeaders.findIndex((element) => {
-        //     return element.name.toLowerCase() == "content-type";
-        // });
-
-        // var cdIndex = rhDetails.responseHeaders.findIndex((element) => {
-        //     return element.name.toLowerCase() == "content-disposition";
-        // });
-
-        // var clIndex = rhDetails.responseHeaders.findIndex((element) => {
-        //     return element.name.toLowerCase() == "content-length";
-        // });
-
-        // //if (cdIndex !== -1 && rhDetails.responseHeaders[cdIndex].value.startsWith("attachment")) 
-        // {
-        //     console.log("url: " + rhDetails.url + "\nstatus code=" + rhDetails.statusLine +
-        //         "\nMethod: " + rhDetails.method +
-        //         "\nResource Type: " + rhDetails.type +
-        //         "\nfilename: " + filename +
-        //         ((ctIndex === -1) ? "" : ("\nContent-Type: " + rhDetails.responseHeaders[ctIndex].value)) +
-        //         "\nContent-Disposition: " +
-        //         ((cdIndex === -1) ? "none" : (rhDetails.responseHeaders[cdIndex].value)));
-        // }
-        // //Debug
-
-        return is200Code && !isUnwantedFileType && (isWantedFileType || (!isFileTooSmall &&
-            (isTypeApplication || isAttachment)));
+        return is200Code && (!isUnwantedFileType && (isWantedFileType || (!isFileTooSmall &&
+            (isTypeApplication || isAttachment))) || isStDown);
     }
 };

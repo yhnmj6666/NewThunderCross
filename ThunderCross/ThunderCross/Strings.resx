@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Call_Thunder_Error_Agent" xml:space="preserve">
-    <value>Call Thunder Error!\nPlease verify ThunderAgent.dll is registed correctly!</value>
+    <value>Call Thunder Error!
+Please verify ThunderAgent.dll is registed correctly!</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -174,5 +175,12 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>Failed</value>
+  </data>
+  <data name="Thunder_is_not_capable_with_POST_method" xml:space="preserve">
+    <value>Thunder is not capable with POST method, and you may failed to download this file.
+Continue anyway?</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
 </root>

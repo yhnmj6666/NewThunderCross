@@ -29,7 +29,7 @@
         "message": "参数: "
     },
     "Arguments_tooltip": {
-        "message": "请使用 [URL] 代替下载链接，用 [FILENAME] 代替下载文件的名字，用 [Cookie] 代替链接的Cookie"
+        "message": "请使用 [URL] 代替下载链接，用 [FILENAME] 代替下载文件的名字，用 [Cookie] 代替链接的Cookie，用 [REFER] 代替Referer，用 [POSTDATA] 代替POST的数据"
     },
     "Auto_close": {
         "message": " 自动关闭空白标签页"

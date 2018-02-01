@@ -11,7 +11,17 @@ browser.webRequest.onSendHeaders.addListener(
 browser.webRequest.onBeforeRequest.addListener(
     downloadCatcher.requestListener,
     downloadCatcher.fliter,
+    ["requestBody"]
+);
+browser.webRequest.onBeforeRequest.addListener(
+    downloadCatcher.downloadedLinkCanceler,
+    downloadCatcher.fliter,
     ["blocking"]
+);
+browser.webRequest.onCompleted.addListener(
+    downloadCatcher.completeListener,
+    downloadCatcher.fliter,
+    []
 );
 browser.runtime.onMessage.addListener((message, sender) => {
     var msg=JSON.parse(message);
@@ -20,8 +30,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
         case "delete":
         {
             ActionRule.delete(msg.host,msg.extension,msg.mime,msg.action);
-            console.log(ActionRule.global);
-            console.log(ActionRule.hosts);
         }
         break;
     }

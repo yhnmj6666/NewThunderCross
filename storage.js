@@ -9,7 +9,6 @@ var replaceAsk = false;
 var CustomizedDMs = [1];
 
 function getAllOptions() {
-    console.log("loaded");
     browser.storage.sync.get().then((res) => {
         fileExtCatch = new RegExp("\\.(" + (res.wantedExtension || "none") + ")$", "i");
         fileExtDiscard = new RegExp("\\.(" + (res.unwantedExtension || "swf") + ")$", "i");

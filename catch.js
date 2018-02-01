@@ -1,4 +1,6 @@
 var CookieStore = {};
+var ReferStore={};
+var PostDataStore = {};
 
 var downloadCatcher = {
     receivedListener: function (rhDetails) {
@@ -18,7 +20,10 @@ var downloadCatcher = {
                 FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)[0],
                 ContentLength: 0,
                 ContentType: "",
-                Cookie: CookieStore[rhDetails.requestId].substr(0),
+                Cookie: CookieStore[rhDetails.requestId] ? CookieStore[rhDetails.requestId].substr(0) : null,
+                Refer: ReferStore[rhDetails.requestId] ? ReferStore[rhDetails.requestId].substr(0) : null,
+                Method: rhDetails.method,
+                PostData: {},
 
                 ShowCenter: showCenter
             };
@@ -35,9 +40,13 @@ var downloadCatcher = {
                         break;
                     case "set-cookie":
                         dlInfo.Cookie += rhDetails.responseHeaders[i].value;
+                        break;
                     default:
-                        ;
+                        break;
                 }
+            }
+            if (dlInfo.Method == "POST") {
+                dlInfo.PostData = PostDataStore[rhDetails.requestId];
             }
             switch (ActionRule.match(new URL(dlInfo.Url).hostname,
                 dlInfo.FileExtension,
@@ -54,12 +63,12 @@ var downloadCatcher = {
                 default:
                     break;
             }
-            console.log(dlInfo);
+            //console.log(dlInfo);
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                console.log(reply);
-                browser.tabs.query({ active: true }).then((tabs) => {
+                //console.log(reply);
+                browser.tabs.query({ active: true }).then((tabs) => { //should change to details.tabId
                     if (autoClose && tabs[0].url == "about:blank")
                         browser.tabs.remove(tabs[0].id);
                 });
@@ -82,10 +91,6 @@ var downloadCatcher = {
                     }
                 }
             }));
-            if(rhDetails.statusCode!=302)
-            {
-                delete CookieStore[rhDetails.requestId];
-            }
             //if external
             //redirect to two different blank page and decide whether auto close or not.
             //else
@@ -97,8 +102,7 @@ var downloadCatcher = {
                     }
                     return blockingResponse;
                 }
-                else if(msgFromNative == "Default" && replaceAsk)
-                {
+                else if (msgFromNative == "Default" && replaceAsk) {
                     browser.downloads.download({
                         url: dlInfo.Url,
                         filename: dlInfo.Filename,
@@ -114,29 +118,81 @@ var downloadCatcher = {
                     return {};
                 }
             }, (reason) => {
-                console.log(reason);
+                //console.log(reason);
             });
         }
-        else
-        {
-            if(rhDetails.statusCode!=302)
-            {
-                delete CookieStore[rhDetails.requestId];
-            }
-            return ;
+        else {
+            return;
         }
     },
 
     sendListener: function (sDetails) {
         for (var header of sDetails.requestHeaders) {
             if (header.name.toLowerCase() == "cookie") {
-                CookieStore[sDetails.requestId] = header.value;                
+                CookieStore[sDetails.requestId] = header.value;
+            }
+            else if (header.name.toLowerCase() == "referer") {
+                ReferStore[sDetails.requestId] = header.value;
+            }
+            if (sDetails.method == "POST") {
+                if(header.name.toLowerCase()=="content-type")
+                    Object.defineProperty(PostDataStore[sDetails.requestId], "ContentType", {
+                        configurable: true,
+                        enumerable: true,
+                        writable: true,
+                        value: header.value
+                    });
+                else if(header.name.toLowerCase() == "content-length")
+                    Object.defineProperty(PostDataStore[sDetails.requestId], "ContentLength", {
+                        configurable: true,
+                        enumerable: true,
+                        writable: true,
+                        value: header.value
+                    });
             }
         }
     },
 
     requestListener: function (reqDetails) {
-        if (reqDetails.url == "http://downloadhandeled/")
+        if (/.*:\/\/pan\.baidu\.com/.test(reqDetails.url)) {
+            if (reqDetails.tabId != -1)
+                browser.tabs.executeScript(reqDetails.tabId, {
+                    file: browser.extension.getURL("bdyHelper.js"),
+                    runAt: "document_start"
+                });
+            return {};
+        }
+        if (reqDetails.method == "POST" && reqDetails.requestBody) {
+            PostDataStore[reqDetails.requestId] = {};
+            PostDataStore[reqDetails.requestId].Data = {};
+            var _entry = Object.keys(reqDetails.requestBody.formData);
+            for (var i = 0; i < _entry.length; i++) {
+                Object.defineProperty(PostDataStore[reqDetails.requestId].Data, _entry[i], {
+                    configurable: true,
+                    enumerable: true,
+                    writable: true,
+                    value: reqDetails.requestBody.formData[_entry[i]][0]
+                });
+            }
+        }
+        return {};
+    },
+
+    completeListener: function (details) {
+        try {
+            delete CookieStore[details.requestId];
+        } catch (error) { }
+        try {
+            delete ReferStore[details.requestId];
+        } catch (error) { }
+        try {
+            if (details.method == "POST")
+                delete PostDataStore[details.requestId];
+        } catch (error) { }
+    },
+
+    downloadedLinkCanceler: function (details) {
+        if (details.url == "http://downloadhandeled/")
             return { cancel: true };
         else
             return {};

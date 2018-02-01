@@ -11,9 +11,12 @@ namespace ThunderCross
 		public DLAgent RetAgent;
 		public bool saveDownloadType = false;
 		public bool saveForSiteOnly = false;
+
+		HttpMethod method;
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
+			method = r.Method;
 			if (CultureInfo.CurrentCulture.Equals(CultureInfo.GetCultureInfo("zh-cn")))
 				this.Font = new System.Drawing.Font("微软雅黑", 10);
 			if(r.ShowCenter)
@@ -57,7 +60,13 @@ namespace ThunderCross
 				if (comboBox_dm.SelectedItem.ToString().EndsWith("(" + DLAgent.Customized.ToString() + ")"))
 					RetAgent = DLAgent.Customized;
 				else
-					RetAgent = (DLAgent)comboBox_dm.SelectedItem;
+				{
+					if (method == HttpMethod.POST && comboBox_dm.SelectedItem.ToString() == "Thunder" &&
+						MessageBox.Show(this, Strings.Thunder_is_not_capable_with_POST_method, Strings.Warning, MessageBoxButtons.YesNo) != DialogResult.Yes)
+						return;
+					else
+						RetAgent = (DLAgent)comboBox_dm.SelectedItem;
+				}
 			}
 			else if (radioButton_default.Checked)
 				RetAgent = DLAgent.Default;

@@ -30,7 +30,7 @@
         "message": "參數: "
     },
     "Arguments_tooltip": {
-        "message": "請使用 [URL] 代替下載連結，用 [FILENAME] 代替下載檔案的名稱，用 [Cookie]代替下載連結的Cookie"
+        "message": "請使用 [URL] 代替下載連結，用 [FILENAME] 代替下載檔案的名稱，用 [Cookie]代替下載連結的Cookie，用 [REFER] 代替Referer，用 [POSTDATA] 代替POST的数据"
     },
     "Auto_close": {
         "message": " 自動關閉空白分頁"

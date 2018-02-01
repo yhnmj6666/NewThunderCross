@@ -58,7 +58,8 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call Thunder Error!\nPlease verify ThunderAgent.dll is registed correctly!.
+        ///   Looks up a localized string similar to Call Thunder Error!
+        ///Please verify ThunderAgent.dll is registed correctly!.
         /// </summary>
         public static string Call_Thunder_Error_Agent {
             get {
@@ -184,6 +185,16 @@ namespace ThunderCross {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thunder is not capable with POST method, and you may failed to download this file.
+        ///Continue anyway?.
+        /// </summary>
+        public static string Thunder_is_not_capable_with_POST_method {
+            get {
+                return ResourceManager.GetString("Thunder_is_not_capable_with_POST_method", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uninstall?.
         /// </summary>
         public static string Uninstall {
@@ -198,6 +209,15 @@ namespace ThunderCross {
         public static string Uninstall_success {
             get {
                 return ResourceManager.GetString("Uninstall_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
         

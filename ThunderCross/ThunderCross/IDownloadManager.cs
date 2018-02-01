@@ -12,6 +12,8 @@ namespace ThunderCross
 		string FileName { get; set; }
 		string Refer { get; set; }
 		string Cookie { get; set; }
+		HttpMethod Method { get; set; }
+		PostInfo PostData { get; set; }
 		void Fire();
 		bool Valid();
 	}

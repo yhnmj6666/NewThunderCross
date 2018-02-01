@@ -171,4 +171,11 @@
   <data name="Ready" xml:space="preserve">
     <value>就绪</value>
   </data>
+  <data name="Thunder_is_not_capable_with_POST_method" xml:space="preserve">
+    <value>迅雷不兼容POST方式的下载，这个文件很可能会下载失败。
+无论如何也要使用迅雷吗？</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
 </root>
