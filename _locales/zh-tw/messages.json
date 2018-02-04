@@ -36,18 +36,25 @@
         "message": " 自動關閉空白分頁"
     },    
     "Show_In_Center": {
-        "message": " 居中显示"
+        "message": " 置中顯示"
     },
     "Replace_default_with_direct_download": {
-        "message": " 直接开始下载(火狐浏览器)*"
+        "message": " 直接開始下載(火狐瀏覽器)*"
     },
     "Replace_hint": {
-        "message": "如果选中的话，再次使用在火狐浏览器中打开会直接开始下载"
+        "message": "若勾選的話，再次使用在火狐瀏覽器中開啟會直接開始下載"
     },
     "Save": {
         "message": "儲存"
     },
     "Check_DM": {
         "message": "檢查內建支援下載工具的工作情況"
+   },
+    //option.js
+    "Native_Client_Version": {
+        "message": "用戶端版本號: "
+    },
+    "Native_Client_not_Installed_Properly": {
+        "message": "用戶端沒有正確安裝。"
     }
 }
