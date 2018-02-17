@@ -49,6 +49,9 @@
     "Check_DM": {
         "message": "检查内置支持下载器工作情况"
     },
+    "Restore_Default_Settings": {
+        "message": "恢复默认设置"
+    },
     //option.js
     "Native_Client_Version": {
         "message": "客户端版本号: "

@@ -11,7 +11,7 @@ namespace ThunderCross
 
 		public override string ToString()
 		{
-			return string.Join("&", Data.Select(item => string.Format("{0}={1}", item.Key, System.Net.WebUtility.UrlEncode(item.Value))));
+			return Data==null?string.Empty:string.Join("&", Data.Select(item => string.Format("{0}={1}", item.Key, System.Net.WebUtility.UrlEncode(item.Value))));
 		}
 	}
 }

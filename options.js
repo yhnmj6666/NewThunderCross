@@ -101,9 +101,40 @@ function selectDM() {
     return promises;
 }
 
+function resetSetting()
+{
+    browser.storage.sync.set({
+        wantedExtension: "none",
+        unwantedExtensio: "swf|f4v",
+        minAskSize: 1,
+        defaultDM: "Thunder",
+        CustomizedDMs: [{
+            ExecutablePath: null,
+            Arguments: null,
+            Name: null
+        }],
+        autoClose: true,
+        showCenter: false,
+        replaceAsk: false
+    });
+
+    browser.storage.local.set({
+        actionRule: {
+            global: {
+                rules: [],
+                defaultAction: "ask"
+            },
+            hosts: {}
+        }
+    });
+
+    window.location.reload();
+}
+
 document.getElementById("button_check").addEventListener("click", checkDM);
 document.getElementById("dm").addEventListener("change", dmChange);
 document.getElementById("exeFile").addEventListener("dblclick", selectDM);
+document.getElementById("button_restoreDefault").addEventListener("click",resetSetting);
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.addEventListener('DOMContentLoaded', restoreOptions);
 

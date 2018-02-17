@@ -69,7 +69,7 @@ var downloadCatcher = {
             ).then((reply) => {
                 //console.log(reply);
                 browser.tabs.query({ active: true }).then((tabs) => { //should change to details.tabId
-                    if (autoClose && tabs[0].url == "about:blank")
+                    if (autoClose && tabs[0].url == "about:blank") //bug: close tab until the page is fully loaded, ie. not close PDF links. http://www.webmediassp.com/arriving-in-fiji/ for test
                         browser.tabs.remove(tabs[0].id);
                 });
                 msgFromNative = reply.Choice;

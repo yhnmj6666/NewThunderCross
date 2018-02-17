@@ -49,7 +49,10 @@
     },
     "Check_DM": {
         "message": "檢查內建支援下載工具的工作情況"
-   },
+    },
+    "Restore_Default_Settings": {
+        "message": "恢復默認設置"
+    },
     //option.js
     "Native_Client_Version": {
         "message": "用戶端版本號: "

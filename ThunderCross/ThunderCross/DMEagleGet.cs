@@ -30,7 +30,7 @@ namespace ThunderCross
 		{
 			Process eg = new Process();
 			eg.StartInfo.FileName = ExecutablePath;
-			eg.StartInfo.Arguments = string.Format(@"\S\U{0}&EGet_fname={1}U\ \C{2}C\ \R{3}R\", Url, FileName, Cookie, Refer);
+			eg.StartInfo.Arguments = string.Format(@"\S\U{0}&EGet_fname={1}U\ \C{2}C\ \R{3}R\", Url, System.Net.WebUtility.UrlEncode(FileName), Cookie, Refer);
 			if (Method == HttpMethod.POST)
 				eg.StartInfo.Arguments += string.Format(@" \P{0}P\", PostData.ToString());
 			eg.Start();

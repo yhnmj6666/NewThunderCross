@@ -49,6 +49,9 @@
     "Check_DM": {
         "message": "Check Downloaders"
     },
+    "Restore_Default_Settings": {
+        "message": "Restore Default Settings"
+    },
     //option.js
     "Native_Client_Version":{
         "message":"Native Client Version: "

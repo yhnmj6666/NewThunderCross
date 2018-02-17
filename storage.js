@@ -11,7 +11,7 @@ var CustomizedDMs = [1];
 function getAllOptions() {
     browser.storage.sync.get().then((res) => {
         fileExtCatch = new RegExp("\\.(" + (res.wantedExtension || "none") + ")$", "i");
-        fileExtDiscard = new RegExp("\\.(" + (res.unwantedExtension || "swf") + ")$", "i");
+        fileExtDiscard = new RegExp("\\.(" + (res.unwantedExtension || "swf|f4v") + ")$", "i");
         defaultDM = res.defaultDM || "Thunder";
         if (typeof res.minAskSize === 'undefined' || res.minAskSize === null)
             minAskSize = 1 * 1024 * 1024;
