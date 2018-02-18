@@ -1,5 +1,5 @@
 var CookieStore = {};
-var ReferStore={};
+var ReferStore = {};
 var PostDataStore = {};
 
 var downloadCatcher = {
@@ -68,9 +68,12 @@ var downloadCatcher = {
                 dlInfo
             ).then((reply) => {
                 //console.log(reply);
-                browser.tabs.query({ active: true }).then((tabs) => { //should change to details.tabId
+                browser.tabs.query({ active: true }).then((tabs) => { //can change to details.tabId?
+                    if (tabs[0].id != details.tabId)
+                        console.warn("Different TabID: " + tabs[0].id + "/" + details.tabId);
                     if (autoClose && tabs[0].url == "about:blank") //bug: close tab until the page is fully loaded, ie. not close PDF links. http://www.webmediassp.com/arriving-in-fiji/ for test
-                        browser.tabs.remove(tabs[0].id);
+                        if (dlInfo.FileExtension != ".pdf")
+                            browser.tabs.remove(tabs[0].id);
                 });
                 msgFromNative = reply.Choice;
                 if (reply.Save === true) {
@@ -135,14 +138,14 @@ var downloadCatcher = {
                 ReferStore[sDetails.requestId] = header.value;
             }
             if (sDetails.method == "POST") {
-                if(header.name.toLowerCase()=="content-type")
+                if (header.name.toLowerCase() == "content-type")
                     Object.defineProperty(PostDataStore[sDetails.requestId], "ContentType", {
                         configurable: true,
                         enumerable: true,
                         writable: true,
                         value: header.value
                     });
-                else if(header.name.toLowerCase() == "content-length")
+                else if (header.name.toLowerCase() == "content-length")
                     Object.defineProperty(PostDataStore[sDetails.requestId], "ContentLength", {
                         configurable: true,
                         enumerable: true,

@@ -156,7 +156,6 @@ ActionRule.global = {
 ActionRule.hosts = new Map();
 
 browser.storage.local.get().then((res) => {
-    console.log(res);
     if (res.actionRule.global != null) {
         ActionRule.global.rules = new Set(res.actionRule.global.rules),
         ActionRule.global.defaultAction = res.actionRule.global.defaultAction

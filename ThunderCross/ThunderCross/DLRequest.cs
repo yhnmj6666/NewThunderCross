@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using System.Windows.Forms;
 using System.IO.Pipes;
 using System.IO;
+using System.Text;
+using System.Collections.Generic;
 
 namespace ThunderCross
 {
@@ -25,6 +27,23 @@ namespace ThunderCross
 
 		public bool ShowCenter { get; set; }
 		NamedPipeServerStream aPipeServer;
+
+		private void TryPatchBaiduFileName()
+		{
+			byte[] b = Encoding.Unicode.GetBytes(Filename);
+			List<byte> _b = new List<byte>();
+			try
+			{
+				for (int i = 0; i < b.Length; i += 2)
+				{
+					if (b[i + 1] != 0x00)
+						return;
+					else
+						_b.Add(b[i]);
+				}
+			} catch (OverflowException) { return; }
+			Filename = Encoding.UTF8.GetString(_b.ToArray());
+		}
 		public DLReply Process()
 		{
 			switch (RequestType)
@@ -54,6 +73,7 @@ namespace ThunderCross
 		public DLReply Ask()
 		{
 			Filename = System.Net.WebUtility.UrlDecode(Filename);
+			TryPatchBaiduFileName();
 			ContentType = ContentType.Split(';')[0];
 			AskDL askDL = new AskDL(this);
 			askDL.ShowDialog();
