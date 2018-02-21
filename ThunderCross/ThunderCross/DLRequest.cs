@@ -44,6 +44,24 @@ namespace ThunderCross
 			} catch (OverflowException) { return; }
 			Filename = Encoding.UTF8.GetString(_b.ToArray());
 		}
+		private void ChainStart(DLAgent agent)
+		{
+			string pipeName = Guid.NewGuid().ToString().Replace("-", string.Empty);
+
+			PipeSecurity ps = new PipeSecurity();
+			ps.AddAccessRule(new PipeAccessRule("Users", PipeAccessRights.FullControl, System.Security.AccessControl.AccessControlType.Allow));
+			aPipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 10,
+					PipeTransmissionMode.Message, PipeOptions.WriteThrough, 1024, 1024, ps);
+			string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "breaked" + ' ' + pipeName;
+			ProcessUtility.CreateProcessBreakFromJob(command);
+			DLTask task = new DLTask { Request = this, Agent = agent };
+			string sTask = JsonConvert.SerializeObject(task);
+			aPipeServer.WaitForConnection();
+			BinaryWriter bw = new BinaryWriter(aPipeServer);
+			bw.Write(sTask);
+			if (aPipeServer != null)
+				aPipeServer.WaitForPipeDrain();
+		}
 		public DLReply Process()
 		{
 			switch (RequestType)
@@ -57,7 +75,10 @@ namespace ThunderCross
 				case "Download":
 					{
 						if (Action == "External")
+						{
+							ChainStart((DLAgent)Enum.Parse(typeof(DLAgent), DefaultDM));
 							return new DLReply((DLAgent)Enum.Parse(typeof(DLAgent), DefaultDM));
+						}
 						else if (Action == "Default")
 							return new DLReply(DLAgent.Default);
 						else
@@ -88,27 +109,13 @@ namespace ThunderCross
 					case DLAgent.Idm:
 					case DLAgent.Customized:
 						{
-							string pipeName = Guid.NewGuid().ToString().Replace("-", string.Empty);
-
-							PipeSecurity ps = new PipeSecurity();
-							ps.AddAccessRule(new PipeAccessRule("Users", PipeAccessRights.FullControl, System.Security.AccessControl.AccessControlType.Allow));
-							aPipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 10,
-									PipeTransmissionMode.Message, PipeOptions.WriteThrough, 1024, 1024, ps);
-							string command = "\"" + Application.ExecutablePath + "\"" + ' ' + "breaked" + ' ' + pipeName;
-							ProcessUtility.CreateProcessBreakFromJob(command);
-							DLTask task = new DLTask { Request = this, Agent = askDL.RetAgent };
-							string sTask = JsonConvert.SerializeObject(task);
-							aPipeServer.WaitForConnection();
-							BinaryWriter bw = new BinaryWriter(aPipeServer);
-							bw.Write(sTask);
+							ChainStart(askDL.RetAgent);
 						}
 						break;
 					default:
 						break;
 				}
 			}
-			if (aPipeServer != null)
-				aPipeServer.WaitForPipeDrain();
 			DLReply reply= new DLReply(askDL.RetAgent);
 			if (askDL.saveDownloadType)
 				reply.SaveDownload(askDL.saveForSiteOnly);

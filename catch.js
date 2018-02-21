@@ -69,8 +69,8 @@ var downloadCatcher = {
             ).then((reply) => {
                 //console.log(reply);
                 browser.tabs.query({ active: true }).then((tabs) => { //can change to details.tabId?
-                    if (tabs[0].id != details.tabId)
-                        console.warn("Different TabID: " + tabs[0].id + "/" + details.tabId);
+                    // if (tabs[0].id != rhDetails.tabId)
+                    //     console.warn("Different TabID: " + tabs[0].id + "/" + rhDetails.tabId);
                     if (autoClose && tabs[0].url == "about:blank") //bug: close tab until the page is fully loaded, ie. not close PDF links. http://www.webmediassp.com/arriving-in-fiji/ for test
                         if (dlInfo.FileExtension != ".pdf")
                             browser.tabs.remove(tabs[0].id);
@@ -137,7 +137,7 @@ var downloadCatcher = {
             else if (header.name.toLowerCase() == "referer") {
                 ReferStore[sDetails.requestId] = header.value;
             }
-            if (sDetails.method == "POST") {
+            if (sDetails.method == "POST" && PostDataStore[sDetails.requestId] != null) {
                 if (header.name.toLowerCase() == "content-type")
                     Object.defineProperty(PostDataStore[sDetails.requestId], "ContentType", {
                         configurable: true,
@@ -165,7 +165,7 @@ var downloadCatcher = {
                 });
             return {};
         }
-        if (reqDetails.method == "POST" && reqDetails.requestBody) {
+        if (reqDetails.method == "POST" && reqDetails.requestBody != null) {
             PostDataStore[reqDetails.requestId] = {};
             PostDataStore[reqDetails.requestId].Data = {};
             var _entry = Object.keys(reqDetails.requestBody.formData);
