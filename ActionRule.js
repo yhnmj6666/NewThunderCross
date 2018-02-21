@@ -64,6 +64,7 @@ class ActionRule {
             });
         }
         browser.storage.local.set(_save);
+        console.log(_save);
     }
 
     static add(host, extension, mime, action) {
@@ -119,6 +120,20 @@ class ActionRule {
             {
                 this.hosts.delete(host);
             }
+        }
+        this.save();
+    }
+
+    // static modify(host, extension, mime, action)
+    // {
+    //     unimplemented;
+    // }
+
+    static modify(host, defaultAction)
+    {
+        if(host==null || host=="*")
+        {
+            this.global.defaultAction=defaultAction;
         }
         this.save();
     }

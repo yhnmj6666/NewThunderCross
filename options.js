@@ -103,30 +103,9 @@ function selectDM() {
 
 function resetSetting()
 {
-    browser.storage.sync.set({
-        wantedExtension: "none",
-        unwantedExtensio: "swf|f4v",
-        minAskSize: 1,
-        defaultDM: "Thunder",
-        CustomizedDMs: [{
-            ExecutablePath: null,
-            Arguments: null,
-            Name: null
-        }],
-        autoClose: true,
-        showCenter: false,
-        replaceAsk: false
-    });
-
-    browser.storage.local.set({
-        actionRule: {
-            global: {
-                rules: [],
-                defaultAction: "ask"
-            },
-            hosts: {}
-        }
-    });
+    browser.runtime.sendMessage(JSON.stringify({
+        msg: "reset"
+    }));
 
     window.location.reload();
 }

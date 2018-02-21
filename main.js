@@ -29,7 +29,18 @@ browser.runtime.onMessage.addListener((message, sender) => {
     {
         case "delete":
         {
-            ActionRule.delete(msg.host,msg.extension,msg.mime,msg.action);
+            ActionRule.delete(msg.host, msg.extension, msg.mime, msg.action);
+        }
+        break;
+        case "edit":
+        {
+            if(msg.action == null)
+                ActionRule.modify(msg.host, msg.defaultAction);
+        }
+        break;
+        case "reset":
+        {
+            resetExtension();
         }
         break;
     }
@@ -37,4 +48,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
 browser.runtime.onInstalled.addListener((details) => {
     if (details.temporary == false && (details.reason=="update" || details.reason=="install"))
         browser.tabs.create({ url: browser.extension.getURL("Readme.html") });
+    if (details.reason=="install")
+        resetExtension();
 });

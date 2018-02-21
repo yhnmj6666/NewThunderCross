@@ -8,6 +8,34 @@ var showCenter = false;
 var replaceAsk = false;
 var CustomizedDMs = [1];
 
+function resetExtension()
+{
+    browser.storage.sync.set({
+        wantedExtension: "none",
+        unwantedExtensio: "swf|f4v",
+        minAskSize: 1,
+        defaultDM: "Thunder",
+        CustomizedDMs: [{
+            ExecutablePath: null,
+            Arguments: null,
+            Name: null
+        }],
+        autoClose: true,
+        showCenter: false,
+        replaceAsk: false
+    });
+
+    browser.storage.local.set({
+        actionRule: {
+            global: {
+                rules: [],
+                defaultAction: "ask"
+            },
+            hosts: {}
+        }
+    });
+}
+
 function getAllOptions() {
     browser.storage.sync.get().then((res) => {
         fileExtCatch = new RegExp("\\.(" + (res.wantedExtension || "none") + ")$", "i");
@@ -23,6 +51,7 @@ function getAllOptions() {
         CustomizedDMs = res.CustomizedDMs;
     });
 }
+
 browser.storage.onChanged.addListener((changes, areaName) => {
     if (areaName == "sync")
         getAllOptions();
