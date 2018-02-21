@@ -4,6 +4,9 @@
         "message": "新一代迅雷召唤器"
     },
     //options.html
+    "Checking_Version": {
+        "message": "检查客户端版本..."
+    },
     "Wanted_Extension": {
         "message": "需要监视下载的后缀名"
     },
@@ -51,6 +54,9 @@
     },
     "Restore_Default_Settings": {
         "message": "恢复默认设置"
+    },
+    "Advanced_Download_Ruleset_Configuration":{
+        "message": "下载规则的详细设置"
     },
     //option.js
     "Native_Client_Version": {

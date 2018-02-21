@@ -4,6 +4,9 @@
         "message": "New generation Thunder invoker"
     },
     //options.html
+    "Checking_Version": {
+        "message": "Checking Version..."
+    },
     "Wanted_Extension": {
         "message": "Wanted Extension"
     },
@@ -51,6 +54,9 @@
     },
     "Restore_Default_Settings": {
         "message": "Restore Default Settings"
+    },
+    "Advanced_Download_Ruleset_Configuration":{
+        "message": "Advanced download ruleset configuration"
     },
     //option.js
     "Native_Client_Version":{
