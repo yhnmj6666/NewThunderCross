@@ -158,11 +158,11 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only for this site..
+        ///   Looks up a localized string similar to Only for.
         /// </summary>
-        public static string Only_for_this_site {
+        public static string Only_for {
             get {
-                return ResourceManager.GetString("Only_for_this_site", resourceCulture);
+                return ResourceManager.GetString("Only_for", resourceCulture);
             }
         }
         

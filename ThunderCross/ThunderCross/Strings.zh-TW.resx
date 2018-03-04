@@ -144,9 +144,6 @@
   <data name="Install_successful" xml:space="preserve">
     <value>安裝成功</value>
   </data>
-  <data name="Permission_Error" xml:space="preserve">
-    <value>權限錯誤</value>
-  </data>
   <data name="Uninstall" xml:space="preserve">
     <value>是否移除？</value>
   </data>
@@ -162,8 +159,8 @@
   <data name="You_have_choosen_to_open" xml:space="preserve">
     <value>您選擇了開啟：</value>
   </data>
-  <data name="Only_for_this_site" xml:space="preserve">
-    <value>僅針對此網站</value>
+  <data name="Only_for" xml:space="preserve">
+    <value>僅針對</value>
   </data>
   <data name="Failed" xml:space="preserve">
     <value>失敗</value>
@@ -172,8 +169,8 @@
     <value>就绪</value>
   </data>
   <data name="Thunder_is_not_capable_with_POST_method" xml:space="preserve">
-    <value>迅雷不兼容POST方式的下载，这个文件很可能会下载失败。
-无论如何也要使用迅雷吗？</value>
+    <value>迅雷不相容POST方式的下載，這個檔案很可能會下載失敗。
+無論如何也要使用迅雷嗎？</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>

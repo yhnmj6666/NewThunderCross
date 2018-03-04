@@ -83,8 +83,8 @@ var downloadCatcher = {
                     else if (reply.Choice === "Default")
                         action = "deny";
 
-                    if (reply.SaveForSite === true)
-                        ActionRule.add(new URL(dlInfo.Url).hostname,
+                    if (reply.Save === true)
+                        ActionRule.add(reply.Host,
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
                     else {

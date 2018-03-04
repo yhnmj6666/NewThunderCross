@@ -15,6 +15,7 @@ namespace ThunderCross
 		[STAThread]
 		static void Main(string[] args)
 		{
+			Application.EnableVisualStyles();
 			if (args.Length > 0)
 			{
 				switch(args[0].ToLower())
@@ -114,7 +115,7 @@ namespace ThunderCross
 			}
 			catch (System.Security.SecurityException e)
 			{
-				MessageBox.Show(e.Message +"\n" + e.StackTrace, Strings.Permission_Error);
+				ErrorDialog.Report(e.Message +"\n" + e.StackTrace);
 			}
 			return false;
 		}

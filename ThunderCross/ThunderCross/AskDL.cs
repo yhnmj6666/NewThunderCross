@@ -9,24 +9,34 @@ namespace ThunderCross
 	partial class AskDL : Form
 	{
 		public DLAgent RetAgent;
-		public bool saveDownloadType = false;
-		public bool saveForSiteOnly = false;
+		public bool SaveDownload { get { return checkBox_saveOption.Checked; } }
+		public string SavedHost { get { return comboBox_Host.SelectedItem.ToString(); } }
 
 		HttpMethod method;
 		public AskDL(DLRequest r)
 		{
 			InitializeComponent();
+			//mod title
+			this.Text += (": " + r.Filename);
+			//save method for further warning(thunder X POST
 			method = r.Method;
+			//set font for chinese env. since 宋体 is to ugly.
 			if (CultureInfo.CurrentCulture.Equals(CultureInfo.GetCultureInfo("zh-cn")))
 				this.Font = new System.Drawing.Font("微软雅黑", 10);
+			//whether show in the center of the screen
 			if(r.ShowCenter)
 			{
 				this.StartPosition = FormStartPosition.CenterScreen;
 			}
+			//show host
 			label_fileurl.Text = label_fileurl.Text + new Uri(r.Url).Host;
+			//filename.
 			textBox1_filename.Text = r.Filename;
+			//show file size in most suitable unit.
 			label_filetypesize.Text = label_filetypesize.Text + string.Format("{0} ({1})",r.ContentType,ByteSize.Parse(r.ContentLength + "B").ToString());
+			//load icon from system according to extension
 			picture_icon.Image = Etier.IconHelper.IconReader.GetFileIcon(Path.GetExtension(r.Filename), Etier.IconHelper.IconReader.IconSize.Large, false).ToBitmap();
+			//load default dm
 			if (r.DefaultDM == DLAgent.Customized.ToString())
 			{
 				comboBox_dm.Items.Add(string.Format("{0} ({1})",r.CustomizedDM[0].Name, DLAgent.Customized.ToString()));
@@ -37,6 +47,7 @@ namespace ThunderCross
 			}
 			comboBox_dm.SelectedIndex = 0;
 			radioButton_external.Checked = true;
+			//load other available dm
 			foreach (var dm in DownloadManager.DMList)
 			{
 				if (dm!=r.DefaultDM && ((IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM"+dm),true)).Valid())
@@ -44,6 +55,13 @@ namespace ThunderCross
 					comboBox_dm.Items.Add(Enum.Parse(typeof(DLAgent), dm));
 				}
 			}
+			//set hosts for "save option"
+			string[] hostpart = new Uri(r.Url).Host.Split('.');
+			for(int i=hostpart.Length-1;i>=0;i--)
+			{
+				comboBox_Host.Items.Add(string.Join(".", hostpart, i, hostpart.Length - i));
+			}
+			comboBox_Host.SelectedIndex = hostpart.Length - 1;
 		}
 
 		private void button_Cancel_Click(object sender, EventArgs e)
@@ -70,12 +88,6 @@ namespace ThunderCross
 			}
 			else if (radioButton_default.Checked)
 				RetAgent = DLAgent.Default;
-			if(checkBox_saveOption.Checked)
-			{
-				if (checkBox_saveForSite.Checked)
-					saveForSiteOnly = true;
-				saveDownloadType = true;
-			}
 			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
@@ -83,9 +95,15 @@ namespace ThunderCross
 		private void checkBox_saveOption_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBox_saveOption.Checked)
+			{
 				checkBox_saveForSite.Enabled = true;
+				comboBox_Host.Enabled = true;
+			}
 			else
+			{
 				checkBox_saveForSite.Enabled = false;
+				comboBox_Host.Enabled = false;
+			}
 		}
 	}
 }

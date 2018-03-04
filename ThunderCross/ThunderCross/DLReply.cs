@@ -8,11 +8,11 @@ namespace ThunderCross
 		public readonly string Choice;
 		public string AddtionInfo;
 		public bool Save = false;
-		public bool SaveForSite = false;
+		public string Host = null;
 
-		public DLReply(DLAgent a)
+		public DLReply(DLAgent a, bool save = false, string host = null)
 		{
-			switch(a)
+			switch (a)
 			{
 				case DLAgent.CheckDM:
 					Choice = a.ToString();
@@ -60,12 +60,11 @@ namespace ThunderCross
 					Choice = @"error!!";
 					break;
 			}
-		}
-
-		internal void SaveDownload(bool saveForSiteOnly)
-		{
-			Save = true;
-			SaveForSite = saveForSiteOnly;
+			if (save)
+			{
+				Save = save;
+				Host = host;
+			}
 		}
 	}
 }

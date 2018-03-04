@@ -168,6 +168,12 @@
     <Compile Include="DMEagleGet.cs" />
     <Compile Include="DMIdm.cs" />
     <Compile Include="DMThunder.cs" />
+    <Compile Include="ErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorDialog.Designer.cs">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="IconHelper.cs" />
     <Compile Include="IDownloadManager.cs" />
     <Compile Include="PostInfo.cs" />
@@ -203,6 +209,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AskDL.resx">
       <DependentUpon>AskDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorDialog.resx">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <SubType>Designer</SubType>

@@ -26,7 +26,7 @@ namespace ThunderCross
 				cIDM.SendLinkToIDM(Url, Refer, Cookie, PostData.ToString(), null, null, null, FileName, 0);
 			} catch (Exception e)
 			{
-				MessageBox.Show(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
+				ErrorDialog.Report(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
 				return;
 			}
 		}

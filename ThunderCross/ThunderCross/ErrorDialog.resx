@@ -117,70 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Call_Thunder_Error_Agent" xml:space="preserve">
-    <value>Call Thunder Error!
-Please verify ThunderAgent.dll is registed correctly!</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Config_json" xml:space="preserve">
-    <value>ThunderCross.json</value>
-    <comment>represent config file</comment>
-  </data>
-  <data name="Download_in_Firefox" xml:space="preserve">
-    <value>Download in Firefox</value>
-  </data>
-  <data name="Download_using_" xml:space="preserve">
-    <value>Download using </value>
-  </data>
-  <data name="Do_this_automatically_for_files_like_this_from_now_on" xml:space="preserve">
-    <value>Do this automatically for files like this from now on.</value>
-  </data>
-  <data name="From" xml:space="preserve">
-    <value>From: </value>
-  </data>
-  <data name="Install" xml:space="preserve">
-    <value>Install?</value>
-  </data>
-  <data name="Install_fail" xml:space="preserve">
-    <value>Install fail. Please check whether Firefox is installed properly.</value>
-  </data>
-  <data name="Install_successful" xml:space="preserve">
-    <value>Install successful!</value>
-  </data>
-  <data name="Permission_Error" xml:space="preserve">
-    <value>Permission Error</value>
-  </data>
-  <data name="Uninstall" xml:space="preserve">
-    <value>Uninstall?</value>
-  </data>
-  <data name="Uninstall_success" xml:space="preserve">
-    <value>Uninstall success.</value>
-  </data>
-  <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
-    <value>What should ThunderCross do with this file?</value>
-  </data>
-  <data name="Which_is" xml:space="preserve">
-    <value>Which is: </value>
-  </data>
-  <data name="You_have_choosen_to_open" xml:space="preserve">
-    <value>You have choosen to open:</value>
-  </data>
-  <data name="Only_for" xml:space="preserve">
-    <value>Only for</value>
-  </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="Failed" xml:space="preserve">
-    <value>Failed</value>
-  </data>
-  <data name="Thunder_is_not_capable_with_POST_method" xml:space="preserve">
-    <value>Thunder is not capable with POST method, and you may failed to download this file.
-Continue anyway?</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAQcwAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8AAAAAAAB3d3d3d3cAAAAAAAAAAAB3d4j//4h3dwAAAAAAAAB3ePiIcRd4j4d3AAAAAAAHePhx
+        ERERERePh3AAAAAAd4hxERERERmZF4h3AAAAB3+BEREREREZmZkY93AAAHeIERERERERGZmZkYh3AAB4
+        gRERERERERGRmZkYhwAHf3EREYERERERmHGZl/dwB4gRERj/EREREY/3GZGIcHf3ERGIj/ERERj//xmZ
+        f3d3gRERiIj/ERGIj/iRGRh3eIERERiIj/EYiIiBEREYh3iBERERiIj/iIiIERERF4d/cRERERiIiIiI
+        gRERERf3f3mZERERiIiIiBERERER9395mZkREXiIiPcREREREfd/eZmZmReIiIj/cRERERf3eIeZmZF/
+        /4iIj/EREREXh3iHmZmX///4iIj/ERERGId3h5mZf///95iIj/ERERh3d/h5l////3EXj4j/cRF/dweI
+        eZf///eZmXj4iHERiHAHf4eZf/95mZmXj4cRF/dwAHiIeZeHmZmZmXhxERiHAAB3iIeZmZmZmZmZmRGI
+        dwAAB3+IeZmZmZmZmZd493AAAAB3iIh5mZmZmZd4iHcAAAAAB3j4iHd5l3d4j4dwAAAAAAB3ePiIiHiI
+        j4d3AAAAAAAAAHd3iP//iHd3AAAAAAAAAAAAd3d3d3d3AAAAAAD/wAP//wAA//wAAD/4AAAf8AAAD+AA
+        AAfAAAADwAAAA4AAAAGAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAgAAAAYAAAAHAAAADwAAAA+AAAAfwAAAP+AAAH/wAAD//AAD//8AD/w==
+</value>
   </data>
 </root>

@@ -34,6 +34,7 @@
 			this.label_filetypesize = new System.Windows.Forms.Label();
 			this.label_fileurl = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.comboBox_Host = new System.Windows.Forms.ComboBox();
 			this.comboBox_dm = new System.Windows.Forms.ComboBox();
 			this.checkBox_saveForSite = new System.Windows.Forms.CheckBox();
 			this.checkBox_saveOption = new System.Windows.Forms.CheckBox();
@@ -99,6 +100,7 @@
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.comboBox_Host);
 			this.groupBox1.Controls.Add(this.comboBox_dm);
 			this.groupBox1.Controls.Add(this.checkBox_saveForSite);
 			this.groupBox1.Controls.Add(this.checkBox_saveOption);
@@ -110,6 +112,16 @@
 			this.groupBox1.TabIndex = 8;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = global::ThunderCross.Strings.What_should_ThunderCross_do_with_this_file;
+			// 
+			// comboBox_Host
+			// 
+			this.comboBox_Host.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox_Host.Enabled = false;
+			this.comboBox_Host.FormattingEnabled = true;
+			this.comboBox_Host.Location = new System.Drawing.Point(129, 130);
+			this.comboBox_Host.Name = "comboBox_Host";
+			this.comboBox_Host.Size = new System.Drawing.Size(175, 24);
+			this.comboBox_Host.TabIndex = 4;
 			// 
 			// comboBox_dm
 			// 
@@ -128,9 +140,9 @@
 			this.checkBox_saveForSite.Enabled = false;
 			this.checkBox_saveForSite.Location = new System.Drawing.Point(51, 132);
 			this.checkBox_saveForSite.Name = "checkBox_saveForSite";
-			this.checkBox_saveForSite.Size = new System.Drawing.Size(124, 20);
+			this.checkBox_saveForSite.Size = new System.Drawing.Size(72, 20);
 			this.checkBox_saveForSite.TabIndex = 2;
-			this.checkBox_saveForSite.Text = global::ThunderCross.Strings.Only_for_this_site;
+			this.checkBox_saveForSite.Text = global::ThunderCross.Strings.Only_for;
 			this.checkBox_saveForSite.UseVisualStyleBackColor = true;
 			// 
 			// checkBox_saveOption
@@ -232,6 +244,6 @@
 		private System.Windows.Forms.ComboBox comboBox_dm;
 		private System.Windows.Forms.TextBox textBox1_filename;
 		private System.Windows.Forms.CheckBox checkBox_saveForSite;
-		private System.Windows.Forms.Label label_notCapable;
+		private System.Windows.Forms.ComboBox comboBox_Host;
 	}
 }

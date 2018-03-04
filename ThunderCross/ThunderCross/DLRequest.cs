@@ -83,7 +83,6 @@ namespace ThunderCross
 							return new DLReply(DLAgent.Default);
 						else
 						{
-							Application.EnableVisualStyles();
 							return Ask();
 						}
 					}
@@ -116,9 +115,7 @@ namespace ThunderCross
 						break;
 				}
 			}
-			DLReply reply= new DLReply(askDL.RetAgent);
-			if (askDL.saveDownloadType)
-				reply.SaveDownload(askDL.saveForSiteOnly);
+			DLReply reply= new DLReply(askDL.RetAgent, askDL.SaveDownload, askDL.SavedHost);
 			return reply;
 		}
 	}
