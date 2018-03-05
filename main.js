@@ -45,6 +45,7 @@ browser.runtime.onMessage.addListener((message, sender) => {
         break;
     }
 });
+createMenu();
 browser.runtime.onInstalled.addListener((details) => {
     if (details.temporary == false && (details.reason=="update" || details.reason=="install"))
         browser.tabs.create({ url: browser.extension.getURL("Readme.html") });
