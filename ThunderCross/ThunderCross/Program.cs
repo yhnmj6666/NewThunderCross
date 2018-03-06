@@ -43,7 +43,24 @@ namespace ThunderCross
 			}
 			else
 			{
-				CheckInstallation();
+				if(CheckInstallation())
+				{
+					if (MessageBox.Show(Strings.Install, "ThunderCross", MessageBoxButtons.YesNo) == DialogResult.Yes)
+					{
+						if (Installation() == true)
+							MessageBox.Show(Strings.Install_successful);
+						else
+							MessageBox.Show(Strings.Install_fail);
+					}
+				}
+				else
+				{
+					if (MessageBox.Show(Strings.Uninstall, "ThunderCross", MessageBoxButtons.YesNo) == DialogResult.Yes)
+					{
+						if (Uninstalltion() == true)
+							MessageBox.Show(Strings.Uninstall_success);
+					}
+				}
 			}
 		}
 
@@ -131,25 +148,23 @@ namespace ThunderCross
 			return true;
 		}
 
-		private static void CheckInstallation()
+		private static bool CheckInstallation()
 		{
-			if (File.Exists(Strings.Config_json) &&
-				Environment.CurrentDirectory + @"\" + Strings.Config_json ==
-				Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla").
-				OpenSubKey("NativeMessagingHosts").OpenSubKey("ThunderCross").GetValue(null).ToString())
+			try
 			{
-				if (MessageBox.Show(Strings.Uninstall, "ThunderCross", MessageBoxButtons.YesNo) == DialogResult.Yes)
+				if (File.Exists(Strings.Config_json) &&
+					Environment.CurrentDirectory + @"\" + Strings.Config_json ==
+					Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla").
+					OpenSubKey("NativeMessagingHosts").OpenSubKey("ThunderCross").GetValue(null).ToString())
 				{
-					if (Uninstalltion() == true)
-						MessageBox.Show(Strings.Uninstall_success);
+					return false;
 				}
-			}
-			else if (MessageBox.Show(Strings.Install, "ThunderCross", MessageBoxButtons.YesNo) == DialogResult.Yes)
-			{
-				if (Installation() == true)
-					MessageBox.Show(Strings.Install_successful);
 				else
-					MessageBox.Show(Strings.Install_fail);
+					return true;
+			}
+			catch (Exception)
+			{
+				return false;
 			}
 		}
 	}
