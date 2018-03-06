@@ -76,7 +76,7 @@ namespace ThunderCross
 		{
 			STARTUPINFO si=new STARTUPINFO();
 			si.cb = Marshal.SizeOf(si);
-			PROCESS_INFORMATION pi=new PROCESS_INFORMATION();
+			PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
 			SECURITY_ATTRIBUTES pa = new SECURITY_ATTRIBUTES();
 			SECURITY_ATTRIBUTES ta = new SECURITY_ATTRIBUTES();
 			bool result=CreateProcess(null, command, ref pa, ref ta, false, CREATE_BREAKAWAY_FROM_JOB, (IntPtr)0, null, ref si, out pi);

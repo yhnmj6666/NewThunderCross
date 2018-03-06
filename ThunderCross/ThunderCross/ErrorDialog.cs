@@ -24,13 +24,12 @@ namespace ThunderCross
 				this.Size = new Size(Size.Width, 200);
 			if (this.Size.Width < 300)
 				this.Size = new Size(300, Size.Height);
-			if(this.Size.Height>1000)
+			if (this.Size.Height > 1000)
 				this.Size = new Size(Size.Width, 1000);
 			if (this.Size.Width >700)
 				this.Size = new Size(700, Size.Height);
 		}
 		
-
 		private void button_Copy_Click(object sender, EventArgs e)
 		{
 			Clipboard.SetText(textBox.Text, TextDataFormat.UnicodeText);
@@ -41,6 +40,11 @@ namespace ThunderCross
 		{
 			ErrorDialog ed = new ErrorDialog(s);
 			ed.ShowDialog();
+		}
+
+		private void button_OK_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

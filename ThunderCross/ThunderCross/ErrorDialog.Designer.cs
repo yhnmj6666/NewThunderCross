@@ -59,6 +59,7 @@
 			this.button_OK.TabIndex = 1;
 			this.button_OK.Text = "OK";
 			this.button_OK.UseVisualStyleBackColor = true;
+			this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
 			// 
 			// button_Copy
 			// 
