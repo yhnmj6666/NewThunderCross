@@ -6,7 +6,7 @@
     },
     //options.html
     "Checking_Version": {
-        "message": "检查客户端版本..."
+        "message": "檢查用戶端版本..."
     },
     "Wanted_Extension": {
         "message": "需要監視下載的副檔名"
@@ -54,16 +54,16 @@
         "message": "檢查內建支援下載工具的工作情況"
     },
     "Restore_Default_Settings": {
-        "message": "恢復默認設置"
+        "message": "還原預設設定"
     },
     "Advanced_Download_Ruleset_Configuration":{
-        "message": "下载规则的详细设置"
+        "message": "下載規則的詳細設定"
     },
     //option.js
     "Native_Client_Version": {
-        "message": "用戶端版本號: "
+        "message": "用戶端版本: "
     },
     "Native_Client_not_Installed_Properly": {
-        "message": "用戶端沒有正確安裝。"
+        "message": "用戶端並未正確安裝。"
     }
 }
