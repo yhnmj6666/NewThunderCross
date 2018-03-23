@@ -42,6 +42,10 @@ browser.runtime.onMessage.addListener((message, sender) => {
         {
             resetExtension();
         }
+        case "log":
+        {
+            console.log(message);
+        }
         break;
     }
 });

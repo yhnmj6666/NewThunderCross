@@ -171,14 +171,17 @@ var downloadCatcher = {
         if (reqDetails.method == "POST" && reqDetails.requestBody != null) {
             PostDataStore[reqDetails.requestId] = {};
             PostDataStore[reqDetails.requestId].Data = {};
-            var _entry = Object.keys(reqDetails.requestBody.formData);
-            for (var i = 0; i < _entry.length; i++) {
-                Object.defineProperty(PostDataStore[reqDetails.requestId].Data, _entry[i], {
-                    configurable: true,
-                    enumerable: true,
-                    writable: true,
-                    value: reqDetails.requestBody.formData[_entry[i]][0]
-                });
+            if(reqDetails.requestBody.formData!=null)
+            {
+                var _entry = Object.keys(reqDetails.requestBody.formData);
+                for (var i = 0; i < _entry.length; i++) {
+                    Object.defineProperty(PostDataStore[reqDetails.requestId].Data, _entry[i], {
+                        configurable: true,
+                        enumerable: true,
+                        writable: true,
+                        value: reqDetails.requestBody.formData[_entry[i]][0]
+                    });
+                }
             }
         }
         return {};
