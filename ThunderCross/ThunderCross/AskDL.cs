@@ -105,5 +105,10 @@ namespace ThunderCross
 				comboBox_Host.Enabled = false;
 			}
 		}
+
+		private void comboBox_Host_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			checkBox_saveForSite.Enabled = true;
+		}
 	}
 }
