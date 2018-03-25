@@ -67,7 +67,7 @@ var downloadCatcher = {
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                //console.log(reply);
+                console.log(reply);
                 browser.tabs.query({ active: true }).then((tabs) => { //can change to details.tabId?
                     if (tabs[0].id != rhDetails.tabId)
                     {
@@ -90,11 +90,6 @@ var downloadCatcher = {
                         ActionRule.add(reply.Host,
                             dlInfo.FileExtension,
                             dlInfo.ContentType, action);
-                    else {
-                        ActionRule.add(null,
-                            dlInfo.FileExtension,
-                            dlInfo.ContentType, action);
-                    }
                 }
             }));
             //if external

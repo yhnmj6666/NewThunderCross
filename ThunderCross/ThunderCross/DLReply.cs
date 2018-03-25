@@ -60,7 +60,7 @@ namespace ThunderCross
 					Choice = @"error!!";
 					break;
 			}
-			if (save && (int)a>=5)//if a is an external dm
+			if (save && (a==DLAgent.Default || (int)a>=5))//if a is an external dm
 			{
 				Save = save;
 				Host = host;

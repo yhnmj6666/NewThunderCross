@@ -10,7 +10,7 @@ namespace ThunderCross
 	{
 		public DLAgent RetAgent;
 		public bool SaveDownload { get { return checkBox_saveOption.Checked; } }
-		public string SavedHost { get { return comboBox_Host.SelectedItem.ToString(); } }
+		public string SavedHost { get { return checkBox_saveForSite.Checked?comboBox_Host.SelectedItem.ToString():null; } }
 
 		HttpMethod method;
 		public AskDL(DLRequest r)
