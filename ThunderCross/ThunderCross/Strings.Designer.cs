@@ -24,7 +24,7 @@ namespace ThunderCross {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
         
-        private static SingleAssemblyComponentResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
@@ -32,11 +32,14 @@ namespace ThunderCross {
         internal Strings() {
         }
         
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static SingleAssemblyComponentResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    SingleAssemblyComponentResourceManager temp = new SingleAssemblyComponentResourceManager(typeof(Strings));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ThunderCross.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -54,6 +57,15 @@ namespace ThunderCross {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse....
+        /// </summary>
+        public static string browse {
+            get {
+                return ResourceManager.GetString("browse", resourceCulture);
             }
         }
         
@@ -122,6 +134,15 @@ namespace ThunderCross {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fix Thunder.
+        /// </summary>
+        public static string Fixing {
+            get {
+                return ResourceManager.GetString("Fixing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From: .
         /// </summary>
         public static string From {
@@ -131,7 +152,7 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Install?.
+        ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string Install {
             get {
@@ -149,15 +170,6 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Install successful!.
-        /// </summary>
-        public static string Install_successful {
-            get {
-                return ResourceManager.GetString("Install_successful", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Only for.
         /// </summary>
         public static string Only_for {
@@ -167,20 +179,29 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permission Error.
-        /// </summary>
-        public static string Permission_Error {
-            get {
-                return ResourceManager.GetString("Permission_Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ready.
         /// </summary>
         public static string Ready {
             get {
                 return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This copy of Thunder supports 32-bit only..
+        /// </summary>
+        public static string This_copy_of_Thunder_supports_32_bit_only {
+            get {
+                return ResourceManager.GetString("This_copy_of_Thunder_supports_32_bit_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thunder.exe Path:.
+        /// </summary>
+        public static string Thunder_exe_Path {
+            get {
+                return ResourceManager.GetString("Thunder_exe_Path", resourceCulture);
             }
         }
         
@@ -195,20 +216,29 @@ namespace ThunderCross {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uninstall?.
+        ///   Looks up a localized string similar to ThunderAgent.dll Path:.
         /// </summary>
-        public static string Uninstall {
+        public static string ThunderAgent_dll_Path {
             get {
-                return ResourceManager.GetString("Uninstall", resourceCulture);
+                return ResourceManager.GetString("ThunderAgent_dll_Path", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uninstall success..
+        ///   Looks up a localized string similar to Try Fix it!.
         /// </summary>
-        public static string Uninstall_success {
+        public static string Try_Fix {
             get {
-                return ResourceManager.GetString("Uninstall_success", resourceCulture);
+                return ResourceManager.GetString("Try_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstall.
+        /// </summary>
+        public static string Uninstall {
+            get {
+                return ResourceManager.GetString("Uninstall", resourceCulture);
             }
         }
         
@@ -218,6 +248,15 @@ namespace ThunderCross {
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome ThunderCross.
+        /// </summary>
+        public static string Welcome_ThunderCross {
+            get {
+                return ResourceManager.GetString("Welcome_ThunderCross", resourceCulture);
             }
         }
         

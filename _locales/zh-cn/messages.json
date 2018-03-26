@@ -64,5 +64,43 @@
     },
     "Native_Client_not_Installed_Properly": {
         "message": "客户端没有正确安装。"
+    },
+    //rules.html
+    "Accept_or_Deny":
+    {
+        "message":"使用外置下载?"
+    },
+    "Extension":
+    {
+        "message":"后缀名"
+    },
+    "MIME_type":
+    {
+        "message":"MIME类型"
+    },
+    "Host":
+    {
+        "message":"源站点"
+    },
+    "Operation":
+    {
+        "message":"操作"
+    },
+    //rules.js
+    "accept":
+    {
+        "message":"是"
+    },
+    "deny":
+    {
+        "message":"否"
+    },
+    "ask":
+    {
+        "message":"询问"
+    },
+    "delete":
+    {
+        "message":"删除"
     }
 }

@@ -3,10 +3,11 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Pipes;
+using System.Linq;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Microsoft.Win32;
-
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ThunderCross
 {
@@ -29,6 +30,42 @@ namespace ThunderCross
 							aPipeClient.Close();
 							DLTask dt = JsonConvert.DeserializeObject<DLTask>(sTask);
 							dt.Perform();
+							break;
+						}
+					case "fix":
+						{
+							string thunderexe = args[1];
+							string thunderagentdll = args[2];
+							string thunderagent64bit = thunderagentdll.ToLower().Replace("thunderagent.dll", "thunderagent64.dll");
+							Stack<string> tpaths = new Stack<string>(thunderexe.Split('\\'));
+							tpaths.Pop();
+							if (tpaths.Peek().ToLower() == "program")
+								tpaths.Pop();
+							string thunderroot = string.Join("\\", tpaths.Reverse())+"\\";
+							string version = FileVersionInfo.GetVersionInfo(thunderexe).FileVersion.Replace(',','.');
+							if (Environment.Is64BitOperatingSystem && Environment.Is64BitProcess)
+							{
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Wow6432Node\Thunder Network\ThunderOem\thunder_backwnd", "dir", thunderroot, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Wow6432Node\Thunder Network\ThunderOem\thunder_backwnd", "Path", thunderexe, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Wow6432Node\Thunder Network\ThunderOem\thunder_backwnd", "instdir", thunderroot, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Wow6432Node\Thunder Network\ThunderOem\thunder_backwnd", "Version", version, RegistryValueKind.String);
+							}
+							else
+							{
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Thunder Network\ThunderOem\thunder_backwnd", "dir", thunderroot, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Thunder Network\ThunderOem\thunder_backwnd", "Path", thunderexe, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Thunder Network\ThunderOem\thunder_backwnd", "instdir", thunderroot, RegistryValueKind.String);
+								Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Thunder Network\ThunderOem\thunder_backwnd", "Version", version, RegistryValueKind.String);
+							}
+							Process.Start("regsvr32", "/s \"" + thunderagentdll + "\"");
+							if (Environment.Is64BitOperatingSystem && File.Exists(thunderagent64bit))
+							{
+								Process.Start("regsvr32", "/s \"" + thunderagent64bit + "\"");
+							}
+							else
+							{
+								MessageBox.Show((IWin32Window)null,Strings.This_copy_of_Thunder_supports_32_bit_only);
+							}
 							break;
 						}
 					default:

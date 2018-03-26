@@ -141,22 +141,13 @@ Please verify ThunderAgent.dll is registed correctly!</value>
     <value>From: </value>
   </data>
   <data name="Install" xml:space="preserve">
-    <value>Install?</value>
+    <value>Install</value>
   </data>
   <data name="Install_fail" xml:space="preserve">
     <value>Install fail. Please check whether Firefox is installed properly.</value>
   </data>
-  <data name="Install_successful" xml:space="preserve">
-    <value>Install successful!</value>
-  </data>
-  <data name="Permission_Error" xml:space="preserve">
-    <value>Permission Error</value>
-  </data>
   <data name="Uninstall" xml:space="preserve">
-    <value>Uninstall?</value>
-  </data>
-  <data name="Uninstall_success" xml:space="preserve">
-    <value>Uninstall success.</value>
+    <value>Uninstall</value>
   </data>
   <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
     <value>What should ThunderCross do with this file?</value>
@@ -173,14 +164,35 @@ Please verify ThunderAgent.dll is registed correctly!</value>
   <data name="Ready" xml:space="preserve">
     <value>Ready</value>
   </data>
-  <data name="Failed" xml:space="preserve">
-    <value>Failed</value>
-  </data>
   <data name="Thunder_is_not_capable_with_POST_method" xml:space="preserve">
     <value>Thunder is not capable with POST method, and you may failed to download this file.
 Continue anyway?</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="Fixing" xml:space="preserve">
+    <value>Fix Thunder</value>
+  </data>
+  <data name="browse" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="ThunderAgent_dll_Path" xml:space="preserve">
+    <value>ThunderAgent.dll Path:</value>
+  </data>
+  <data name="Thunder_exe_Path" xml:space="preserve">
+    <value>Thunder.exe Path:</value>
+  </data>
+  <data name="Try_Fix" xml:space="preserve">
+    <value>Try Fix it!</value>
+  </data>
+  <data name="Welcome_ThunderCross" xml:space="preserve">
+    <value>Welcome ThunderCross</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="This_copy_of_Thunder_supports_32_bit_only" xml:space="preserve">
+    <value>This copy of Thunder supports 32-bit only.</value>
   </data>
 </root>

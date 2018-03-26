@@ -64,5 +64,43 @@
     },
     "Native_Client_not_Installed_Properly":{
         "message":"Native Client not Installed Properly."
+    },
+    //rules.html
+    "Accept_or_Deny":
+    {
+        "message":"Accept or Deny"
+    },
+    "Extension":
+    {
+        "message":"Extension"
+    },
+    "MIME_type":
+    {
+        "message":"MIME-type"
+    },
+    "Host":
+    {
+        "message":"Host"
+    },
+    "Operation":
+    {
+        "message":"Operation"
+    },
+    //rules.js
+    "accept":
+    {
+        "message":"accept"
+    },
+    "deny":
+    {
+        "message":"deny"
+    },
+    "ask":
+    {
+        "message":"ask"
+    },
+    "delete":
+    {
+        "message":"delete"
     }
 }

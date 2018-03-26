@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.Win32;
 using System.IO;
+using System.Diagnostics;
 
 namespace ThunderCross
 {
@@ -49,6 +50,7 @@ namespace ThunderCross
 			StreamWriter config_json = new StreamWriter(Strings.Config_json, append: false);
 			config_json.Write(jObject.ToString());
 			config_json.Flush();
+			config_json.Close();
 			string configPath = Environment.CurrentDirectory + @"\" + Strings.Config_json;
 			try
 			{
@@ -100,10 +102,9 @@ namespace ThunderCross
 		{
 			try
 			{
-				if (File.Exists(Strings.Config_json) &&
-					Environment.CurrentDirectory + @"\" + Strings.Config_json ==
-					Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Mozilla").
-					OpenSubKey("NativeMessagingHosts").OpenSubKey("ThunderCross").GetValue(null).ToString())
+				string jsonPath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Mozilla\NativeMessagingHosts\ThunderCross", null, "NotExist").ToString();
+				if (File.Exists(jsonPath) && 
+					Path.Equals(Path.GetFullPath(JObject.Parse(File.ReadAllText(jsonPath))["path"].ToString()), Path.GetFullPath(Application.ExecutablePath)))
 				{
 					return true; //installed
 				}
@@ -136,6 +137,41 @@ namespace ThunderCross
 				button_Install.Enabled = true;
 				button_Uninstall.Enabled = false;
 			}
+		}
+
+		private void button_browse1_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog openFile = new OpenFileDialog();
+			openFile.CheckFileExists = true;
+			openFile.CheckPathExists = true;
+			openFile.DefaultExt = "exe";
+			openFile.Filter = "Thunder Main Executable(thunder.exe) | thunder.exe";
+			if (openFile.ShowDialog() == DialogResult.OK)
+				textBox_thunderExePath.Text = openFile.FileName;
+		}
+
+		private void button_browse2_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog openFile = new OpenFileDialog();
+			openFile.CheckFileExists = true;
+			openFile.CheckPathExists = true;
+			openFile.DefaultExt = "dll";
+			openFile.Filter = "ThunderAgent Library(thunderagent.dll) | thunderagent.dll";
+			if (openFile.ShowDialog() == DialogResult.OK)
+				textBox_thunderAgentdll.Text = openFile.FileName;
+		}
+
+		private void button_tryFixIt_Click(object sender, EventArgs e)
+		{
+			new Process()
+			{
+				StartInfo = new ProcessStartInfo()
+				{
+					FileName = Application.ExecutablePath,
+					Arguments = "fix \"" + textBox_thunderExePath.Text + "\" \"" + textBox_thunderAgentdll.Text+"\"",
+					Verb = "runas"
+				}
+			}.Start();
 		}
 	}
 }

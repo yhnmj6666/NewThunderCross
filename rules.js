@@ -24,7 +24,7 @@ function loadRuleSet()
                     var row=table.insertRow();
                     //acc or deny
                     var cell=row.insertCell();
-                    cell.appendChild(document.createTextNode(value1.action));
+                    cell.appendChild(document.createTextNode(browser.i18n.getMessage(value1.action)));
                     //extension
                     cell=row.insertCell();
                     cell.appendChild(document.createTextNode(value1.extension || ""));
@@ -37,7 +37,7 @@ function loadRuleSet()
                     //operation
                     cell=row.insertCell();
                     var but=document.createElement("button");
-                    but.appendChild(document.createTextNode("Delete"));
+                    but.appendChild(document.createTextNode(browser.i18n.getMessage("delete")));
                     but.addEventListener("click",handleDelete);
                     cell.appendChild(but);
                 });
@@ -46,7 +46,7 @@ function loadRuleSet()
                 var row=table.insertRow();
                 //acc or deny
                 var cell=row.insertCell();
-                cell.appendChild(document.createTextNode(value1.action));
+                cell.appendChild(document.createTextNode(browser.i18n.getMessage(value1.action)));
                 //extension
                 cell=row.insertCell();
                 cell.appendChild(document.createTextNode(value1.extension || ""));
@@ -59,7 +59,7 @@ function loadRuleSet()
                 //operation
                 cell=row.insertCell();
                 var but=document.createElement("button");
-                but.appendChild(document.createTextNode("Delete"));
+                but.appendChild(document.createTextNode(browser.i18n.getMessage("delete")));
                 but.addEventListener("click",handleDelete);
                 cell.appendChild(but);
             });
@@ -70,19 +70,19 @@ function loadRuleSet()
                 {
                     var opt=document.createElement("option");
                     opt.value="ask";
-                    opt.text="ask";
+                    opt.text=browser.i18n.getMessage("ask");
                     sel.add(opt);
                 }
                 {
                     var opt=document.createElement("option");
                     opt.value="accept";
-                    opt.text="accept";
+                    opt.text=browser.i18n.getMessage("accept");
                     sel.add(opt);
                 }
                 {
                     var opt=document.createElement("option");
                     opt.value="deny";
-                    opt.text="deny";
+                    opt.text=browser.i18n.getMessage("deny");
                     sel.add(opt);
                 }
                 switch(res.actionRule.global.defaultAction)
@@ -111,7 +111,7 @@ function loadRuleSet()
                 //operation
                 cell=row.insertCell();
                 var but=document.createElement("button");
-                but.appendChild(document.createTextNode("Save"));
+                but.appendChild(document.createTextNode(browser.i18n.getMessage("Save")));
                 but.addEventListener("click",(clickEvent) => {
                     var row=clickEvent.target.parentNode.parentNode;
                     browser.runtime.sendMessage(JSON.stringify({

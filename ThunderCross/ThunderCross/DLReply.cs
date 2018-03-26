@@ -21,18 +21,17 @@ namespace ThunderCross
 					{
 						if (((IDownloadManager)Activator.CreateInstance(Type.GetType("ThunderCross.DM" + dm), true)).Valid())
 						{
-							AddtionInfo += (dm + ": " + "Ready\n");
+							AddtionInfo += (dm + ": " + Strings.Ready +"\n");
 						}
 						else
 						{
-							AddtionInfo += (dm + ": " + "Failed\n");
+							AddtionInfo += (dm + ": " + Strings.Failed +"\n");
 						}
 					}
 					break;
 				case DLAgent.SelectDM:
 					Choice = a.ToString();
 					{
-						Application.EnableVisualStyles();
 						OpenFileDialog openFile = new OpenFileDialog();
 						openFile.CheckFileExists = true;
 						openFile.CheckPathExists = true;

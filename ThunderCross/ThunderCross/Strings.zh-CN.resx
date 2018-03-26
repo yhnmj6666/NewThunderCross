@@ -136,19 +136,13 @@
     <value>来源：</value>
   </data>
   <data name="Install" xml:space="preserve">
-    <value>是否安装？</value>
+    <value>安装</value>
   </data>
   <data name="Install_fail" xml:space="preserve">
     <value>安装失败！请确保火狐浏览器已经正确安装。</value>
   </data>
-  <data name="Install_successful" xml:space="preserve">
-    <value>安装成功</value>
-  </data>
   <data name="Uninstall" xml:space="preserve">
-    <value>是否卸载？</value>
-  </data>
-  <data name="Uninstall_success" xml:space="preserve">
-    <value>卸载完成。</value>
+    <value>卸载</value>
   </data>
   <data name="What_should_ThunderCross_do_with_this_file" xml:space="preserve">
     <value>你想要ThunderCross如何处理此文件？</value>
@@ -172,7 +166,28 @@
     <value>迅雷不兼容POST方式的下载，这个文件很可能会下载失败。
 无论如何也要使用迅雷吗？</value>
   </data>
+  <data name="Fixing" xml:space="preserve">
+    <value>修复迅雷关联</value>
+  </data>
+  <data name="browser" xml:space="preserve">
+    <value>浏览...</value>
+  </data>
+  <data name="This_copy_of_Thunder_supports_32_bit_only" xml:space="preserve">
+    <value>该版本的迅雷只支持32位的ThunderCross。</value>
+  </data>
+  <data name="ThunderAgent_dll_Path" xml:space="preserve">
+    <value>ThunderAgent.dll的路径</value>
+  </data>
+  <data name="Thunder_exe_Path" xml:space="preserve">
+    <value>Thunder.exe的路径</value>
+  </data>
+  <data name="Try_Fix" xml:space="preserve">
+    <value>修TM的⊂彡☆))∀`)</value>
+  </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
+  </data>
+  <data name="Welcome_ThunderCross" xml:space="preserve">
+    <value>欢迎使用ThunderCross</value>
   </data>
 </root>
