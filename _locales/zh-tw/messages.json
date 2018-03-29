@@ -69,39 +69,39 @@
     //rules.html
     "Accept_or_Deny":
     {
-        "message":"Accept or Deny"
+        "message":"使用外部下載?"
     },
     "Extension":
     {
-        "message":"Extension"
+        "message":"副檔名"
     },
     "MIME_type":
     {
-        "message":"MIME-type"
+        "message":"MIME 類型"
     },
     "Host":
     {
-        "message":"Host"
+        "message":"來源網站"
     },
     "Operation":
     {
-        "message":"Operation"
+        "message":"操作"
     },
     //rules.js
     "accept":
     {
-        "message":"accept"
+        "message":"是"
     },
     "deny":
     {
-        "message":"deny"
+        "message":"否"
     },
     "ask":
     {
-        "message":"ask"
+        "message":"詢問"
     },
     "delete":
     {
-        "message":"delete"
+        "message":"刪除"
     }
 }
