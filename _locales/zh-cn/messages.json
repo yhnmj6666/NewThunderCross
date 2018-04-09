@@ -1,9 +1,7 @@
 {
-    //manifest.json
     "extensionDescription": {
         "message": "新一代迅雷召唤器"
     },
-    //options.html
     "Checking_Version": {
         "message": "检查客户端版本..."
     },
@@ -58,14 +56,16 @@
     "Advanced_Download_Ruleset_Configuration":{
         "message": "下载规则的详细设置"
     },
-    //option.js
+    "Extension_Version":
+    {
+        "message":"插件版本: "
+    },
     "Native_Client_Version": {
         "message": "客户端版本号: "
     },
     "Native_Client_not_Installed_Properly": {
         "message": "客户端没有正确安装。"
     },
-    //rules.html
     "Accept_or_Deny":
     {
         "message":"使用外置下载?"
@@ -86,7 +86,6 @@
     {
         "message":"操作"
     },
-    //rules.js
     "accept":
     {
         "message":"是"

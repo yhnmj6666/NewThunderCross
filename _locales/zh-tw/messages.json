@@ -1,10 +1,8 @@
 {
-    //Special thanks to zhtw2013@github!
-    //manifest.json
     "extensionDescription": {
-        "message": "新一代迅雷召喚工具"
+        "message": "新一代迅雷召喚工具",
+        "description":"Special thanks to zhtw2013@github!"
     },
-    //options.html
     "Checking_Version": {
         "message": "檢查用戶端版本..."
     },
@@ -59,14 +57,16 @@
     "Advanced_Download_Ruleset_Configuration":{
         "message": "下載規則的詳細設定"
     },
-    //option.js
+    "Extension_Version":
+    {
+        "message":"插件版本: "
+    },
     "Native_Client_Version": {
         "message": "用戶端版本: "
     },
     "Native_Client_not_Installed_Properly": {
         "message": "用戶端並未正確安裝。"
     },
-    //rules.html
     "Accept_or_Deny":
     {
         "message":"使用外部下載?"
@@ -87,7 +87,6 @@
     {
         "message":"操作"
     },
-    //rules.js
     "accept":
     {
         "message":"是"

@@ -81,7 +81,7 @@
 			this.groupBox1.Size = new System.Drawing.Size(259, 218);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Fix Thunder";
+			this.groupBox1.Text = global::ThunderCross.Strings.Fixing;
 			// 
 			// label2
 			// 
@@ -90,7 +90,7 @@
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(116, 13);
 			this.label2.TabIndex = 4;
-			this.label2.Text = "ThunderAgent.dll Path:";
+			this.label2.Text = global::ThunderCross.Strings.ThunderAgent_dll_Path;
 			// 
 			// label1
 			// 
@@ -99,7 +99,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(95, 13);
 			this.label1.TabIndex = 4;
-			this.label1.Text = "Thunder.exe Path:";
+			this.label1.Text = global::ThunderCross.Strings.Thunder_exe_Path;
 			// 
 			// button_tryFixIt
 			// 
@@ -158,7 +158,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "WelcomeDialog";
-			this.Text = "Welcome ThunderCross";
+			this.Text = global::ThunderCross.Strings.Welcome_ThunderCross;
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);

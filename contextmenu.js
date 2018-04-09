@@ -14,7 +14,7 @@ function createMenu() {
 }
 
 function contextMenuOnClick(info, tab) {
-    var url = info.srcUrl == "" ? info.srcUrl : info.linkUrl;
+    var url = info.srcUrl != "" ? info.srcUrl : info.linkUrl;
     var fn = getFileName(url);
     var ext = /\.[0-9a-z]+$/i.exec(fn);
     var dlInfo = {

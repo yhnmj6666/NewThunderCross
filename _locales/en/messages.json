@@ -1,11 +1,12 @@
 {
-    //manifest.json
     "extensionDescription": {
-        "message": "New generation Thunder invoker"
+        "message": "New generation Thunder invoker",
+        "description":"in manifest.json"
     },
-    //options.html
+    
     "Checking_Version": {
-        "message": "Checking Version..."
+        "message": "Checking Version...",
+        "description":"in options.html"
     },
     "Wanted_Extension": {
         "message": "Wanted Extension"
@@ -58,17 +59,23 @@
     "Advanced_Download_Ruleset_Configuration":{
         "message": "Advanced download ruleset configuration"
     },
-    //option.js
+
+    "Extension_Version":
+    {
+        "message":"Extension Version: ",
+        "description":"in option.js"
+    },
     "Native_Client_Version":{
         "message":"Native Client Version: "
     },
     "Native_Client_not_Installed_Properly":{
         "message":"Native Client not Installed Properly."
     },
-    //rules.html
+    
     "Accept_or_Deny":
     {
-        "message":"Accept or Deny"
+        "message":"Accept or Deny",
+        "description":"in rules.html"
     },
     "Extension":
     {
@@ -86,10 +93,11 @@
     {
         "message":"Operation"
     },
-    //rules.js
+    
     "accept":
     {
-        "message":"accept"
+        "message":"accept",
+        "description":"in rule.js"
     },
     "deny":
     {

@@ -20,7 +20,7 @@ namespace ThunderCross
 			this.Text += (": " + r.Filename);
 			//save method for further warning(thunder X POST
 			method = r.Method;
-			//set font for chinese env. since 宋体 is to ugly.
+			//set font for chinese env. since 宋体 is too ugly.
 			if (CultureInfo.CurrentCulture.Equals(CultureInfo.GetCultureInfo("zh-cn")))
 				this.Font = new System.Drawing.Font("微软雅黑", 10);
 			//whether show in the center of the screen

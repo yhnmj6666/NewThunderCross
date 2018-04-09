@@ -17,6 +17,9 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
+    document.getElementById("extVersion").appendChild(document.createTextNode(
+        browser.i18n.getMessage("Extension_Version")+browser.runtime.getManifest().version
+    ));
     browser.storage.sync.get().then((res) => {
         document.querySelector("#we").value = res.wantedExtension;
         document.querySelector("#ue").value = res.unwantedExtensio;
