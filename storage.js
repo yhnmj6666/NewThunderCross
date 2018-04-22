@@ -6,7 +6,7 @@ var minAskSize = 1 * 1024 * 1024;
 var autoClose = true;
 var showCenter = false;
 var replaceAsk = false;
-var CustomizedDMs = [1];
+var CustomizedDMs = [];
 
 function resetExtension()
 {
