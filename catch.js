@@ -17,7 +17,7 @@ var downloadCatcher = {
 
                 Url: rhDetails.url,
                 Filename: d.lastFileName,
-                FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)?/\.[0-9a-z]+$/i.exec(d.lastFileNam)[0]:"",
+                FileExtension: /\.[0-9a-z]+$/i.exec(d.lastFileName)?/\.[0-9a-z]+$/i.exec(d.lastFileName)[0]:"",
                 ContentLength: 0,
                 ContentType: "",
                 Cookie: CookieStore[rhDetails.requestId] ? CookieStore[rhDetails.requestId].substr(0) : null,
