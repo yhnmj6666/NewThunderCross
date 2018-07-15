@@ -12,7 +12,7 @@ namespace ThunderCross
 		public string Cookie { get; set; }
 		public HttpMethod Method { get; set; }
 		public PostInfo PostData { get; set; }
-		public DMThunder()	{ }
+		public DMThunder() { }
 		public void Fire()
 		{
 			AgentClass agent;
@@ -27,11 +27,20 @@ namespace ThunderCross
 			}
 			try
 			{
-				agent.AddTask3(bstrUrl: Url,
-					bstrFileName: FileName,
-					bstrCookie: Cookie,
-					bstrReferUrl: Refer,
-					bstrComments: PostData.ToString());
+				Type type = typeof(AgentClass);
+				var method = type.GetMethod("AddTask12");	//only on x86
+				method.Invoke(agent, new object[] { Url, "", "", PostData.ToString(), Refer, "", -1, 0, -1, Cookie, "", "", 0u, "rightup" });
+			}
+			catch (Exception)
+			{
+				try
+				{
+					agent.AddTask5(bstrUrl: Url,
+						bstrFileName: FileName == null ? FileName : "",
+						bstrCookie: Cookie == null ? Cookie : "",
+						bstrReferUrl: Refer == null ? Refer : "",
+						bstrComments: PostData.ToString(),
+						eCallType: _tag_Enum_CallType.ECT_Agent5);
 			}
 			catch (Exception)
 			{
@@ -48,20 +57,17 @@ namespace ThunderCross
 					return;
 				}
 			}
+			}
 			try
 			{
-				agent.CommitTasks4(1, 0);
+				agent.CommitTasks4(1, 1);
 			}
-			catch (Exception)
-			{
-				try { agent.CommitTasks(); }
 				catch (Exception e)
 				{
-					ErrorDialog.Report(Strings.Call_Thunder_Error_Agent + "\n" + e.Message + "\n" + e.StackTrace);
+				ErrorDialog.Report(Strings.Call_Thunder_Error_Agent + (Environment.Is64BitProcess?Strings.Recommand_32bit:"") + e.Message + "\n" + e.StackTrace);
 					return;
 				}
 			}
-		}
 		public bool Valid()
 		{
 			try

@@ -119,7 +119,8 @@
   </resheader>
   <data name="Call_Thunder_Error_Agent" xml:space="preserve">
     <value>Call Thunder Error!
-Please verify ThunderAgent.dll is registed correctly!</value>
+Please verify ThunderAgent.dll is registed correctly!
+</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -194,5 +195,11 @@ Continue anyway?</value>
   </data>
   <data name="This_copy_of_Thunder_supports_32_bit_only" xml:space="preserve">
     <value>This copy of Thunder supports 32-bit only.</value>
+  </data>
+  <data name="Recommand_32bit" xml:space="preserve">
+    <value>We Recommand to use ThunderCross 32-bit version.
+You won't encounter this error message on 32-bit version.
+It's a problem of Thunder API, and, I can't fix it by myself.
+</value>
   </data>
 </root>

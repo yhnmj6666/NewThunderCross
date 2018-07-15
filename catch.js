@@ -108,7 +108,7 @@ var downloadCatcher = {
                         url: dlInfo.Url,
                         filename: dlInfo.Filename,
                         method: rhDetails.method,
-                        saveAs: false,
+                        saveAs: false
                     })
                     var blockingResponse = {
                         redirectUrl: rhDetails.type == "sub_frame" ? browser.extension.getURL("blank.html") : "http://downloadhandeled/"

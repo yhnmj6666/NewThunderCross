@@ -24,7 +24,7 @@ namespace ThunderCross {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
         
-        private static SingleAssemblyComponentResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
@@ -32,11 +32,14 @@ namespace ThunderCross {
         internal Strings() {
         }
         
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static SingleAssemblyComponentResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    SingleAssemblyComponentResourceManager temp = new SingleAssemblyComponentResourceManager(typeof(Strings));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ThunderCross.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -68,7 +71,8 @@ namespace ThunderCross {
         
         /// <summary>
         ///   Looks up a localized string similar to Call Thunder Error!
-        ///Please verify ThunderAgent.dll is registed correctly!.
+        ///Please verify ThunderAgent.dll is registed correctly!
+        ///.
         /// </summary>
         public static string Call_Thunder_Error_Agent {
             get {
@@ -181,6 +185,18 @@ namespace ThunderCross {
         public static string Ready {
             get {
                 return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We Recommand to use ThunderCross 32-bit version.
+        ///You won&apos;t encounter this error message on 32-bit version.
+        ///It&apos;s a problem of Thunder API, and, I can&apos;t fix it by myself.
+        ///.
+        /// </summary>
+        public static string Recommand_32bit {
+            get {
+                return ResourceManager.GetString("Recommand_32bit", resourceCulture);
             }
         }
         

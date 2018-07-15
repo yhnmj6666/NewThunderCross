@@ -5,9 +5,9 @@ function saveOptions(e) {
         minAskSize: document.querySelector("#minsize").value,
         defaultDM: document.querySelector("#dm").value,
         CustomizedDMs: [{
+            Name: document.getElementById("entryName").value,
             ExecutablePath: document.getElementById("exeFile").value,
-            Arguments: document.getElementById("exeArgs").value,
-            Name: null
+            Arguments: document.getElementById("exeArgs").value
         }],
         autoClose: document.getElementById("autoClose").checked,
         showCenter: document.getElementById("showCenter").checked,
@@ -30,6 +30,8 @@ function restoreOptions() {
         document.querySelector("#dm").value = res.defaultDM || "Thunder";
 
         if (res.defaultDM == "Customized") {
+            document.getElementById("entryName").removeAttribute("disabled");
+            document.getElementById("entryName").value = res.CustomizedDMs[0].Name;
             document.getElementById("exeFile").removeAttribute("disabled");
             document.getElementById("exeFile").value = res.CustomizedDMs[0].ExecutablePath;
             document.getElementById("exeArgs").removeAttribute("disabled");
@@ -82,10 +84,12 @@ function checkDM() {
 
 function dmChange() {
     if (this.options[this.selectedIndex].value == "Customized") {
+        document.getElementById("entryName").removeAttribute("disabled");
         document.getElementById("exeFile").removeAttribute("disabled");
         document.getElementById("exeArgs").removeAttribute("disabled");
     }
     else {
+        document.getElementById("entryName").removeAttribute("disabled");
         document.getElementById("exeFile").setAttribute("disabled", true);
         document.getElementById("exeArgs").setAttribute("disabled", true);
     }

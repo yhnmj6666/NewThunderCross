@@ -80,6 +80,12 @@ namespace ThunderCross
 			}
 			else
 			{
+				DMThunder dM = new DMThunder
+				{
+					Url = "http://baidu.com/index.html",
+					PostData = new PostInfo()
+				};
+				dM.Fire();
 				WelcomeDialog dialog = new WelcomeDialog();
 				dialog.ShowDialog();
 			}

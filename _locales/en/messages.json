@@ -23,6 +23,9 @@
     "Customized": {
         "message": "Customized"
     },
+    "Entry_name":{
+        "message": "Name: "
+    },
     "Executable_file": {
         "message": "Executable file: "
     },
