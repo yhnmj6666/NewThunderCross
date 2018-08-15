@@ -8,8 +8,21 @@
 
 <body>
     <form>
+        <h2>General</h2>
         <p><label id="version" i18n-text="Checking_Version"></label></p>
         <p><label id="extVersion"></label></p>
+        <input type="checkbox" id="autoClose"><label i18n-text="Auto_close"></label>
+        <br>
+        <input type="checkbox" id="showCenter"><label i18n-text="Show_In_Center"></label>
+        <br>
+        <input type="checkbox" id="replaceAsk"><abbr i18n-title="Replace_hint" i18n-text="Replace_default_with_direct_download"></abbr>
+        <br>
+        <span>When click "x" in form :</span><br>
+        <input type="radio" name="closeAction" id="closeCancel" checked><label>Cancel Download</label>
+        <br>
+        <input type="radio" name="closeAction" id="closeFallback"><label>Fallback to internal asking box</label>
+        <br>
+        <h2>Detection</h2>
         <p>
         <label i18n-text="Wanted_Extension"></label>
         <br>
@@ -19,6 +32,7 @@
         <br>
         <textarea rows="4" cols="50" id="ue"></textarea>
         </p>
+        <h2>Download Manager</h2>
         <p>
         <label i18n-text="Size_Limit"></label>
         <input type="number" id="minsize" step=any min=0></input>
@@ -37,18 +51,11 @@
         <br>
         <abbr i18n-title="Arguments_tooltip" i18n-text="Arguments"></abbr><input type="text" id="exeArgs" disabled>
         <br>
-        <br>
-        <input type="checkbox" id="autoClose"><label i18n-text="Auto_close"></label>
-        <br>
-        <input type="checkbox" id="showCenter"><label i18n-text="Show_In_Center"></label>
-        <br>
-        <input type="checkbox" id="replaceAsk"><abbr i18n-title="Replace_hint" i18n-text="Replace_default_with_direct_download"></abbr>
-        <br>
-        <button type="submit" i18n-text="Save"></button>
-        <br>
+        <h2>Advanced</h2>
         <p>
         <a id="advRuleConfig" href="rules.html" i18n-text="Advanced_Download_Ruleset_Configuration"></a>
         </p>
+        <button type="submit" i18n-text="Save"></button>
     </form>
     <form>
         <button type="button" id="button_restoreDefault" i18n-text="Restore_Default_Settings"></button>
@@ -57,8 +64,8 @@
         <br>
         <label><pre id="check_result"></pre></label>
     </form>
-    <script src="options.js"></script>
-    <script src="localization.js"></script>
+    <script src="/js/options.js"></script>
+    <script src="/js/localization.js"></script>
 </body>
 
 </html>

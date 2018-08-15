@@ -34,6 +34,9 @@ function loadRuleSet()
                     //host
                     cell=row.insertCell();
                     cell.appendChild(document.createTextNode(value));
+                    //used dm
+                    cell=row.insertCell();
+                    cell.appendChild(document.createTextNode(value1.dm));
                     //operation
                     cell=row.insertCell();
                     var but=document.createElement("button");
@@ -56,6 +59,9 @@ function loadRuleSet()
                 //host
                 cell=row.insertCell();
                 cell.appendChild(document.createTextNode("*"));
+                //used dm
+                cell=row.insertCell();
+                cell.appendChild(document.createTextNode(value1.dm));
                 //operation
                 cell=row.insertCell();
                 var but=document.createElement("button");
@@ -108,6 +114,9 @@ function loadRuleSet()
                 //host
                 cell=row.insertCell();
                 cell.appendChild(document.createTextNode("*"));
+                //used dm
+                cell=row.insertCell();
+                cell.appendChild(document.createTextNode("Default"));
                 //operation
                 cell=row.insertCell();
                 var but=document.createElement("button");

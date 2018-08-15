@@ -2,7 +2,7 @@
     "description": "New generation Thunder invoker",
     "manifest_version": 2,
     "name": "ThunderCross",
-    "version": "0.2.8",
+    "version": "0.3.0",
     "applications": {
         "gecko": {
             "id": "Thunder@Cross",
@@ -10,27 +10,27 @@
         }
     },
     "options_ui": {
-        "page": "options.html",
+        "page": "/html/options.html",
         "browser_style": true,
         "open_in_tab": true
     },
     "background": {
         "scripts": [
-            "storage.js",
-            "getFileName.js",
-            "BaiduyunDownload.js",
-            "StntsDownload.js",
-            "Downloadable.js",
-            "ActionRule.js",
-            "catch.js",
-            "contextmenu.js",
-            "main.js"
+            "/background/storage.js",
+            "/background/getFileName.js",
+            "/background/BaiduyunDownload.js",
+            "/background/StntsDownload.js",
+            "/background/Downloadable.js",
+            "/background/ActionRule.js",
+            "/background/catch.js",
+            "/background/contextmenu.js",
+            "/background/main.js"
         ]
     },
     "web_accessible_resources": [
-        "blank.html",
-        "Readme.html",
-        "rules.html"
+        "/html/blank.html",
+        "/html/Readme.html",
+        "/html/rules.html"
     ],
     "permissions": [
         "storage",

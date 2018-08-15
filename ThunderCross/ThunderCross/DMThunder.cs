@@ -29,16 +29,16 @@ namespace ThunderCross
 			{
 				Type type = typeof(AgentClass);
 				var method = type.GetMethod("AddTask12");	//only on x86
-				method.Invoke(agent, new object[] { Url, "", "", PostData.ToString(), Refer, "", -1, 0, -1, Cookie, "", "", 0u, "rightup" });
+				method.Invoke(agent, new object[] { Url, FileName, "", PostData.ToString(), Refer, "", -1, 0, -1, Cookie, "", "", 0u, "rightup" });
 			}
 			catch (Exception)
 			{
 				try
 				{
 					agent.AddTask5(bstrUrl: Url,
-						bstrFileName: FileName == null ? FileName : "",
-						bstrCookie: Cookie == null ? Cookie : "",
-						bstrReferUrl: Refer == null ? Refer : "",
+						bstrFileName: FileName,
+						bstrCookie: Cookie,
+						bstrReferUrl: Refer,
 						bstrComments: PostData.ToString(),
 						eCallType: _tag_Enum_CallType.ECT_Agent5);
 			}

@@ -10,6 +10,7 @@ function saveOptions(e) {
             Arguments: document.getElementById("exeArgs").value
         }],
         autoClose: document.getElementById("autoClose").checked,
+        closeAction: document.getElementById("closeCancel").checked,
         showCenter: document.getElementById("showCenter").checked,
         replaceAsk: document.getElementById("replaceAsk").checked
     });
@@ -39,6 +40,12 @@ function restoreOptions() {
         }
 
         document.getElementById("autoClose").checked = res.autoClose;
+        //todo: test
+        if(res.closeAction=true)
+            document.getElementById("closeCancel").checked=true;
+        else
+            document.getElementById("closeFallback").checked=true;
+        //end todo
         document.getElementById("showCenter").checked=res.showCenter;
         document.getElementById("replaceAsk").checked=res.replaceAsk;
 

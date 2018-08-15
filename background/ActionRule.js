@@ -67,7 +67,7 @@ class ActionRule {
         console.log(_save);
     }
 
-    static add(host, extension, mime, action) {
+    static add(host, extension, mime, action, dm="default") {
         if (host == null || host=="*") {
             this.global.rules.add({
                 extension: extension,

@@ -67,7 +67,7 @@ var downloadCatcher = {
             promises.push(browser.runtime.sendNativeMessage("ThunderCross",
                 dlInfo
             ).then((reply) => {
-                console.log(reply);
+                console.log(dlInfo);
                 browser.tabs.query({ active: true }).then((tabs) => { //can change to details.tabId?
                     if (tabs[0].id != rhDetails.tabId)
                     {
@@ -75,7 +75,7 @@ var downloadCatcher = {
                         return;
                     }
                     if (autoClose && tabs[0].url == "about:blank") //bug: close tab until the page is fully loaded, ie. not close PDF links. http://www.webmediassp.com/arriving-in-fiji/ for test
-                        if (dlInfo.FileExtension != ".pdf")
+                        if (dlInfo.FileExtension != ".pdf" && !dlInfo.ContentType.has("pdf"))
                             browser.tabs.remove(tabs[0].id);
                 });
                 msgFromNative = reply.Choice;
