@@ -4,66 +4,95 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/options.css" />
 </head>
 
 <body>
-    <form>
-        <h2>General</h2>
-        <p><label id="version" i18n-text="Checking_Version"></label></p>
-        <p><label id="extVersion"></label></p>
-        <input type="checkbox" id="autoClose"><label i18n-text="Auto_close"></label>
-        <br>
-        <input type="checkbox" id="showCenter"><label i18n-text="Show_In_Center"></label>
-        <br>
-        <input type="checkbox" id="replaceAsk"><abbr i18n-title="Replace_hint" i18n-text="Replace_default_with_direct_download"></abbr>
-        <br>
-        <span>When click "x" in form :</span><br>
-        <input type="radio" name="closeAction" id="closeCancel" checked><label>Cancel Download</label>
-        <br>
-        <input type="radio" name="closeAction" id="closeFallback"><label>Fallback to internal asking box</label>
-        <br>
-        <h2>Detection</h2>
-        <p>
-        <label i18n-text="Wanted_Extension"></label>
-        <br>
-        <textarea rows="4" cols="50" id="we"></textarea>
-        <br>
-        <label i18n-text="Unwanted_Extension"></label>
-        <br>
-        <textarea rows="4" cols="50" id="ue"></textarea>
-        </p>
-        <h2>Download Manager</h2>
-        <p>
-        <label i18n-text="Size_Limit"></label>
-        <input type="number" id="minsize" step=any min=0></input>
-        </p>
-        <label i18n-text="Default_DM"></label>
-        <select id="dm">
-            <option value="Thunder">Thunder</option>
-            <option value="EagleGet">EagleGet</option>
-            <option value="Idm">Idm</option>
-            <option value="Customized" i18n-text="Customized"></option>
-        </select>
-        <br>
-        <abbr i18n-text="Entry_name"></abbr><input type="text" id="entryName" disabled>
-        <br>
-        <abbr i18n-title="Executable_file_tooltip" i18n-text="Executable_file"></abbr><input type="text" id="exeFile" disabled>
-        <br>
-        <abbr i18n-title="Arguments_tooltip" i18n-text="Arguments"></abbr><input type="text" id="exeArgs" disabled>
-        <br>
-        <h2>Advanced</h2>
-        <p>
-        <a id="advRuleConfig" href="rules.html" i18n-text="Advanced_Download_Ruleset_Configuration"></a>
-        </p>
-        <button type="submit" i18n-text="Save"></button>
-    </form>
-    <form>
-        <button type="button" id="button_restoreDefault" i18n-text="Restore_Default_Settings"></button>
-        <br>
-        <button type="button" id="button_check" i18n-text="Check_DM"></button>
-        <br>
-        <label><pre id="check_result"></pre></label>
-    </form>
+    <div class="container">
+        <h1 class="title">ThunderCross</h1>
+        <ul>
+            <form>
+                <li>
+                    <h2>General</h2>
+                </li>
+                <p>
+                    <label id="version" i18n-text="Checking_Version"></label>
+                </p>
+                <p>
+                    <label id="extVersion"></label>
+                </p>
+                <input type="checkbox" id="autoClose">
+                <label i18n-text="Auto_close"></label>
+                <br>
+                <input type="checkbox" id="showCenter">
+                <label i18n-text="Show_In_Center"></label>
+                <br>
+                <input type="checkbox" id="replaceAsk">
+                <abbr i18n-title="Replace_hint" i18n-text="Replace_default_with_direct_download"></abbr>
+                <br>
+                <fieldset>
+                    <legend>When click "x" in form :</legend>
+                    <input type="radio" name="closeAction" id="closeCancel" checked>
+                    <label>Cancel Download</label>
+                    <br>
+                    <input type="radio" name="closeAction" id="closeFallback">
+                    <label>Fallback to internal asking box</label>
+                </fieldset>
+                <li>
+                    <h2>Detection</h2>
+                </li>
+                <p>
+                    <label i18n-text="Wanted_Extension"></label>
+                    <br>
+                    <textarea rows="4" cols="50" id="we"></textarea>
+                    <br>
+                    <label i18n-text="Unwanted_Extension"></label>
+                    <br>
+                    <textarea rows="4" cols="50" id="ue"></textarea>
+                </p>
+                <li>
+                    <h2>Download Manager</h2>
+                </li>
+                <p>
+                    <label i18n-text="Size_Limit"></label>
+                    <input type="number" id="minsize" step=any min=0></input>
+                </p>
+                <label i18n-text="Default_DM"></label>
+                <select id="dm">
+                    <option value="Thunder">Thunder</option>
+                    <option value="EagleGet">EagleGet</option>
+                    <option value="Idm">Idm</option>
+                    <option value="Customized" i18n-text="Customized"></option>
+                </select>
+                <br>
+                <abbr i18n-text="Entry_name"></abbr>
+                <input type="text" id="entryName" disabled>
+                <br>
+                <abbr i18n-title="Executable_file_tooltip" i18n-text="Executable_file"></abbr>
+                <input type="text" id="exeFile" disabled>
+                <br>
+                <abbr i18n-title="Arguments_tooltip" i18n-text="Arguments"></abbr>
+                <input type="text" id="exeArgs" disabled>
+                <br>
+                <li>
+                    <h2>Advanced</h2>
+                </li>
+                <p>
+                    <a id="advRuleConfig" href="rules.html" i18n-text="Advanced_Download_Ruleset_Configuration"></a>
+                </p>
+                <button type="submit" i18n-text="Save"></button>
+            </form>
+            <form>
+                <button type="button" id="button_restoreDefault" i18n-text="Restore_Default_Settings"></button>
+                <br>
+                <button type="button" id="button_check" i18n-text="Check_DM"></button>
+                <br>
+                <label>
+                    <pre id="check_result"></pre>
+                </label>
+            </form>
+        </ul>
+    </div>
     <script src="/js/options.js"></script>
     <script src="/js/localization.js"></script>
 </body>

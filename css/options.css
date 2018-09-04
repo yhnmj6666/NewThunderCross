@@ -1,0 +1,26 @@
+body {
+    background-image: url("/images/options-background.jpg"); 
+    /* background-image found at https://www.pexels.com/photo/lightning-and-gray-clouds-1162251/ */
+    background-color: transparent;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    margin-left: 40%;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: #FFFFFFAA;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+.condition {
+    text-decoration: underline;
+    font-size: 120%;
+}
